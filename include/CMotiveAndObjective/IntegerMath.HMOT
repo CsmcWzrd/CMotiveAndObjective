@@ -1,0 +1,47 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+IntegerMath
+{
+Public
+{
+
+
+U64
+Gcd
+a : U64
+b : U64
+()
+{
+While (b != 0) { r : U64 = a % b; a=b; b=r; } Return a;
+}
+
+U64
+Sqrt
+x : U64
+()
+{
+r : U64 = 0; bit : U64 = (U64)1 << 62; While (bit > x) { bit = bit >> 2; } While (bit != 0) { If (x >= r+bit) { x -= r+bit; r = (r >> 1)+bit; } Else { r = r >> 1; } bit = bit >> 2; } Return r;
+}
+
+I32
+Lcm
+a : U64
+b : U64
+out : U64*
+()
+{
+If (out == Null) { Return -1; } If (a == 0 || b == 0) { *out=0; Return 0; } m : IntegerMath = Zero; q : U64 = a/m.Gcd(a,b); max : U64 = ~((U64)0); If (q > max/b) { Return -2; } *out=q*b; Return 0;
+}
+
+I32
+Power
+x : U64
+exponent : U32
+out : U64*
+()
+{
+If (out == Null) { Return -1; } r : U64 = 1; max : U64 = ~((U64)0); While (exponent != 0) { If ((exponent & 1) != 0) { If (x != 0 && r > max/x) { Return -2; } r *= x; } exponent = exponent >> 1; If (exponent != 0) { If (x != 0 && x > max/x) { Return -2; } x *= x; } } *out=r; Return 0;
+}
+}
+};

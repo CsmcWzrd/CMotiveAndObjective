@@ -1,0 +1,1614 @@
+[
+  {
+    "path": "etc/c/curl.d",
+    "module": "etc.c.curl",
+    "sha256": "350be1743a71e9d2d3712a914fa4b3f62d2d8a2f9bc2dd0aa60d503ab4c91b12",
+    "bytes": 83520,
+    "status": "excluded-native-binding",
+    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "implemented_classes": []
+  },
+  {
+    "path": "etc/c/odbc/sql.d",
+    "module": "etc.c.odbc.sql",
+    "sha256": "3eefc6d32161489796cb39978f294e67d71edba197427136ff75bfe308e244d2",
+    "bytes": 15341,
+    "status": "excluded-native-binding",
+    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "implemented_classes": []
+  },
+  {
+    "path": "etc/c/odbc/sqlext.d",
+    "module": "etc.c.odbc.sqlext",
+    "sha256": "a97c093736e45c4e4bf9f3edc16b6b7eb70e520567b0eee202fa6f2cdf1b0ddb",
+    "bytes": 48175,
+    "status": "excluded-native-binding",
+    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "implemented_classes": []
+  },
+  {
+    "path": "etc/c/odbc/sqltypes.d",
+    "module": "etc.c.odbc.sqltypes",
+    "sha256": "41eff4a9134b3d6fbb8f5ed0da0c157240b9c4840532ed0ff0c417d702913f6d",
+    "bytes": 3711,
+    "status": "excluded-native-binding",
+    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "implemented_classes": []
+  },
+  {
+    "path": "etc/c/odbc/sqlucode.d",
+    "module": "etc.c.odbc.sqlucode",
+    "sha256": "4f24b8be25ad36e3ec9efe6fbf06bccf09a0d5b932e2bafd8694ef1fc1ab423d",
+    "bytes": 10993,
+    "status": "excluded-native-binding",
+    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "implemented_classes": []
+  },
+  {
+    "path": "etc/c/sqlite3.d",
+    "module": "etc.c.sqlite3",
+    "sha256": "e85ade16c2acc12f0470942c36a77f2ca8cbf92d27dd090b873231e12e5eb46f",
+    "bytes": 88735,
+    "status": "excluded-native-binding",
+    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "implemented_classes": []
+  },
+  {
+    "path": "etc/c/zlib.d",
+    "module": "etc.c.zlib",
+    "sha256": "eebad9d30b63bcd28da145301d6531e51f0ff5b5d1368882f2419afb314e4cb0",
+    "bytes": 88781,
+    "status": "excluded-native-binding",
+    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/algorithm/comparison.d",
+    "module": "std.algorithm.comparison",
+    "sha256": "593d846503fcecbdbe8401b2c96c97a933e60521c249a90e0d52fa1ead2c10e7",
+    "bytes": 79391,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "AlgorithmsI64",
+      "Bytes"
+    ]
+  },
+  {
+    "path": "std/algorithm/internal.d",
+    "module": "std.algorithm.internal",
+    "sha256": "abfca6b56daac491c718fd194025e271ae468ed5dee95cb520cd3f24b18e668b",
+    "bytes": 1765,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/algorithm/iteration.d",
+    "module": "std.algorithm.iteration",
+    "sha256": "b4c4cf61bf9145c5774733a6805f33956e3e1f6ee3262dea69b1b088e418d57f",
+    "bytes": 241663,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/algorithm/mutation.d",
+    "module": "std.algorithm.mutation",
+    "sha256": "1d2fc6cb40619a1ab5a1d5361c14411a67f8f8364e868eefa17e5458af9f658e",
+    "bytes": 91668,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "AlgorithmsI64"
+    ]
+  },
+  {
+    "path": "std/algorithm/package.d",
+    "module": "std.algorithm",
+    "sha256": "711d51b720cff32954b93fa2f747cea65457696d0c5522d55481c27fd7ad63ae",
+    "bytes": 6662,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/algorithm/searching.d",
+    "module": "std.algorithm.searching",
+    "sha256": "ea4a1fb7e0973880b933d2cee24e06b74cac7c46dd8aeffc686d5f005ad1c370",
+    "bytes": 163499,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "AlgorithmsI64"
+    ]
+  },
+  {
+    "path": "std/algorithm/setops.d",
+    "module": "std.algorithm.setops",
+    "sha256": "1bf469819c8c192f7af2735add992db64fc41099997542a02d06a14346e45a18",
+    "bytes": 45366,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/algorithm/sorting.d",
+    "module": "std.algorithm.sorting",
+    "sha256": "28fc46e4bc647bd4d9734167718baa2a9355588d3a7c5ada21a8ef2301fe9cbd",
+    "bytes": 154289,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "AlgorithmsI64"
+    ]
+  },
+  {
+    "path": "std/array.d",
+    "module": "std.array",
+    "sha256": "8a8d1804b30b3aa85890683fc41725e9fa89d47975e88e3686a7c0e19c51f3b4",
+    "bytes": 143665,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Bytes",
+      "ArrayVectorI64"
+    ]
+  },
+  {
+    "path": "std/ascii.d",
+    "module": "std.ascii",
+    "sha256": "46f86c95a8b44eff8a4de05e7cc8282b58544f76ca9c40c71ae1f2b44cf6b9f6",
+    "bytes": 20482,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Ascii"
+    ]
+  },
+  {
+    "path": "std/base64.d",
+    "module": "std.base64",
+    "sha256": "c919959b995d81bf17bb4962582e32e14e1b172eaf4214c9a72f218aa610e47c",
+    "bytes": 67812,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Base64"
+    ]
+  },
+  {
+    "path": "std/bigint.d",
+    "module": "std.bigint",
+    "sha256": "d93d1a009bc6b7375c8c11c503ebf6760773a555c4547097c691d511c94d8c8f",
+    "bytes": 72016,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/bitmanip.d",
+    "module": "std.bitmanip",
+    "sha256": "2b215601f8dab1b47033409418d720ed392b8146ff0bb45567a60fc9a6eb843b",
+    "bytes": 125321,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "BitManip"
+    ]
+  },
+  {
+    "path": "std/checkedint.d",
+    "module": "std.checkedint",
+    "sha256": "da5d6894e122ad22bf8b7423188623897996555f67a6df2a8d386ed0f5b31b67",
+    "bytes": 109606,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "CheckedInt"
+    ]
+  },
+  {
+    "path": "std/compiler.d",
+    "module": "std.compiler",
+    "sha256": "ea60d4197071535794a7bd896947dafa065f58686a22607d4b481f11e961c4fd",
+    "bytes": 1947,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/complex.d",
+    "module": "std.complex",
+    "sha256": "895b6a178fc0a0fb87f902f9f2e8cf6733a8ad5ab09420494f8a634af962d8c4",
+    "bytes": 53305,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/concurrency.d",
+    "module": "std.concurrency",
+    "sha256": "70e489b7b5aba0fc9f897a3c09e7b1642c2de7e2a922542fcb029ba4841a2f61",
+    "bytes": 78310,
+    "status": "blocked-direct-port",
+    "reason": "D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/container/array.d",
+    "module": "std.container.array",
+    "sha256": "5ec5ac44a8f3ef0d4441a1f51c45ff34fbd77fb8e03c31ad735c0174bdf5a61c",
+    "bytes": 73854,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "ArrayVectorI64"
+    ]
+  },
+  {
+    "path": "std/container/binaryheap.d",
+    "module": "std.container.binaryheap",
+    "sha256": "c341887b16dfdd07d8b5064be87ce361844536bc085f18fca0e27296799e0565",
+    "bytes": 18312,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "BinaryHeapI64"
+    ]
+  },
+  {
+    "path": "std/container/dlist.d",
+    "module": "std.container.dlist",
+    "sha256": "fee4abc592f029b95f2002d45629e3730015f465c8359c3ce7a762409eb361a3",
+    "bytes": 28241,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "DListI64"
+    ]
+  },
+  {
+    "path": "std/container/package.d",
+    "module": "std.container",
+    "sha256": "f1d9ad7406eaf9477a60fc9b8cbac311ccd7b7c5a6d81f1097212e35ddeca2a9",
+    "bytes": 31927,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/container/rbtree.d",
+    "module": "std.container.rbtree",
+    "sha256": "e0699bd509231a14536aa99258ff133d10a60996e58c0b39089914e63e6c8de7",
+    "bytes": 63759,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "RedBlackTreeI64"
+    ]
+  },
+  {
+    "path": "std/container/slist.d",
+    "module": "std.container.slist",
+    "sha256": "9d49f77a71c3648bf7803df46fa9da9b21d9e8d628a8d19da2d90b26380444b6",
+    "bytes": 21616,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "SListI64"
+    ]
+  },
+  {
+    "path": "std/container/util.d",
+    "module": "std.container.util",
+    "sha256": "5b6c6876352048a53b9aafa4e1071ed674a7e2bc0e37da77dcbab7ed1af94ab8",
+    "bytes": 5105,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/conv.d",
+    "module": "std.conv",
+    "sha256": "b0b1cc21bad0a8a1a8c2db122f0a5294cdf7724aa8dce24d2af1ff5568534ca4",
+    "bytes": 172639,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/csv.d",
+    "module": "std.csv",
+    "sha256": "dc472b9271a246fbd9620b8f2140562d3376c59ebaa2545242b12503c0fff198",
+    "bytes": 52463,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/datetime/date.d",
+    "module": "std.datetime.date",
+    "sha256": "ffd7bbc0c17c6f4bcf694a8ccc136b7af81b7655d1cc5c388c7f90d4de782fb0",
+    "bytes": 431331,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Date"
+    ]
+  },
+  {
+    "path": "std/datetime/interval.d",
+    "module": "std.datetime.interval",
+    "sha256": "ea58fb907eb6b4d3094fb17f272e37da11271491b1c0596b50af8aa1b0983653",
+    "bytes": 381238,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/datetime/package.d",
+    "module": "std.datetime",
+    "sha256": "b99b0f0f739ef08a975388d05d17d143903415b3d2a3063a9b2651cc36d5303e",
+    "bytes": 5613,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/datetime/stopwatch.d",
+    "module": "std.datetime.stopwatch",
+    "sha256": "b4e8a0833512af3af700ec1916102d7a3126cc509ec8b8e47d2f2d4c1488ce7f",
+    "bytes": 13684,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/datetime/systime.d",
+    "module": "std.datetime.systime",
+    "sha256": "51cb2c23cbe73fe2ae5b7813134d9c800a8d508f5dc6190bfbd580320c6804e4",
+    "bytes": 528768,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/datetime/timezone.d",
+    "module": "std.datetime.timezone",
+    "sha256": "16ba8ec9c142b19a66efcb6b2669de514b9bdad5b17fdb730956aa02e935b1e9",
+    "bytes": 129297,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/demangle.d",
+    "module": "std.demangle",
+    "sha256": "0920f2a17625a2f64998e0305a5bda30f12b5037d9b5911c8370e4c6db01267d",
+    "bytes": 1916,
+    "status": "blocked-direct-port",
+    "reason": "D symbol mangling is not a CMotive ABI equivalent; a D demangler would be a separate utility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/digest/crc.d",
+    "module": "std.digest.crc",
+    "sha256": "8e12326d7fa10d824e9d217251a2010842583e43f6c5aa42ed40a98116c6bc65",
+    "bytes": 21943,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Checksums"
+    ]
+  },
+  {
+    "path": "std/digest/hmac.d",
+    "module": "std.digest.hmac",
+    "sha256": "3ac8ce50b74674d1d131ef1359a48571b61e44d9cd8e3efc961b90ac7917f8e5",
+    "bytes": 10912,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/digest/md.d",
+    "module": "std.digest.md",
+    "sha256": "63ee1a2af37bdf15bfab8cb4b9a8e17eb4bfa9b6f9bbe475009c8267c39c4187",
+    "bytes": 18541,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/digest/murmurhash.d",
+    "module": "std.digest.murmurhash",
+    "sha256": "0c180a260c631a34bdc26a3ada5ddc7e9f325a80470b3b72a7276b28c4f58e56",
+    "bytes": 27330,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/digest/package.d",
+    "module": "std.digest",
+    "sha256": "4ac759945179dc0062207c6cf478a78f167dfea605a89f8e04f18f25c597c39b",
+    "bytes": 36969,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/digest/ripemd.d",
+    "module": "std.digest.ripemd",
+    "sha256": "e655ad0545107aabd385f296a3b146ffd85485a1db27f48f7e5f6750735f6537",
+    "bytes": 25855,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/digest/sha.d",
+    "module": "std.digest.sha",
+    "sha256": "4bd30565d31177e638157784b446dbc9cd3cd5c8e83b06d071b3d1ab22f21ec9",
+    "bytes": 56330,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Sha256"
+    ]
+  },
+  {
+    "path": "std/encoding.d",
+    "module": "std.encoding",
+    "sha256": "d6ba6886e0c222bac6d1d89edadd53be6a1270b0aa245f9a9af1a98255126023",
+    "bytes": 110570,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/exception.d",
+    "module": "std.exception",
+    "sha256": "2a78d71d28feb8c341401d027beec3d22dc7ddcce841a8fd57fe8651c9dab6e2",
+    "bytes": 73097,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/affix_allocator.d",
+    "module": "std.experimental.allocator.building_blocks.affix_allocator",
+    "sha256": "5d40a7a4ba32bcd73742c288740dfe3ca8532d15ffefe7ccf6fa71d573d2a0de",
+    "bytes": 20835,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/aligned_block_list.d",
+    "module": "std.experimental.allocator.building_blocks.aligned_block_list",
+    "sha256": "24e8263cf90c9773cd1036d315fc55d04662809be2931aa3dad1598524e6a685",
+    "bytes": 21605,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/allocator_list.d",
+    "module": "std.experimental.allocator.building_blocks.allocator_list",
+    "sha256": "e9cd9b82079808d31155101446d879fc058977423e89725f5b2b71eaea06f3eb",
+    "bytes": 32115,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/ascending_page_allocator.d",
+    "module": "std.experimental.allocator.building_blocks.ascending_page_allocator",
+    "sha256": "0702a8b8004c24ab15bc2ae187b2f6631be67bab690ddda713b778577e0dc1bb",
+    "bytes": 29347,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/bitmapped_block.d",
+    "module": "std.experimental.allocator.building_blocks.bitmapped_block",
+    "sha256": "7c202d129acbdfd6a598568c6a20bbaaa495dbda51d0893e810094c234a5e7de",
+    "bytes": 95203,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/bucketizer.d",
+    "module": "std.experimental.allocator.building_blocks.bucketizer",
+    "sha256": "dc27527f96d21f8d29b7ae0995dae7941392aa9c9b2cb15be1947782c68f82d2",
+    "bytes": 11232,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/fallback_allocator.d",
+    "module": "std.experimental.allocator.building_blocks.fallback_allocator",
+    "sha256": "8d5c761e65e576e8bbc31551eb2fdf16190a5611741cd6447a60b801cea01a47",
+    "bytes": 16691,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/free_list.d",
+    "module": "std.experimental.allocator.building_blocks.free_list",
+    "sha256": "2433dd066149d62f0c70422fe79313fab59ad7c9ac973b9d089e3f68c0cf4077",
+    "bytes": 41006,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/free_tree.d",
+    "module": "std.experimental.allocator.building_blocks.free_tree",
+    "sha256": "7e826b28e8f2c74c3841c9b2c8996553c2af08f6f4666664a0879037ca44bed3",
+    "bytes": 15847,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/kernighan_ritchie.d",
+    "module": "std.experimental.allocator.building_blocks.kernighan_ritchie",
+    "sha256": "d27b5b48931cbb5cdd8ff3e10ffa5180a8e02ea6d6b82c7af3ce6cecd417aa85",
+    "bytes": 30285,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/null_allocator.d",
+    "module": "std.experimental.allocator.building_blocks.null_allocator",
+    "sha256": "50c8ae70061e58448eadf00b9963ce52849e7bc0098aa390e376a18bd8d5ff04",
+    "bytes": 2877,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/package.d",
+    "module": "std.experimental.allocator.building_blocks",
+    "sha256": "ba096d23b398edec18733e13eec5acf40634de6ac96740b368d54f2ee4cabfed",
+    "bytes": 16918,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/quantizer.d",
+    "module": "std.experimental.allocator.building_blocks.quantizer",
+    "sha256": "f2ea10abad70c2c9802f455482069976d670079358db9e1d29b01965a889b354",
+    "bytes": 11744,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/region.d",
+    "module": "std.experimental.allocator.building_blocks.region",
+    "sha256": "1647edceffbeecd365f13b29b7bdc0339c09c09991b045727441ef9fb11e5ef4",
+    "bytes": 51856,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/scoped_allocator.d",
+    "module": "std.experimental.allocator.building_blocks.scoped_allocator",
+    "sha256": "95cb45b6e2616a4ecffb6f187fb1f983d1e55360ec6da1ede7237b1bc147bf49",
+    "bytes": 8152,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/segregator.d",
+    "module": "std.experimental.allocator.building_blocks.segregator",
+    "sha256": "7505b0385c45ff626cb0a8d91c8b82aca14e2ff9ca2cf95265c21c33f5e97ffc",
+    "bytes": 18063,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/building_blocks/stats_collector.d",
+    "module": "std.experimental.allocator.building_blocks.stats_collector",
+    "sha256": "ad46093e91727e1bad8d7f812745727b8d18a1e60768a594cadc6cd3c2489dbb",
+    "bytes": 29616,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/common.d",
+    "module": "std.experimental.allocator.common",
+    "sha256": "edc46c6c38dbecc1ee0a68143f4605f0a73be7708dfb492c7b959a783e86886f",
+    "bytes": 24468,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/gc_allocator.d",
+    "module": "std.experimental.allocator.gc_allocator",
+    "sha256": "0acc8f119d13669706df0e7d5358de615f64515d554e51df2e4127f4b58595ff",
+    "bytes": 6166,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/mallocator.d",
+    "module": "std.experimental.allocator.mallocator",
+    "sha256": "90bbc1477abbc6a639aa8124006cdb770a09a783c742d77ab26a5500dede0847",
+    "bytes": 12899,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/mmap_allocator.d",
+    "module": "std.experimental.allocator.mmap_allocator",
+    "sha256": "c28869a17b4202c285239835a00b52f7d4cd1ed76b28ca8632e6005697d2a781",
+    "bytes": 5242,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/package.d",
+    "module": "std.experimental.allocator",
+    "sha256": "225bdee982ec064a1a6a49b97c19957c8d24816647d624edfd8051adfce269d8",
+    "bytes": 109814,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/showcase.d",
+    "module": "std.experimental.allocator.showcase",
+    "sha256": "0b291e8066b5621e0d7654219e6aa486b7cf05ef40f7745f34c4e1fcb9b55bdc",
+    "bytes": 2916,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/allocator/typed.d",
+    "module": "std.experimental.allocator.typed",
+    "sha256": "15c2a745980a2831f0d67b23a645754724625af58c8bf5b840c65de9af6a1350",
+    "bytes": 14993,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/checkedint.d",
+    "module": "std.experimental.checkedint",
+    "sha256": "900fb5fa364db6a0378f8906fa1ead0482a95325b3f902d503658a8bbd99d714",
+    "bytes": 404,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/logger/core.d",
+    "module": "std.experimental.logger.core",
+    "sha256": "b8e9e43e18f2e6b8ba15a768c9951b874103077c0939e977c3f868592d986454",
+    "bytes": 397,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/logger/filelogger.d",
+    "module": "std.experimental.logger.filelogger",
+    "sha256": "77dfaa8d2ec998b12bfe6dd6aa68b999b6509dbff2ec74ec1d2d4d9c800afd6b",
+    "bytes": 421,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/logger/multilogger.d",
+    "module": "std.experimental.logger.multilogger",
+    "sha256": "d3e21f10db3bf63b7ff23bd7a80ac2c1c48ed8dd58f0b0edc4d19eeaa57306a9",
+    "bytes": 425,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/logger/nulllogger.d",
+    "module": "std.experimental.logger.nulllogger",
+    "sha256": "169cd5194f9c60d9c4363689560cda5a71c16770016409b024556c322e4b48a1",
+    "bytes": 421,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/experimental/logger/package.d",
+    "module": "std.experimental.logger",
+    "sha256": "8ba99c8ec0bbd9149a63e379dcf308a82cf3d8cfe00f3ea029890f5e9102ebe2",
+    "bytes": 502,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/file.d",
+    "module": "std.file",
+    "sha256": "912b5f8d00d88ec18400b539fd5489a0fed4f995597b5ff9c907382caa95d526",
+    "bytes": 159061,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/format/internal/floats.d",
+    "module": "std.format.internal.floats",
+    "sha256": "6c5349a8b23c8b4f203315127b840e1e17ad33c978a3fa98e381d92b93c27036",
+    "bytes": 111300,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/format/internal/read.d",
+    "module": "std.format.internal.read",
+    "sha256": "0204b320325481e462b98eadb9bb87ffa103da96ca31a1f37a9df52285a37d37",
+    "bytes": 11888,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/format/internal/write.d",
+    "module": "std.format.internal.write",
+    "sha256": "4a1a565f12c31d8dbe33c7c88211bab32ea7fc291f47e66a1cb447464ab3a386",
+    "bytes": 118248,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/format/package.d",
+    "module": "std.format",
+    "sha256": "cb80e1ddc70db883e0b2dd8709904c4050973ff6c3f5141f803291dedda6a033",
+    "bytes": 59943,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/format/read.d",
+    "module": "std.format.read",
+    "sha256": "a8683f483c29a091513c2138f1a500f31125fe84c8b3263ce1009e772235b322",
+    "bytes": 19089,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/format/spec.d",
+    "module": "std.format.spec",
+    "sha256": "32cfd867c37f4be7ef42b08683fd281488f46cb6b16287885bc3f00eb12ebd25",
+    "bytes": 29092,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/format/write.d",
+    "module": "std.format.write",
+    "sha256": "a69a56cc12266aa124a92f80ae8dc2ffd3ebff77b79e0d0f61a3d8af2aff650b",
+    "bytes": 38908,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/functional.d",
+    "module": "std.functional",
+    "sha256": "c3bb9116cc6af190b59d385b1f29ee894fa89a143f3ffad27118a182f959b82a",
+    "bytes": 56672,
+    "status": "blocked-direct-port",
+    "reason": "D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/getopt.d",
+    "module": "std.getopt",
+    "sha256": "17fb6cbbd6c52acd76e8631d8b0af943630465696016d3e4eb1be7efe8ab0e3d",
+    "bytes": 59623,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/int128.d",
+    "module": "std.int128",
+    "sha256": "d3b6f00158def03d9e5aae1343f72c7a90276b9b177dd9b011c9dc67afc241fe",
+    "bytes": 20127,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/attributes.d",
+    "module": "std.internal.attributes",
+    "sha256": "b970cdf1635bc359a367c85598f4f603e3a27b766eaf1d19c2d674f0e3017610",
+    "bytes": 412,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/cstring.d",
+    "module": "std.internal.cstring",
+    "sha256": "2961f9a0c26aa430709ed12d37b9b5eb3e054f2cff54d160f773f7c4841fd942",
+    "bytes": 8727,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/digest/sha_SSSE3.d",
+    "module": "std.internal.digest.sha_SSSE3",
+    "sha256": "cae694d8c065c9df83f4c4da801853b442fff6a662b645395f20d856f022e598",
+    "bytes": 27744,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/math/biguintcore.d",
+    "module": "std.internal.math.biguintcore",
+    "sha256": "9a9257e0b2b009250adc51a4717618a2794b28c3ebf2815e51ec11e66ac8815f",
+    "bytes": 100144,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/math/biguintnoasm.d",
+    "module": "std.internal.math.biguintnoasm",
+    "sha256": "63f4fd4bf1e7be0c6643892cd5d44b3e81080f36227b9cc220b8426ac25a673f",
+    "bytes": 10902,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/math/biguintx86.d",
+    "module": "std.internal.math.biguintx86",
+    "sha256": "8b3015e55325b958aeaf5b62d2683b9aba7eb4a6b27128a9d01c7e428687335a",
+    "bytes": 42306,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/math/errorfunction.d",
+    "module": "std.internal.math.errorfunction",
+    "sha256": "c845b273349376aaad81f25112dc72b4a011a10064583945f6d607cfcbf8f3cc",
+    "bytes": 41510,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/math/gammafunction.d",
+    "module": "std.internal.math.gammafunction",
+    "sha256": "55d1c49522e173d227a075d92dad0984591102db26ee3c63e6254bf5135b4df8",
+    "bytes": 54398,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/memory.d",
+    "module": "std.internal.memory",
+    "sha256": "9fcab564b094b423a4efb46b7af03a118540bbf19ea15f414792bc454d4ee11b",
+    "bytes": 1814,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/scopebuffer.d",
+    "module": "std.internal.scopebuffer",
+    "sha256": "937f5e62b8e4da6872a9d99376251ced31a73cca7e56336c1b53e50108789bc7",
+    "bytes": 10945,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/test/dummyrange.d",
+    "module": "std.internal.test.dummyrange",
+    "sha256": "94d566064eda0e7aee69c51ebb2dbdb7e778834e2bbcf3422ae717975ada11ba",
+    "bytes": 13780,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/test/range.d",
+    "module": "std.internal.test.range",
+    "sha256": "5906de5fcf3e8a931203a8ddd2afc4a15dd4dfb0355af10c6666f9d32a291b93",
+    "bytes": 613,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/test/uda.d",
+    "module": "std.internal.test.uda",
+    "sha256": "a4e0742987812c166fb4226d5156d3b99ecf5cd01568e248ddcec5c9b43fe528",
+    "bytes": 273,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/unicode_comp.d",
+    "module": "std.internal.unicode_comp",
+    "sha256": "6abfbc7980983c71d2488d172984a57bd2055d04a17276138923c7c20e8ed092",
+    "bytes": 221985,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/unicode_decomp.d",
+    "module": "std.internal.unicode_decomp",
+    "sha256": "505d9290d9c7c1871ff56f3b2dff71b3caf1f4c3d6c2dff1381ee8b875f240c8",
+    "bytes": 371941,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/unicode_grapheme.d",
+    "module": "std.internal.unicode_grapheme",
+    "sha256": "40790e9bad8a51d17a1f8dc957248571a1ecf05756ae06c4ddab05347c7196e0",
+    "bytes": 39002,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/unicode_norm.d",
+    "module": "std.internal.unicode_norm",
+    "sha256": "62d0a3c388889f561be6e6727b5a2f87bd3d715c8498bbdcb1290184669354cd",
+    "bytes": 39135,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/unicode_tables.d",
+    "module": "std.internal.unicode_tables",
+    "sha256": "d29042ba213b9eed00fe03decc31bb0d4027e47eca333a0f8a1672b93e5ff9a6",
+    "bytes": 990093,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/internal/windows/advapi32.d",
+    "module": "std.internal.windows.advapi32",
+    "sha256": "dc72ea00242313d71180413ef8e34fd0310eff3c6dffda1f7e1ffce81604b111",
+    "bytes": 2309,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/json.d",
+    "module": "std.json",
+    "sha256": "59219796772d9c5a923e05fa8b17a67ece50f577561cb87d64798077f10017fd",
+    "bytes": 73957,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/logger/core.d",
+    "module": "std.logger.core",
+    "sha256": "5b93e4f79960dfcfb11f3523a2cfd3f5ab82832b56100725765b186ee16c4351",
+    "bytes": 105548,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/logger/filelogger.d",
+    "module": "std.logger.filelogger",
+    "sha256": "a372783870d0d505be5e44d8b254b9bbaf47cccbcc25c6787a18cca308cfc5a0",
+    "bytes": 8268,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/logger/multilogger.d",
+    "module": "std.logger.multilogger",
+    "sha256": "af58d8f9d545a35bf05a18833b5556afdffdfab0a9240d95c714e04c3f7b6e82",
+    "bytes": 5585,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/logger/nulllogger.d",
+    "module": "std.logger.nulllogger",
+    "sha256": "81244ab7314c6a77e6e357f8bed2ea0d48ede4124a4b0b2d912b591d2ca13157",
+    "bytes": 1004,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/logger/package.d",
+    "module": "std.logger",
+    "sha256": "df92ed2b6dc960f5aa5e4e712412e5aa3b03fba2aaecff5cd22d67ec4447c75c",
+    "bytes": 7042,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/algebraic.d",
+    "module": "std.math.algebraic",
+    "sha256": "a6f234b7f2254599cd698e89931eca33e438310fac8897a659ce55d6ac0b347c",
+    "bytes": 28276,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/constants.d",
+    "module": "std.math.constants",
+    "sha256": "dc98dcceaec0f0cbc6724355686dcaed43f6dedca4debdaf1fd5cd2cace9c95a",
+    "bytes": 2183,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/exponential.d",
+    "module": "std.math.exponential",
+    "sha256": "39c8473c5f8d82c50188965626e208750e504c728da9e77c96a0193941f850cc",
+    "bytes": 146039,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/hardware.d",
+    "module": "std.math.hardware",
+    "sha256": "16b3fad5987141a412e1f3e018319ff021dcd0e84a10b38d8ebec4c068dcebed",
+    "bytes": 29389,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/operations.d",
+    "module": "std.math.operations",
+    "sha256": "3726938ae5f3c11843a5f3b6356176f96640abb58f78bef0c36ccb661716621e",
+    "bytes": 62083,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/package.d",
+    "module": "std.math",
+    "sha256": "3affc3f1e767426ad2a85b6bfdcf945130319e7e69785631576c6f1c50efcdaf",
+    "bytes": 16396,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/remainder.d",
+    "module": "std.math.remainder",
+    "sha256": "235a67b0839bce6b6ff4641333dceec1ff28ccccac6b455f2b94ceeca483613f",
+    "bytes": 4607,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/rounding.d",
+    "module": "std.math.rounding",
+    "sha256": "e3dea39cd9c21738ec59c340ed8b533a33bd958371a22ad8eeb12a701db6cacf",
+    "bytes": 28809,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/traits.d",
+    "module": "std.math.traits",
+    "sha256": "00e54690de96968e585815bf4472f14cdc80da2ab30048f13ad228ccef1e3e7e",
+    "bytes": 23524,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/math/trigonometry.d",
+    "module": "std.math.trigonometry",
+    "sha256": "d758cf03f20339461cc529ab10c4f1b643768575c4515d771bba4b1feca0f80b",
+    "bytes": 41205,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/mathspecial.d",
+    "module": "std.mathspecial",
+    "sha256": "fdf4ad7d5df105cf4941099637d401bdd6ca06c6c74f3845a639753705a88b39",
+    "bytes": 10125,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/meta.d",
+    "module": "std.meta",
+    "sha256": "aaa1d0a561661ab9c52c65885ecd0b684ffe07f61b83153d9f02d8e3748e1d72",
+    "bytes": 41320,
+    "status": "blocked-direct-port",
+    "reason": "D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/mmfile.d",
+    "module": "std.mmfile",
+    "sha256": "bc8a0a7bf941423160b3cffd18c7ee01d752944e3d8cfdc339a309d94cb3e084",
+    "bytes": 23347,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/net/curl.d",
+    "module": "std.net.curl",
+    "sha256": "ce94e983ab686e045aa5f00bfad01b0778387637f0225f2761105c6ddf4ac1a9",
+    "bytes": 164374,
+    "status": "blocked-direct-port",
+    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/net/isemail.d",
+    "module": "std.net.isemail",
+    "sha256": "129e31b4ea8c834c8b28fc90e5789172d42d142cb07f3262d08922512b46113e",
+    "bytes": 83470,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/numeric.d",
+    "module": "std.numeric",
+    "sha256": "a698b21fe232ecbd38f8bda6cd720f603359ac2b3fcc0ba887d4f2b07f52c27d",
+    "bytes": 131295,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "IntegerMath"
+    ]
+  },
+  {
+    "path": "std/outbuffer.d",
+    "module": "std.outbuffer",
+    "sha256": "fe917ebb53660bebfcf125eab1abced2dc0a14dd0114c2c977ba00900125568a",
+    "bytes": 13439,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/package.d",
+    "module": "std",
+    "sha256": "24c2e307d66891439f762a69597ab101ae91f91feb3e39001132bc02de8475a8",
+    "bytes": 1271,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/parallelism.d",
+    "module": "std.parallelism",
+    "sha256": "7586dca0ede2c565d5dce21715689cda7e7e6913b30326dabb103557782d4cbf",
+    "bytes": 149593,
+    "status": "blocked-direct-port",
+    "reason": "D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/path.d",
+    "module": "std.path",
+    "sha256": "1a842cdf69f79a5d3b1c28ae640b0260b70606f52a430121757241299af41a0a",
+    "bytes": 138068,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/process.d",
+    "module": "std.process",
+    "sha256": "646178d336e0147de2d4ce9873c33edbb0c5dca79461f3753b23df3b115dbd06",
+    "bytes": 151923,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/random.d",
+    "module": "std.random",
+    "sha256": "9b3097b05272f5c5f6dc27f9ea527bff890716ad31154e236d84830f618d9815",
+    "bytes": 136495,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/range/interfaces.d",
+    "module": "std.range.interfaces",
+    "sha256": "69eeddad79ed597d8d16e9558d8926fceeaabfe4784470963b8907a50b236155",
+    "bytes": 17407,
+    "status": "blocked-direct-port",
+    "reason": "D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/range/package.d",
+    "module": "std.range",
+    "sha256": "19100441075cb2670e0f16e5563e445fea96985235b61a471de4a43546e89f42",
+    "bytes": 408078,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/range/primitives.d",
+    "module": "std.range.primitives",
+    "sha256": "e2157e2c75480a1c87b576c409657f24f542d11876e21dd7baa0ef20ca40b17e",
+    "bytes": 75126,
+    "status": "blocked-direct-port",
+    "reason": "D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/backtracking.d",
+    "module": "std.regex.internal.backtracking",
+    "sha256": "4589bcd54c1b249f3ac7b28862b4b70b490dd480f48d8a4ee8ce197f5d595571",
+    "bytes": 52166,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/generator.d",
+    "module": "std.regex.internal.generator",
+    "sha256": "c1ad9837df679ff945edc301eae793a97ecd84d50e2d5cadb31603164c0d4af2",
+    "bytes": 6498,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/ir.d",
+    "module": "std.regex.internal.ir",
+    "sha256": "6de4f92f31102817b04194e2dfc1e2cff678aafc368a2b2650b4691f35da788d",
+    "bytes": 38197,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/kickstart.d",
+    "module": "std.regex.internal.kickstart",
+    "sha256": "c691e03c9644180d8133e74c9e92964410e626bca5fbe5f4e9b97f0f363b47ad",
+    "bytes": 21422,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/parser.d",
+    "module": "std.regex.internal.parser",
+    "sha256": "c4ed4637d717588d4c8775efc866fe1af774dbb7957d64a5a14a6474660d2931",
+    "bytes": 41177,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/tests.d",
+    "module": "std.regex.internal.tests",
+    "sha256": "081df05b75e69fd9649a4177ce7247a11bbb213fd3daa6ca4d6e7f905dbb48b0",
+    "bytes": 27776,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/tests2.d",
+    "module": "std.regex.internal.tests2",
+    "sha256": "6ea0b14e1ae76d7e31f199520007c992f382e166d08413298797b9bdc62ada58",
+    "bytes": 21047,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/internal/thompson.d",
+    "module": "std.regex.internal.thompson",
+    "sha256": "be7d30b48e0cd14069ef7f2d792c7055626060dc2abb4ac5c81f95efeac43fd3",
+    "bytes": 37581,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/regex/package.d",
+    "module": "std.regex",
+    "sha256": "a7830670e7709443d0c301fd825fc94f3c69eec7959f2f087c78a0e9e3ba1750",
+    "bytes": 56917,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/signals.d",
+    "module": "std.signals",
+    "sha256": "9d82ab542857e496ded1dab7a88ba5f84697e41547be62a145d0a432744126af",
+    "bytes": 22969,
+    "status": "blocked-direct-port",
+    "reason": "D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/socket.d",
+    "module": "std.socket",
+    "sha256": "e0313607bbf755263773a5d7256e757ae39d376086d8c650aa737b6bad54b601",
+    "bytes": 113884,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/stdint.d",
+    "module": "std.stdint",
+    "sha256": "2859af7a6b25f66cbfc0a6bbd3f0118ad1b805b7ece570e8bd5f802e20c71f1d",
+    "bytes": 3548,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/stdio.d",
+    "module": "std.stdio",
+    "sha256": "7be2adf13002006c21d962b9161c71fd476d11be9e9a4237a1889c3d2565a245",
+    "bytes": 174813,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/string.d",
+    "module": "std.string",
+    "sha256": "e367421e2fe59753ebc28f64abee81b3f1bb714538ef852accbefd943cf736fd",
+    "bytes": 222333,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Bytes"
+    ]
+  },
+  {
+    "path": "std/sumtype.d",
+    "module": "std.sumtype",
+    "sha256": "f023af6f46634b099c32cb14deb77e375218ea52de2e12815c73e71fe5b44228",
+    "bytes": 65871,
+    "status": "blocked-direct-port",
+    "reason": "D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/system.d",
+    "module": "std.system",
+    "sha256": "de2696114d5586207b706acd19a7bdebf1eedbd6c74b602476a06734f943f69f",
+    "bytes": 6981,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/traits.d",
+    "module": "std.traits",
+    "sha256": "d1a7e3d73b9f4ba23446a3ebca54fbc4a3aa42a48e9b21b26a33a8dd970b4121",
+    "bytes": 288226,
+    "status": "blocked-direct-port",
+    "reason": "D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/typecons.d",
+    "module": "std.typecons",
+    "sha256": "6b0b9caad58f4e5daa7d9defb2b1a140e609c392b58fe629bc73904e60b9de40",
+    "bytes": 298342,
+    "status": "blocked-direct-port",
+    "reason": "D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/typetuple.d",
+    "module": "std.typetuple",
+    "sha256": "4765d0ca65874e0d9d9095e61d69efd105125bb198fc335069b3b03c2d08a1b3",
+    "bytes": 883,
+    "status": "blocked-direct-port",
+    "reason": "D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/uni/package.d",
+    "module": "std.uni",
+    "sha256": "18f45bc2bb0fe76922c10c50ccb536301182fe8a665522829d4e7c95fef43396",
+    "bytes": 338408,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/uri.d",
+    "module": "std.uri",
+    "sha256": "8c05f5e9c175aa1a43dbe68d4c927ec8e1e75b05b57172c848ebcdfeaef97291",
+    "bytes": 17491,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Uri"
+    ]
+  },
+  {
+    "path": "std/utf.d",
+    "module": "std.utf",
+    "sha256": "a182853dd4fbe23861522e35295d7a302c1e75cc134057fb085caeb17f64f33c",
+    "bytes": 150746,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Utf8"
+    ]
+  },
+  {
+    "path": "std/uuid.d",
+    "module": "std.uuid",
+    "sha256": "ded7d6fb59af3a3daeaea92b00937f01f1cc032e35367a63b567f3468e5cfa78",
+    "bytes": 58052,
+    "status": "partial",
+    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "implemented_classes": [
+      "Uuid"
+    ]
+  },
+  {
+    "path": "std/variant.d",
+    "module": "std.variant",
+    "sha256": "c0798e6b656730ac618454d26120f5c33f57ffc59415660fc2398e51a603b346",
+    "bytes": 93076,
+    "status": "blocked-direct-port",
+    "reason": "D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/windows/charset.d",
+    "module": "std.windows.charset",
+    "sha256": "0ba138b46833b1c0d72f51da6473ca2dc75e3888ae9cfb73eb330e8eaf7843a2",
+    "bytes": 3199,
+    "status": "blocked-direct-port",
+    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/windows/registry.d",
+    "module": "std.windows.registry",
+    "sha256": "a1991838dacff1e842b9606fc524ee1c13a88445f5c81b0c90c2415a0d7ad977",
+    "bytes": 51666,
+    "status": "blocked-direct-port",
+    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/windows/syserror.d",
+    "module": "std.windows.syserror",
+    "sha256": "2cf03c74d02767821ca4e1054d17716b3191801d5efee7ad9872308ed196ff73",
+    "bytes": 7254,
+    "status": "blocked-direct-port",
+    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/zip.d",
+    "module": "std.zip",
+    "sha256": "4327932b39131f10a14523cf5cac4dfbacdfa9e499b33efc03cc62d147f12585",
+    "bytes": 63584,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  },
+  {
+    "path": "std/zlib.d",
+    "module": "std.zlib",
+    "sha256": "90e203e576dfc91ec0b780aa3d2a8c85bd2327f9005228023bd9d56c46f0b917",
+    "bytes": 23725,
+    "status": "blocked-direct-port",
+    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "implemented_classes": []
+  },
+  {
+    "path": "test/betterc_module_tests.d",
+    "module": "test.betterc_module_tests",
+    "sha256": "ccd5dc59ab90e57590119377540a453d34afb284e98c37939ce684cb5b788bcd",
+    "bytes": 518,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "test/dub_stdx_allocator.d",
+    "module": "test.dub_stdx_allocator",
+    "sha256": "cb5ddf83cfe9380c0bc27b3c766df355fe99c261708be0fb452fd5a9b444b401",
+    "bytes": 602,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "test/dub_stdx_checkedint.d",
+    "module": "test.dub_stdx_checkedint",
+    "sha256": "8643ee110acfa30d502c3444855b4953d16603e0aa97dc718c5c5bb8a97a52aa",
+    "bytes": 237,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "tools/unicode_table_generator.d",
+    "module": "std.unicode_table_generator",
+    "sha256": "4dfea99f8bd3ba7b7b1b9464f022d7a8d5715112329cfe4d089393a97b8bca18",
+    "bytes": 41547,
+    "status": "upstream-support",
+    "reason": "Internal implementation detail, test fixture or generator; not a separate public API promise.",
+    "implemented_classes": []
+  },
+  {
+    "path": "unittest.d",
+    "module": "unittest",
+    "sha256": "ac178f1acfe06bbcf781d30eb731672d0dbb1f866e04ff942e7bbad67cb6f016",
+    "bytes": 3668,
+    "status": "deferred",
+    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
+    "implemented_classes": []
+  }
+]

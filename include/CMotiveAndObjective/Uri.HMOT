@@ -1,0 +1,49 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+#include "Ascii.HMOT"
+Package CMotiveAndObjective;
+Class
+Uri
+{
+Public
+{
+
+I64
+EncodedLength
+data : Uchar*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } size : I64 = 0; i : I64 = 0;
+While (i < n) { c : I32 = data[i]; step : I32 = 3; If ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57) || c == 45 || c == 46 || c == 95 || c == 126) { step=1; } If (size > 9223372036854775807-step) { Return -1; } size+=step; i++; } Return size;
+}
+
+I64
+EncodeComponent
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+codec : Uri = Zero; size : I64 = codec.EncodedLength(data,n);
+If (size < 0 || capacity < size || (size > 0 && out == Null)) { Return -1; }
+digits : Char* = "0123456789ABCDEF"; i : I64 = 0; j : I64 = 0;
+While (i < n) { c : I32 = data[i]; If ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57) || c == 45 || c == 46 || c == 95 || c == 126) { out[j]=(Uchar)c; j++; } Else { out[j]=37; out[j+1]=digits[c >> 4]; out[j+2]=digits[c & 15]; j+=3; } i++; } Return size;
+}
+
+I64
+DecodeComponent
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (n < 0 || capacity < 0 || (n > 0 && data == Null)) { Return -1; }
+ascii : Ascii = Zero; i : I64 = 0; size : I64 = 0;
+While (i < n) { If (data[i] == 37) { If (n-i < 3) { Return -2; } If (ascii.HexValue(data[i+1]) < 0 || ascii.HexValue(data[i+2]) < 0) { Return -2; } i+=3; } Else { i++; } size++; }
+If (capacity < size || (size > 0 && out == Null)) { Return -1; }
+i=0; j : I64 = 0; While (i < n) { If (data[i] == 37) { out[j]=(Uchar)((ascii.HexValue(data[i+1]) << 4) | ascii.HexValue(data[i+2])); i+=3; } Else { out[j]=data[i]; i++; } j++; } Return size;
+}
+}
+};

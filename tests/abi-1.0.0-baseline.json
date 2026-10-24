@@ -1,0 +1,1212 @@
+[
+  {
+    "cls": "Ascii",
+    "name": "IsAscii",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsUpper",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsLower",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsAlpha",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsDigit",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsAlnum",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsHexDigit",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsWhite",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsBlank",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsControl",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsGraph",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsPrint",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "IsPunct",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "ToLower",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "ToUpper",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Ascii",
+    "name": "HexValue",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "PopCount",
+    "returns": "I32",
+    "params": [
+      [
+        "x",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "CountLeadingZeros",
+    "returns": "I32",
+    "params": [
+      [
+        "x",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "CountTrailingZeros",
+    "returns": "I32",
+    "params": [
+      [
+        "x",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "RotateLeft",
+    "returns": "U64",
+    "params": [
+      [
+        "x",
+        "U64"
+      ],
+      [
+        "shift",
+        "U32"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "RotateRight",
+    "returns": "U64",
+    "params": [
+      [
+        "x",
+        "U64"
+      ],
+      [
+        "shift",
+        "U32"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "ByteSwap",
+    "returns": "U64",
+    "params": [
+      [
+        "x",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "ReverseBits",
+    "returns": "U64",
+    "params": [
+      [
+        "x",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "BitManip",
+    "name": "IsPowerOfTwo",
+    "returns": "I32",
+    "params": [
+      [
+        "x",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "CheckedInt",
+    "name": "Add",
+    "returns": "I32",
+    "params": [
+      [
+        "a",
+        "I64"
+      ],
+      [
+        "b",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "CheckedInt",
+    "name": "Subtract",
+    "returns": "I32",
+    "params": [
+      [
+        "a",
+        "I64"
+      ],
+      [
+        "b",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "CheckedInt",
+    "name": "Multiply",
+    "returns": "I32",
+    "params": [
+      [
+        "a",
+        "I64"
+      ],
+      [
+        "b",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "CheckedInt",
+    "name": "Divide",
+    "returns": "I32",
+    "params": [
+      [
+        "a",
+        "I64"
+      ],
+      [
+        "b",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "CheckedInt",
+    "name": "Negate",
+    "returns": "I32",
+    "params": [
+      [
+        "a",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "IntegerMath",
+    "name": "Gcd",
+    "returns": "U64",
+    "params": [
+      [
+        "a",
+        "U64"
+      ],
+      [
+        "b",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "IntegerMath",
+    "name": "Sqrt",
+    "returns": "U64",
+    "params": [
+      [
+        "x",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "IntegerMath",
+    "name": "Lcm",
+    "returns": "I32",
+    "params": [
+      [
+        "a",
+        "U64"
+      ],
+      [
+        "b",
+        "U64"
+      ],
+      [
+        "out",
+        "U64*"
+      ]
+    ]
+  },
+  {
+    "cls": "IntegerMath",
+    "name": "Power",
+    "returns": "I32",
+    "params": [
+      [
+        "x",
+        "U64"
+      ],
+      [
+        "exponent",
+        "U32"
+      ],
+      [
+        "out",
+        "U64*"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "Find",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "Count",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "LowerBound",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "UpperBound",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "BinarySearch",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "IsSorted",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "Reverse",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "RotateLeft",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "by",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "UniqueAdjacent",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "Fill",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "MinIndex",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "MaxIndex",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "HeapSort",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Checksums",
+    "name": "Crc32",
+    "returns": "U32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "previous",
+        "U32"
+      ]
+    ]
+  },
+  {
+    "cls": "Checksums",
+    "name": "Adler32",
+    "returns": "U32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "previous",
+        "U32"
+      ]
+    ]
+  },
+  {
+    "cls": "Hex",
+    "name": "Encode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Hex",
+    "name": "Decode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf8",
+    "name": "DecodeFirst",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "consumed",
+        "I32*"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf8",
+    "name": "Count",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf8",
+    "name": "Encode",
+    "returns": "I32",
+    "params": [
+      [
+        "cp",
+        "U32"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Base64",
+    "name": "EncodedLength",
+    "returns": "I64",
+    "params": [
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Base64",
+    "name": "Value",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Base64",
+    "name": "Encode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Base64",
+    "name": "Decode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Bytes",
+    "name": "Compare",
+    "returns": "I32",
+    "params": [
+      [
+        "a",
+        "Uchar*"
+      ],
+      [
+        "an",
+        "I64"
+      ],
+      [
+        "b",
+        "Uchar*"
+      ],
+      [
+        "bn",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Bytes",
+    "name": "Find",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "needle",
+        "Uchar*"
+      ],
+      [
+        "length",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Bytes",
+    "name": "CountByte",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "value",
+        "Uchar"
+      ]
+    ]
+  },
+  {
+    "cls": "Bytes",
+    "name": "ToLowerAscii",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Bytes",
+    "name": "ToUpperAscii",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Bind",
+    "returns": "I32",
+    "params": [
+      [
+        "storage",
+        "I64*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Length",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Capacity",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "PushBack",
+    "returns": "I32",
+    "params": [
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "PopBack",
+    "returns": "I32",
+    "params": [
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "At",
+    "returns": "I32",
+    "params": [
+      [
+        "index",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Set",
+    "returns": "I32",
+    "params": [
+      [
+        "index",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Insert",
+    "returns": "I32",
+    "params": [
+      [
+        "index",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Erase",
+    "returns": "I32",
+    "params": [
+      [
+        "index",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Clear",
+    "returns": "Void",
+    "params": []
+  },
+  {
+    "cls": "ArrayVectorI64",
+    "name": "Sort",
+    "returns": "I32",
+    "params": []
+  },
+  {
+    "cls": "BinaryHeapI64",
+    "name": "Bind",
+    "returns": "I32",
+    "params": [
+      [
+        "storage",
+        "I64*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "BinaryHeapI64",
+    "name": "Length",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "BinaryHeapI64",
+    "name": "Push",
+    "returns": "I32",
+    "params": [
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "BinaryHeapI64",
+    "name": "Peek",
+    "returns": "I32",
+    "params": [
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "BinaryHeapI64",
+    "name": "Pop",
+    "returns": "I32",
+    "params": [
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "BinaryHeapI64",
+    "name": "Clear",
+    "returns": "Void",
+    "params": []
+  },
+  {
+    "cls": "Date",
+    "name": "IsLeapYear",
+    "returns": "I32",
+    "params": [
+      [
+        "year",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Date",
+    "name": "DaysInMonth",
+    "returns": "I32",
+    "params": [
+      [
+        "year",
+        "I32"
+      ],
+      [
+        "month",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Date",
+    "name": "IsValid",
+    "returns": "I32",
+    "params": [
+      [
+        "year",
+        "I32"
+      ],
+      [
+        "month",
+        "I32"
+      ],
+      [
+        "day",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Date",
+    "name": "DaysSinceEpoch",
+    "returns": "I64",
+    "params": [
+      [
+        "year",
+        "I32"
+      ],
+      [
+        "month",
+        "I32"
+      ],
+      [
+        "day",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Date",
+    "name": "Weekday",
+    "returns": "I32",
+    "params": [
+      [
+        "year",
+        "I32"
+      ],
+      [
+        "month",
+        "I32"
+      ],
+      [
+        "day",
+        "I32"
+      ]
+    ]
+  }
+]

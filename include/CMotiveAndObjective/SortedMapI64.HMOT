@@ -1,0 +1,104 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+#include "AlgorithmsI64.HMOT"
+Package CMotiveAndObjective;
+Class
+SortedMapI64
+{
+Private
+{
+keys : I64* = Null; Block
+values : I64* = Null; Block
+capacity : I64 = 0; Block
+count : I64 = 0; Block
+}
+Public
+{
+
+I32
+Bind
+keys : I64*
+values : I64*
+capacity : I64
+()
+{
+If (capacity < 0 || (capacity > 0 && (keys == Null || values == Null))) { Return -1; } This.keys=keys; This.values=values; This.capacity=capacity; This.count=0; Return 0;
+}
+
+I64
+Length
+()
+{
+Return This.count;
+}
+
+I64
+Capacity
+()
+{
+Return This.capacity;
+}
+
+I32
+Put
+key : I64
+value : I64
+()
+{
+alg : AlgorithmsI64 = Zero; i : I64 = alg.LowerBound(This.keys,This.count,key); If (i < This.count && This.keys[i] == key) { This.values[i]=value; Return 0; }
+If (This.count >= This.capacity) { Return -1; } j : I64 = This.count;
+While (j > i) { This.keys[j]=This.keys[j-1]; This.values[j]=This.values[j-1]; j--; }
+This.keys[i]=key; This.values[i]=value; This.count++; Return 0;
+}
+
+I32
+Get
+key : I64
+out : I64*
+()
+{
+If (out == Null) { Return -1; } alg : AlgorithmsI64 = Zero; i : I64 = alg.LowerBound(This.keys,This.count,key); If (i >= This.count || This.keys[i] != key) { Return -1; } *out=This.values[i]; Return 0;
+}
+
+I32
+Contains
+key : I64
+()
+{
+alg : AlgorithmsI64 = Zero; i : I64 = alg.LowerBound(This.keys,This.count,key); Return i < This.count && This.keys[i] == key;
+}
+
+I32
+Remove
+key : I64
+()
+{
+alg : AlgorithmsI64 = Zero; i : I64 = alg.LowerBound(This.keys,This.count,key); If (i >= This.count || This.keys[i] != key) { Return -1; }
+While (i < This.count-1) { This.keys[i]=This.keys[i+1]; This.values[i]=This.values[i+1]; i++; } This.count--; Return 0;
+}
+
+I32
+KeyAt
+index : I64
+out : I64*
+()
+{
+If (out == Null || index < 0 || index >= This.count) { Return -1; } *out=This.keys[index]; Return 0;
+}
+
+I32
+ValueAt
+index : I64
+out : I64*
+()
+{
+If (out == Null || index < 0 || index >= This.count) { Return -1; } *out=This.values[index]; Return 0;
+}
+
+Void
+Clear
+()
+{
+This.count=0;
+}
+}
+};

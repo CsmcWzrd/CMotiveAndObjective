@@ -1,0 +1,145 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+AlgorithmsI64
+{
+Public
+{
+
+
+I64
+Find
+data : I64*
+n : I64
+value : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } i : I64 = 0; While (i < n) { If (data[i] == value) { Return i; } i++; } Return -1;
+}
+
+I64
+Count
+data : I64*
+n : I64
+value : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } r : I64 = 0; i : I64 = 0; While (i < n) { If (data[i] == value) { r++; } i++; } Return r;
+}
+
+I64
+LowerBound
+data : I64*
+n : I64
+value : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } lo : I64 = 0; hi : I64 = n; While (lo < hi) { mid : I64 = lo+(hi-lo)/2; If (data[mid] < value) { lo=mid+1; } Else { hi=mid; } } Return lo;
+}
+
+I64
+UpperBound
+data : I64*
+n : I64
+value : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } lo : I64 = 0; hi : I64 = n; While (lo < hi) { mid : I64 = lo+(hi-lo)/2; If (data[mid] <= value) { lo=mid+1; } Else { hi=mid; } } Return lo;
+}
+
+I64
+BinarySearch
+data : I64*
+n : I64
+value : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } a : AlgorithmsI64 = Zero; i : I64 = a.LowerBound(data,n,value); If (i < n && data[i] == value) { Return i; } Return -1;
+}
+
+I32
+IsSorted
+data : I64*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } i : I64 = 1; While (i < n) { If (data[i-1] > data[i]) { Return 0; } i++; } Return 1;
+}
+
+I32
+Reverse
+data : I64*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } i : I64 = 0; j : I64 = n-1; While (i < j) { t : I64 = data[i]; data[i]=data[j]; data[j]=t; i++; j--; } Return 0;
+}
+
+I32
+RotateLeft
+data : I64*
+n : I64
+by : U64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } If (n == 0) { Return 0; } k : I64 = (I64)(by % (U64)n); a : AlgorithmsI64 = Zero; a.Reverse(data,k); a.Reverse(data+k,n-k); a.Reverse(data,n); Return 0;
+}
+
+I64
+UniqueAdjacent
+data : I64*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } If (n == 0) { Return 0; } write : I64 = 1; i : I64 = 1; While (i < n) { If (data[i] != data[write-1]) { data[write]=data[i]; write++; } i++; } Return write;
+}
+
+I32
+Fill
+data : I64*
+n : I64
+value : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } i : I64 = 0; While (i < n) { data[i]=value; i++; } Return 0;
+}
+
+I64
+MinIndex
+data : I64*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } If (n == 0) { Return -1; } r : I64 = 0; i : I64 = 1; While (i < n) { If (data[i] < data[r]) { r=i; } i++; } Return r;
+}
+
+I64
+MaxIndex
+data : I64*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } If (n == 0) { Return -1; } r : I64 = 0; i : I64 = 1; While (i < n) { If (data[i] > data[r]) { r=i; } i++; } Return r;
+}
+
+I32
+HeapSort
+data : I64*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } If (n < 2) { Return 0; }
+start : I64 = n/2; end : I64 = n;
+While (end > 1) {
+If (start > 0) { start--; } Else { end--; t : I64 = data[0]; data[0]=data[end]; data[end]=t; }
+node : I64 = start;
+While (node < end/2) {
+child : I64 = node*2+1;
+If (child+1 < end && data[child] < data[child+1]) { child++; }
+If (data[node] >= data[child]) { Break; }
+swap : I64 = data[node]; data[node]=data[child]; data[child]=swap; node=child;
+}
+} Return 0;
+}
+}
+};

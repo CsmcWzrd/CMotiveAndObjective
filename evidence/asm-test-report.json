@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "convention": "CMO-REG-1 (custom; not C cdecl, SysV, Win64 or AAPCS)",
+  "assertions": 115733,
+  "targets": [
+    {
+      "target": "x86-le",
+      "status": "PASS",
+      "assertions": 6688,
+      "elf_sha256": "e685c8f40b4e3f56ec3cf99f20fe1f04f78ac416c4b7be0fab2abb338cb17076"
+    },
+    {
+      "target": "x86_64-le",
+      "status": "PASS",
+      "assertions": 15088,
+      "elf_sha256": "19dbfcad536c37d2176f03ddedef073f24f6c86d5f155dd7ba0b504666e41b61"
+    },
+    {
+      "target": "arm32-le",
+      "status": "PASS",
+      "assertions": 12689,
+      "elf_sha256": "5eeea625a13d4db58f394c3e95083e072f0e31377d9365d6098fdb6dd46626c4"
+    },
+    {
+      "target": "arm32-be",
+      "status": "PASS",
+      "assertions": 12690,
+      "elf_sha256": "b753a301054151e3caa61899cc26b59b556feb055a037c9f545ec8641be6b7ee"
+    },
+    {
+      "target": "arm64-le",
+      "status": "PASS",
+      "assertions": 34289,
+      "elf_sha256": "73611389a71f82a9e5a5ff82e5462a43aee016d8bc2bc6d21e7bcd2e2b1ab84f"
+    },
+    {
+      "target": "arm64-be",
+      "status": "PASS",
+      "assertions": 34289,
+      "elf_sha256": "4d95a380890e8ceab5eecdb9be921b5958bcf2e0c099cf2075ded2fcb0451d8b"
+    }
+  ],
+  "execution": "CPU emulation, not physical ARM hardware"
+}

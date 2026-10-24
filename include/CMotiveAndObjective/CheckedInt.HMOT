@@ -1,0 +1,62 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+CheckedInt
+{
+Public
+{
+
+
+I32
+Add
+a : I64
+b : I64
+out : I64*
+()
+{
+hi : I64 = 9223372036854775807; lo : I64 = -9223372036854775807-1; If (out == Null) { Return -1; } If ((b > 0 && a > hi-b) || (b < 0 && a < lo-b)) { Return -2; } *out = a+b; Return 0;
+}
+
+I32
+Subtract
+a : I64
+b : I64
+out : I64*
+()
+{
+hi : I64 = 9223372036854775807; lo : I64 = -9223372036854775807-1; If (out == Null) { Return -1; } If ((b < 0 && a > hi+b) || (b > 0 && a < lo+b)) { Return -2; } *out = a-b; Return 0;
+}
+
+I32
+Multiply
+a : I64
+b : I64
+out : I64*
+()
+{
+hi : I64 = 9223372036854775807; lo : I64 = -9223372036854775807-1; If (out == Null) { Return -1; }
+If (a > 0) { If ((b > 0 && a > hi/b) || (b < 0 && b < lo/a)) { Return -2; } }
+If (a < 0) { If ((b > 0 && a < lo/b) || (b < 0 && a < hi/b)) { Return -2; } }
+*out = a*b; Return 0;
+}
+
+I32
+Divide
+a : I64
+b : I64
+out : I64*
+()
+{
+hi : I64 = 9223372036854775807; lo : I64 = -9223372036854775807-1; If (out == Null || b == 0) { Return -1; } If (a == lo && b == -1) { Return -2; } *out = a/b; Return 0;
+}
+
+I32
+Negate
+a : I64
+out : I64*
+()
+{
+hi : I64 = 9223372036854775807; lo : I64 = -9223372036854775807-1; If (out == Null) { Return -1; } If (a == lo) { Return -2; } *out = -a; Return 0;
+}
+}
+};

@@ -1,0 +1,183 @@
+// CMotiveAndObjective. Boost Software License 1.0.
+#include "Internal/RBTreeOps.HMOT"
+Package CMotiveAndObjective;
+Class
+RedBlackTreeI64
+{
+Private
+{
+root : RBNode* = Null; Block
+count : I64 = 0; Block
+}
+Public
+{
+
+I64
+Length
+()
+{
+Return This.count;
+}
+
+I32
+Insert
+value : I64
+()
+{
+
+parent : RBNode* = Null; node : RBNode* = This.root;
+While (node != Null) { parent=node; If (value == node.value) { Return 1; } If (value < node.value) { node=node.left; } Else { node=node.right; } }
+If (This.count == 9223372036854775807) { Return -2; }
+node=New RBNode(); If (node == Null) { Return -2; } node.value=value; node.parent=parent;
+If (parent == Null) { This.root=node; } Elif (value < parent.value) { parent.left=node; } Else { parent.right=node; }
+ops : RBTreeOps = Zero;
+While (parent != Null && parent.red != 0) {
+grand : RBNode* = parent.parent;
+If (parent == grand.left) {
+uncle : RBNode* = grand.right;
+If (uncle != Null && uncle.red != 0) { parent.red=0; uncle.red=0; grand.red=1; node=grand; }
+Else { If (node == parent.right) { node=parent; This.root=ops.Left(This.root,node); parent=node.parent; grand=parent.parent; }
+parent.red=0; grand.red=1; This.root=ops.Right(This.root,grand); Break; }
+} Else {
+uncle : RBNode* = grand.left;
+If (uncle != Null && uncle.red != 0) { parent.red=0; uncle.red=0; grand.red=1; node=grand; }
+Else { If (node == parent.left) { node=parent; This.root=ops.Right(This.root,node); parent=node.parent; grand=parent.parent; }
+parent.red=0; grand.red=1; This.root=ops.Left(This.root,grand); Break; }
+}
+parent=node.parent;
+}
+node=This.root; node.red=0; This.count++; Return 0;
+
+}
+
+I32
+Remove
+value : I64
+()
+{
+
+ops : RBTreeOps = Zero; z : RBNode* = This.root;
+While (z != Null && z.value != value) { If (value < z.value) { z=z.left; } Else { z=z.right; } }
+If (z == Null) { Return -1; }
+y : RBNode* = z; red : I32 = y.red; x : RBNode* = Null; xp : RBNode* = Null;
+If (z.left == Null) { x=z.right; xp=z.parent; This.root=ops.Transplant(This.root,z,x); }
+Elif (z.right == Null) { x=z.left; xp=z.parent; This.root=ops.Transplant(This.root,z,x); }
+Else {
+y=ops.Minimum(z.right); red=y.red; x=y.right;
+If (y.parent == z) { xp=y; If (x != Null) { x.parent=y; } }
+Else { xp=y.parent; This.root=ops.Transplant(This.root,y,x); y.right=z.right; child : RBNode* = y.right; child.parent=y; }
+This.root=ops.Transplant(This.root,z,y); y.left=z.left; child : RBNode* = y.left; child.parent=y; y.red=z.red;
+}
+If (red == 0) {
+While (x != This.root && ops.IsBlack(x)) {
+If (xp == Null) { Break; }
+If (x == xp.left) {
+w : RBNode* = xp.right;
+If (!ops.IsBlack(w)) { w.red=0; xp.red=1; This.root=ops.Left(This.root,xp); w=xp.right; }
+If (w == Null) { x=xp; xp=x.parent; Continue; }
+left : RBNode* = w.left; right : RBNode* = w.right;
+If (ops.IsBlack(left) && ops.IsBlack(right)) { w.red=1; x=xp; xp=x.parent; }
+Else {
+If (ops.IsBlack(right)) { If (left != Null) { left.red=0; } w.red=1; This.root=ops.Right(This.root,w); w=xp.right; }
+w.red=xp.red; xp.red=0; right=w.right; If (right != Null) { right.red=0; }
+This.root=ops.Left(This.root,xp); x=This.root; xp=Null;
+}
+} Else {
+w : RBNode* = xp.left;
+If (!ops.IsBlack(w)) { w.red=0; xp.red=1; This.root=ops.Right(This.root,xp); w=xp.left; }
+If (w == Null) { x=xp; xp=x.parent; Continue; }
+left : RBNode* = w.left; right : RBNode* = w.right;
+If (ops.IsBlack(left) && ops.IsBlack(right)) { w.red=1; x=xp; xp=x.parent; }
+Else {
+If (ops.IsBlack(left)) { If (right != Null) { right.red=0; } w.red=1; This.root=ops.Left(This.root,w); w=xp.left; }
+w.red=xp.red; xp.red=0; left=w.left; If (left != Null) { left.red=0; }
+This.root=ops.Right(This.root,xp); x=This.root; xp=Null;
+}
+}
+}
+If (x != Null) { x.red=0; }
+}
+Delete z; This.count--; Return 0;
+
+}
+
+I32
+Contains
+value : I64
+()
+{
+node : RBNode* = This.root; While (node != Null) { If (value == node.value) { Return 1; } If (value < node.value) { node=node.left; } Else { node=node.right; } } Return 0;
+}
+
+Void*
+Begin
+()
+{
+ops : RBTreeOps = Zero; Return ops.Minimum(This.root);
+}
+
+Void*
+Last
+()
+{
+ops : RBTreeOps = Zero; Return ops.Maximum(This.root);
+}
+
+Void*
+Next
+cursor : Void*
+()
+{
+node : RBNode* = (RBNode*)cursor; If (node == Null) { Return Null; } ops : RBTreeOps = Zero;
+If (node.right != Null) { Return ops.Minimum(node.right); }
+parent : RBNode* = node.parent; While (parent != Null && node == parent.right) { node=parent; parent=parent.parent; } Return parent;
+}
+
+Void*
+Previous
+cursor : Void*
+()
+{
+node : RBNode* = (RBNode*)cursor; If (node == Null) { Return Null; } ops : RBTreeOps = Zero;
+If (node.left != Null) { Return ops.Maximum(node.left); }
+parent : RBNode* = node.parent; While (parent != Null && node == parent.left) { node=parent; parent=parent.parent; } Return parent;
+}
+
+I32
+Read
+cursor : Void*
+out : I64*
+()
+{
+If (cursor == Null || out == Null) { Return -1; } node : RBNode* = (RBNode*)cursor; *out=node.value; Return 0;
+}
+
+Void*
+LowerBound
+value : I64
+()
+{
+node : RBNode* = This.root; found : RBNode* = Null; While (node != Null) { If (node.value >= value) { found=node; node=node.left; } Else { node=node.right; } } Return found;
+}
+
+Void*
+UpperBound
+value : I64
+()
+{
+node : RBNode* = This.root; found : RBNode* = Null; While (node != Null) { If (node.value > value) { found=node; node=node.left; } Else { node=node.right; } } Return found;
+}
+
+Void
+Clear
+()
+{
+node : RBNode* = This.root; While (node != Null) { This.Remove(node.value); node=This.root; }
+}
+~RedBlackTreeI64
+()
+{
+This.Clear();
+}
+}
+};

@@ -1,0 +1,234 @@
+make  dist-gzip am__post_remove_distdir='@:'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+make  distdir-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+test -d "cmotiveandobjective-1.0.0" || mkdir "cmotiveandobjective-1.0.0"
+test -n "" \
+|| find "cmotiveandobjective-1.0.0" -type d ! -perm -755 \
+	-exec chmod u+rwx,go+rx {} \; -o \
+  ! -type d ! -perm -444 -links 1 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -400 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -444 -exec /bin/bash /workspace/scratch/c92ad9de4f15/autotools-src/install-sh -c -m a+r {} {} \; \
+|| chmod -R a+r "cmotiveandobjective-1.0.0"
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+tardir=cmotiveandobjective-1.0.0 && ${TAR-tar} chof - "$tardir" | eval GZIP= gzip --best -c >cmotiveandobjective-1.0.0.tar.gz
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+case 'cmotiveandobjective-1.0.0.tar.gz' in \
+*.tar.gz*) \
+  eval GZIP= gzip --best -dc cmotiveandobjective-1.0.0.tar.gz | ${TAR-tar} xf - ;;\
+*.tar.bz2*) \
+  bzip2 -dc cmotiveandobjective-1.0.0.tar.bz2 | ${TAR-tar} xf - ;;\
+*.tar.lz*) \
+  lzip -dc cmotiveandobjective-1.0.0.tar.lz | ${TAR-tar} xf - ;;\
+*.tar.xz*) \
+  xz -dc cmotiveandobjective-1.0.0.tar.xz | ${TAR-tar} xf - ;;\
+*.tar.Z*) \
+  uncompress -c cmotiveandobjective-1.0.0.tar.Z | ${TAR-tar} xf - ;;\
+*.shar.gz*) \
+  eval GZIP= gzip --best -dc cmotiveandobjective-1.0.0.shar.gz | unshar ;;\
+*.zip*) \
+  unzip cmotiveandobjective-1.0.0.zip ;;\
+*.tar.zst*) \
+  zstd -dc cmotiveandobjective-1.0.0.tar.zst | ${TAR-tar} xf - ;;\
+esac
+chmod -R a-w cmotiveandobjective-1.0.0
+chmod u+w cmotiveandobjective-1.0.0
+mkdir cmotiveandobjective-1.0.0/_build cmotiveandobjective-1.0.0/_build/sub cmotiveandobjective-1.0.0/_inst
+chmod a-w cmotiveandobjective-1.0.0
+test -d cmotiveandobjective-1.0.0/_build || exit 0; \
+dc_install_base=`CDPATH="${ZSH_VERSION+.}:" && cd cmotiveandobjective-1.0.0/_inst && pwd | sed -e 's,^[^:\\/]:[\\/],/,'` \
+  && dc_destdir="${TMPDIR-/tmp}/am-dc-$$/" \
+  && am__cwd=`pwd` \
+  && CDPATH="${ZSH_VERSION+.}:" && cd cmotiveandobjective-1.0.0/_build/sub \
+  && ../../configure \
+     \
+    CMOTIVE_ROOT=/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost \
+    --srcdir=../.. --prefix="$dc_install_base" \
+  && make  \
+  && make  dvi \
+  && make  check \
+  && make  install \
+  && make  installcheck \
+  && make  uninstall \
+  && make  distuninstallcheck_dir="$dc_install_base" \
+        distuninstallcheck \
+  && chmod -R a-w "$dc_install_base" \
+  && ({ \
+       (cd ../.. && umask 077 && mkdir "$dc_destdir") \
+       && make  DESTDIR="$dc_destdir" install \
+       && make  DESTDIR="$dc_destdir" uninstall \
+       && make  DESTDIR="$dc_destdir" \
+            distuninstallcheck_dir="$dc_destdir" distuninstallcheck; \
+      } || { rm -rf "$dc_destdir"; exit 1; }) \
+  && rm -rf "$dc_destdir" \
+  && make  dist \
+  && rm -rf cmotiveandobjective-1.0.0.tar.gz \
+  && make  distcleancheck \
+  && cd "$am__cwd" \
+  || exit 1
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... none
+checking for python3... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: executing depfiles commands
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" -I "/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../include" --emit-c "/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../src/CMotiveAndObjective.CMOT" -o "CMotiveAndObjective.c"
+make  all-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+gcc -g -O2 -std=c11 -fPIC -I"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/lib/Sys" -shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so -Wl,--version-script=../../build-support/exports.map CMotiveAndObjective.c -o libCMotiveAndObjective-1.0.0.so  -pthread -lm
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Nothing to be done for 'dvi'.
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  check-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  check-local
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../include" "../../tests/abi_smoke.c" ./libCMotiveAndObjective-1.0.0.so -Wl,-rpath,"/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub" -o abi_smoke 
+./abi_smoke
+C ABI and memory-boundary stress: PASS
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub" -I"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/lib/Sys" "../../tests/rb_invariants.c" -o rb_invariants  -pthread -lm
+./rb_invariants
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" -I "/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../include" --emit-c "/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../tests/smoke.CMOT" -o cmotive-smoke.c
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/lib/Sys" cmotive-smoke.c -o cmotive-smoke  -pthread -lm
+./cmotive-smoke
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tests/test_core.py" "/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub/libCMotiveAndObjective-1.0.0.so" test-result.json
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+{"api_methods_exercised": 149, "api_methods_total": 149, "assertions": 500684, "library_sha256": "f0e52d0396d365d51c9a52123b5ecd9c678d92cb52343afba8b42f6284589ed7", "seed": 391724, "status": "PASS"}
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tests/check_metadata.py"
+API checked: 21 classes, 149 methods
+Metadata: PASS; 84 original signatures retained; 149 current methods; 174 upstream files verified
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  install-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/AlgorithmsI64.HMOT ../../include/CMotiveAndObjective/ArrayVectorI64.HMOT ../../include/CMotiveAndObjective/Ascii.HMOT ../../include/CMotiveAndObjective/Base64.HMOT ../../include/CMotiveAndObjective/BinaryHeapI64.HMOT ../../include/CMotiveAndObjective/BitManip.HMOT ../../include/CMotiveAndObjective/Bytes.HMOT ../../include/CMotiveAndObjective/CheckedInt.HMOT ../../include/CMotiveAndObjective/Checksums.HMOT ../../include/CMotiveAndObjective/DListI64.HMOT ../../include/CMotiveAndObjective/Date.HMOT ../../include/CMotiveAndObjective/Hex.HMOT ../../include/CMotiveAndObjective/IntegerMath.HMOT ../../include/CMotiveAndObjective/QueueI64.HMOT ../../include/CMotiveAndObjective/RedBlackTreeI64.HMOT ../../include/CMotiveAndObjective/SListI64.HMOT ../../include/CMotiveAndObjective/Sha256.HMOT ../../include/CMotiveAndObjective/SortedMapI64.HMOT ../../include/CMotiveAndObjective/Uri.HMOT ../../include/CMotiveAndObjective/Utf8.HMOT ../../include/CMotiveAndObjective/Uuid.HMOT '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/Internal/DLNode.HMOT ../../include/CMotiveAndObjective/Internal/RBNode.HMOT ../../include/CMotiveAndObjective/Internal/RBTreeOps.HMOT ../../include/CMotiveAndObjective/Internal/SLNode.HMOT '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/install -c -m 644 libCMotiveAndObjective-1.0.0.so '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/install -c -m 644 ../../docs/API.md ../../docs/API-SIGNATURES.md ../../docs/STL-COVERAGE.md ../../docs/PORTING-STATUS.md ../../docs/VERIFICATION.md '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective.h '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Nothing to be done for 'installcheck'.
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+ ( cd '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective' && rm -f AlgorithmsI64.HMOT ArrayVectorI64.HMOT Ascii.HMOT Base64.HMOT BinaryHeapI64.HMOT BitManip.HMOT Bytes.HMOT CheckedInt.HMOT Checksums.HMOT DListI64.HMOT Date.HMOT Hex.HMOT IntegerMath.HMOT QueueI64.HMOT RedBlackTreeI64.HMOT SListI64.HMOT Sha256.HMOT SortedMapI64.HMOT Uri.HMOT Utf8.HMOT Uuid.HMOT )
+ ( cd '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal' && rm -f DLNode.HMOT RBNode.HMOT RBTreeOps.HMOT SLNode.HMOT )
+ ( cd '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/lib' && rm -f libCMotiveAndObjective-1.0.0.so )
+ ( cd '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective' && rm -f API.md API-SIGNATURES.md STL-COVERAGE.md PORTING-STATUS.md VERIFICATION.md )
+ ( cd '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include' && rm -f CMotiveAndObjective.h )
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  install-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/AlgorithmsI64.HMOT ../../include/CMotiveAndObjective/ArrayVectorI64.HMOT ../../include/CMotiveAndObjective/Ascii.HMOT ../../include/CMotiveAndObjective/Base64.HMOT ../../include/CMotiveAndObjective/BinaryHeapI64.HMOT ../../include/CMotiveAndObjective/BitManip.HMOT ../../include/CMotiveAndObjective/Bytes.HMOT ../../include/CMotiveAndObjective/CheckedInt.HMOT ../../include/CMotiveAndObjective/Checksums.HMOT ../../include/CMotiveAndObjective/DListI64.HMOT ../../include/CMotiveAndObjective/Date.HMOT ../../include/CMotiveAndObjective/Hex.HMOT ../../include/CMotiveAndObjective/IntegerMath.HMOT ../../include/CMotiveAndObjective/QueueI64.HMOT ../../include/CMotiveAndObjective/RedBlackTreeI64.HMOT ../../include/CMotiveAndObjective/SListI64.HMOT ../../include/CMotiveAndObjective/Sha256.HMOT ../../include/CMotiveAndObjective/SortedMapI64.HMOT ../../include/CMotiveAndObjective/Uri.HMOT ../../include/CMotiveAndObjective/Utf8.HMOT ../../include/CMotiveAndObjective/Uuid.HMOT '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/mkdir -p '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/Internal/DLNode.HMOT ../../include/CMotiveAndObjective/Internal/RBNode.HMOT ../../include/CMotiveAndObjective/Internal/RBTreeOps.HMOT ../../include/CMotiveAndObjective/Internal/SLNode.HMOT '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/mkdir -p '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/install -c -m 644 libCMotiveAndObjective-1.0.0.so '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/mkdir -p '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/install -c -m 644 ../../docs/API.md ../../docs/API-SIGNATURES.md ../../docs/STL-COVERAGE.md ../../docs/PORTING-STATUS.md ../../docs/VERIFICATION.md '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/mkdir -p '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective.h '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+ ( cd '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective' && rm -f AlgorithmsI64.HMOT ArrayVectorI64.HMOT Ascii.HMOT Base64.HMOT BinaryHeapI64.HMOT BitManip.HMOT Bytes.HMOT CheckedInt.HMOT Checksums.HMOT DListI64.HMOT Date.HMOT Hex.HMOT IntegerMath.HMOT QueueI64.HMOT RedBlackTreeI64.HMOT SListI64.HMOT Sha256.HMOT SortedMapI64.HMOT Uri.HMOT Utf8.HMOT Uuid.HMOT )
+ ( cd '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal' && rm -f DLNode.HMOT RBNode.HMOT RBTreeOps.HMOT SLNode.HMOT )
+ ( cd '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/lib' && rm -f libCMotiveAndObjective-1.0.0.so )
+ ( cd '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective' && rm -f API.md API-SIGNATURES.md STL-COVERAGE.md PORTING-STATUS.md VERIFICATION.md )
+ ( cd '/tmp/am-dc-132//workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_inst/include' && rm -f CMotiveAndObjective.h )
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  dist-gzip am__post_remove_distdir='@:'
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  distdir-am
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+test -d "cmotiveandobjective-1.0.0" || mkdir "cmotiveandobjective-1.0.0"
+test -n "" \
+|| find "cmotiveandobjective-1.0.0" -type d ! -perm -755 \
+	-exec chmod u+rwx,go+rx {} \; -o \
+  ! -type d ! -perm -444 -links 1 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -400 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -444 -exec /bin/bash /workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/install-sh -c -m a+r {} {} \; \
+|| chmod -R a+r "cmotiveandobjective-1.0.0"
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+tardir=cmotiveandobjective-1.0.0 && ${TAR-tar} chof - "$tardir" | eval GZIP= gzip --best -c >cmotiveandobjective-1.0.0.tar.gz
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+test -z "CMotiveAndObjective.c cmotive-smoke.c cmotive-smoke libCMotiveAndObjective-1.0.0.so abi_smoke rb_invariants test-result.json" || rm -f CMotiveAndObjective.c cmotive-smoke.c cmotive-smoke libCMotiveAndObjective-1.0.0.so abi_smoke rb_invariants test-result.json
+test -z "" || rm -f 
+test . = "../.." || test -z "" || rm -f 
+rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
+rm -f cscope.out cscope.in.out cscope.po.out cscope.files
+rm -f config.status config.cache config.log configure.lineno config.status.lineno
+rm -f Makefile
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+===========================================================
+cmotiveandobjective-1.0.0 archives ready for distribution: 
+cmotiveandobjective-1.0.0.tar.gz
+===========================================================

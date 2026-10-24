@@ -1,0 +1,126 @@
+// CMotiveAndObjective. Boost Software License 1.0.
+#include "Internal/SLNode.HMOT"
+Package CMotiveAndObjective;
+Class
+SListI64
+{
+Private
+{
+head : SLNode* = Null; Block
+tail : SLNode* = Null; Block
+count : I64 = 0; Block
+}
+Public
+{
+
+I64
+Length
+()
+{
+Return This.count;
+}
+
+I32
+PushFront
+value : I64
+()
+{
+If (This.count == 9223372036854775807) { Return -2; } node : SLNode* = New SLNode(); If (node == Null) { Return -2; }
+node.value=value; node.next=This.head; old : SLNode* = This.head;
+If (old == Null) { This.tail=node; } Else {  }
+This.head=node; This.count++; Return 0;
+}
+
+I32
+PushBack
+value : I64
+()
+{
+If (This.count == 9223372036854775807) { Return -2; } node : SLNode* = New SLNode(); If (node == Null) { Return -2; }
+node.value=value;  old : SLNode* = This.tail;
+If (old == Null) { This.head=node; } Else { old.next=node; } This.tail=node; This.count++; Return 0;
+}
+
+I32
+PopFront
+out : I64*
+()
+{
+If (out == Null || This.head == Null) { Return -1; } node : SLNode* = This.head; next : SLNode* = node.next;
+*out=node.value; This.head=next; If (next == Null) { This.tail=Null; } Else {  } This.count--; Delete node; Return 0;
+}
+
+I32
+Front
+out : I64*
+()
+{
+If (out == Null || This.head == Null) { Return -1; } node : SLNode* = This.head; *out=node.value; Return 0;
+}
+
+I32
+Back
+out : I64*
+()
+{
+If (out == Null || This.tail == Null) { Return -1; } node : SLNode* = This.tail; *out=node.value; Return 0;
+}
+
+I32
+At
+index : I64
+out : I64*
+()
+{
+If (out == Null || index < 0 || index >= This.count) { Return -1; } node : SLNode* = This.head;
+i : I64 = 0; While (i < index) { node=node.next; i++; } *out=node.value; Return 0;
+}
+
+I32
+RemoveFirst
+value : I64
+()
+{
+previous : SLNode* = Null; node : SLNode* = This.head;
+While (node != Null && node.value != value) { previous=node; node=node.next; } If (node == Null) { Return -1; }
+next : SLNode* = node.next; If (previous == Null) { This.head=next; } Else { previous.next=next; }
+If (next == Null) { This.tail=previous; }  This.count--; Delete node; Return 0;
+}
+
+Void*
+Begin
+()
+{
+Return This.head;
+}
+
+Void*
+Next
+cursor : Void*
+()
+{
+node : SLNode* = (SLNode*)cursor; If (node == Null) { Return Null; } Return node.next;
+}
+
+I32
+Read
+cursor : Void*
+out : I64*
+()
+{
+If (cursor == Null || out == Null) { Return -1; } node : SLNode* = (SLNode*)cursor; *out=node.value; Return 0;
+}
+
+Void
+Clear
+()
+{
+node : SLNode* = This.head; While (node != Null) { next : SLNode* = node.next; Delete node; node=next; } This.head=Null; This.tail=Null; This.count=0;
+}
+~SListI64
+()
+{
+This.Clear();
+}
+}
+};

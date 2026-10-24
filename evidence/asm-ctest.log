@@ -1,0 +1,9 @@
+Test project /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build-asm-cmake
+    Start 1: register_contract
+1/2 Test #1: register_contract ................   Passed    0.54 sec
+    Start 2: native_caller
+2/2 Test #2: native_caller ....................   Passed    0.04 sec
+
+100% tests passed out of 2
+
+Total Test time (real) =   0.58 sec

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+ <ItemGroup Label="ProjectConfigurations">
+  <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+ </ItemGroup>
+ <PropertyGroup Label="Globals">
+  <ProjectGuid>{D37A8EE5-D311-40C4-B665-DC49D1930841}</ProjectGuid><Keyword>MakeFileProj</Keyword><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+ </PropertyGroup>
+ <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+ <PropertyGroup Label="Configuration"><ConfigurationType>Makefile</ConfigurationType><PlatformToolset>v143</PlatformToolset></PropertyGroup>
+ <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+ <PropertyGroup>
+  <CMotiveRoot Condition="'$(CMotiveRoot)'==''">$(CMOTIVE_ROOT)</CMotiveRoot>
+  <CMotiveRoot Condition="'$(CMotiveRoot)'==''">$(ProjectDir)..\..\toolchain\cmotive-0.3.0-selfhost</CMotiveRoot>
+  <NMakeBuildCommandLine>cmake -S "$(ProjectDir)..\.." -B "$(ProjectDir)..\..\build-vs" -G "Visual Studio 17 2022" -A x64 -DCMOTIVE_ROOT="$(CMotiveRoot)" &amp;&amp; cmake --build "$(ProjectDir)..\..\build-vs" --config $(Configuration)</NMakeBuildCommandLine>
+  <NMakeReBuildCommandLine>$(NMakeCleanCommandLine) &amp;&amp; $(NMakeBuildCommandLine)</NMakeReBuildCommandLine>
+  <NMakeCleanCommandLine>cmake -E rm -rf "$(ProjectDir)..\..\build-vs"</NMakeCleanCommandLine>
+  <NMakeOutput>$(ProjectDir)..\..\build-vs\$(Configuration)\CMotiveAndObjective-1.0.0.dll</NMakeOutput>
+ </PropertyGroup>
+ <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

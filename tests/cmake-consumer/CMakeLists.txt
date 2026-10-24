@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.20)
+project(CMotiveAndObjectiveInstalledConsumer LANGUAGES C)
+find_package(CMotiveAndObjective 1.0 CONFIG REQUIRED)
+add_executable(cmo_installed_consumer ../abi_smoke.c)
+target_link_libraries(cmo_installed_consumer PRIVATE CMotiveAndObjective::CMotiveAndObjective)
+enable_testing()
+add_test(NAME installed_abi COMMAND cmo_installed_consumer)

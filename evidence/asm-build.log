@@ -1,0 +1,6 @@
+x86-le: assembled and linked without libc
+x86_64-le: assembled and linked without libc
+arm32-le: assembled and linked without libc
+arm32-be: assembled and linked without libc
+arm64-le: assembled and linked without libc
+arm64-be: assembled and linked without libc

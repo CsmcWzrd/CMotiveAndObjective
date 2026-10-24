@@ -1,0 +1,64 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+#include "Ascii.HMOT"
+Package CMotiveAndObjective;
+Class
+Uuid
+{
+Public
+{
+
+I32
+Parse
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (n != 36 || capacity < 16 || data == Null || out == Null) { Return -1; }
+ascii : Ascii = Zero; i : I32 = 0;
+While (i < 36) { If (i == 8 || i == 13 || i == 18 || i == 23) { If (data[i] != 45) { Return -2; } } Else { If (ascii.HexValue(data[i]) < 0) { Return -2; } } i++; }
+i=0; j : I32 = 0; While (i < 36) { If (i == 8 || i == 13 || i == 18 || i == 23) { i++; } Else { out[j]=(Uchar)((ascii.HexValue(data[i]) << 4) | ascii.HexValue(data[i+1])); j++; i+=2; } } Return 16;
+}
+
+I32
+Format
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (n != 16 || capacity < 36 || data == Null || out == Null) { Return -1; }
+digits : Char* = "0123456789abcdef"; i : I32 = 0; j : I32 = 0;
+While (i < 16) { If (i == 4 || i == 6 || i == 8 || i == 10) { out[j]=45; j++; } out[j]=digits[data[i] >> 4]; out[j+1]=digits[data[i] & 15]; i++; j+=2; } Return 36;
+}
+
+I32
+Version
+data : Uchar*
+n : I64
+()
+{
+If (n != 16 || data == Null) { Return -1; } Return data[6] >> 4;
+}
+
+I32
+Variant
+data : Uchar*
+n : I64
+()
+{
+If (n != 16 || data == Null) { Return -1; } c : Uchar = data[8]; If ((c & 128) == 0) { Return 0; } If ((c & 192) == 128) { Return 1; } If ((c & 224) == 192) { Return 2; } Return 3;
+}
+
+I32
+IsNil
+data : Uchar*
+n : I64
+()
+{
+If (n != 16 || data == Null) { Return -1; } i : I32 = 0; While (i < 16) { If (data[i] != 0) { Return 0; } i++; } Return 1;
+}
+}
+};

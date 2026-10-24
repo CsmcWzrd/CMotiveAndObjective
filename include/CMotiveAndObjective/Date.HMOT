@@ -1,0 +1,61 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+Date
+{
+Public
+{
+
+
+I32
+IsLeapYear
+year : I32
+()
+{
+Return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+}
+
+I32
+DaysInMonth
+year : I32
+month : I32
+()
+{
+If (year < 1 || year > 9999 || month < 1 || month > 12) { Return -1; } If (month == 2) { d : Date = Zero; Return 28+d.IsLeapYear(year); } If (month == 4 || month == 6 || month == 9 || month == 11) { Return 30; } Return 31;
+}
+
+I32
+IsValid
+year : I32
+month : I32
+day : I32
+()
+{
+d : Date = Zero; count : I32 = d.DaysInMonth(year,month); Return count > 0 && day >= 1 && day <= count;
+}
+
+I64
+DaysSinceEpoch
+year : I32
+month : I32
+day : I32
+()
+{
+d : Date = Zero; If (!d.IsValid(year,month,day)) { Return -9223372036854775807-1; }
+y : I64 = year; If (month <= 2) { y--; } era : I64 = y/400; yoe : I64 = y-era*400; m : I64 = month;
+If (m > 2) { m-=3; } Else { m+=9; }
+doy : I64 = (153*m+2)/5+day-1; doe : I64 = yoe*365+yoe/4-yoe/100+doy;
+Return era*146097+doe-719468;
+}
+
+I32
+Weekday
+year : I32
+month : I32
+day : I32
+()
+{
+d : Date = Zero; If (!d.IsValid(year,month,day)) { Return -1; } days : I64 = d.DaysSinceEpoch(year,month,day); w : I32 = (I32)((days+4) % 7); If (w < 0) { w+=7; } Return w;
+}
+}
+};

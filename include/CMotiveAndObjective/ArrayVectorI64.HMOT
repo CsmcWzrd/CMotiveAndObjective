@@ -1,0 +1,101 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+#include "AlgorithmsI64.HMOT"
+Package CMotiveAndObjective;
+Class
+ArrayVectorI64
+{
+Public
+{
+data : I64* = Null; Block
+capacity : I64 = 0; Block
+count : I64 = 0; Block
+
+I32
+Bind
+storage : I64*
+capacity : I64
+()
+{
+If (capacity < 0 || (capacity > 0 && storage == Null)) { Return -1; } This.data=storage; This.capacity=capacity; This.count=0; Return 0;
+}
+
+I64
+Length
+()
+{
+Return This.count;
+}
+
+I64
+Capacity
+()
+{
+Return This.capacity;
+}
+
+I32
+PushBack
+value : I64
+()
+{
+If (This.count >= This.capacity) { Return -1; } This.data[This.count]=value; This.count++; Return 0;
+}
+
+I32
+PopBack
+out : I64*
+()
+{
+If (out == Null || This.count == 0) { Return -1; } This.count--; *out=This.data[This.count]; Return 0;
+}
+
+I32
+At
+index : I64
+out : I64*
+()
+{
+If (out == Null || index < 0 || index >= This.count) { Return -1; } *out=This.data[index]; Return 0;
+}
+
+I32
+Set
+index : I64
+value : I64
+()
+{
+If (index < 0 || index >= This.count) { Return -1; } This.data[index]=value; Return 0;
+}
+
+I32
+Insert
+index : I64
+value : I64
+()
+{
+If (index < 0 || index > This.count || This.count >= This.capacity) { Return -1; } i : I64 = This.count; While (i > index) { This.data[i]=This.data[i-1]; i--; } This.data[index]=value; This.count++; Return 0;
+}
+
+I32
+Erase
+index : I64
+()
+{
+If (index < 0 || index >= This.count) { Return -1; } i : I64 = index; While (i < This.count-1) { This.data[i]=This.data[i+1]; i++; } This.count--; Return 0;
+}
+
+Void
+Clear
+()
+{
+This.count=0;
+}
+
+I32
+Sort
+()
+{
+alg : AlgorithmsI64 = Zero; Return alg.HeapSort(This.data,This.count);
+}
+}
+};

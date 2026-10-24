@@ -1,0 +1,119 @@
+{
+  "convention": "CMO-REG-1 (custom; not C cdecl, SysV, Win64 or AAPCS)",
+  "routines": [
+    "CMO_Asm_CopyBytes",
+    "CMO_Asm_MoveBytes",
+    "CMO_Asm_FillBytes",
+    "CMO_Asm_CompareBytes",
+    "CMO_Asm_StrnLength",
+    "CMO_Asm_LoadU32LE",
+    "CMO_Asm_LoadU32BE",
+    "CMO_Asm_StoreU32LE",
+    "CMO_Asm_StoreU32BE"
+  ],
+  "targets": [
+    {
+      "name": "x86-le",
+      "source": "x86",
+      "triple": "x86-freestanding-none",
+      "bits": 32,
+      "endian": "little",
+      "args": [
+        "edi",
+        "esi",
+        "ecx"
+      ],
+      "scratch": [
+        "eax",
+        "edx"
+      ]
+    },
+    {
+      "name": "x86_64-le",
+      "source": "x86_64",
+      "triple": "x86_64-freestanding-none",
+      "bits": 64,
+      "endian": "little",
+      "args": [
+        "r10",
+        "r11",
+        "r8"
+      ],
+      "scratch": [
+        "rax",
+        "rdx",
+        "rcx"
+      ]
+    },
+    {
+      "name": "arm32-le",
+      "source": "arm32",
+      "triple": "arm-freestanding-eabi",
+      "bits": 32,
+      "endian": "little",
+      "args": [
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "scratch": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ]
+    },
+    {
+      "name": "arm32-be",
+      "source": "arm32",
+      "triple": "armeb-freestanding-eabi",
+      "bits": 32,
+      "endian": "big",
+      "args": [
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "scratch": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ]
+    },
+    {
+      "name": "arm64-le",
+      "source": "arm64",
+      "triple": "aarch64-freestanding-none",
+      "bits": 64,
+      "endian": "little",
+      "args": [
+        "x9",
+        "x10",
+        "x11"
+      ],
+      "scratch": [
+        "x12",
+        "x13",
+        "x14"
+      ]
+    },
+    {
+      "name": "arm64-be",
+      "source": "arm64",
+      "triple": "aarch64_be-freestanding-none",
+      "bits": 64,
+      "endian": "big",
+      "args": [
+        "x9",
+        "x10",
+        "x11"
+      ],
+      "scratch": [
+        "x12",
+        "x13",
+        "x14"
+      ]
+    }
+  ]
+}

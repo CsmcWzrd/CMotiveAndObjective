@@ -1,0 +1,62 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+BinaryHeapI64
+{
+Public
+{
+data : I64* = Null; Block
+capacity : I64 = 0; Block
+count : I64 = 0; Block
+
+I32
+Bind
+storage : I64*
+capacity : I64
+()
+{
+If (capacity < 0 || (capacity > 0 && storage == Null)) { Return -1; } This.data=storage; This.capacity=capacity; This.count=0; Return 0;
+}
+
+I64
+Length
+()
+{
+Return This.count;
+}
+
+I32
+Push
+value : I64
+()
+{
+If (This.count >= This.capacity) { Return -1; } i : I64 = This.count; This.count++; While (i > 0) { parent : I64 = (i-1)/2; If (This.data[parent] <= value) { Break; } This.data[i]=This.data[parent]; i=parent; } This.data[i]=value; Return 0;
+}
+
+I32
+Peek
+out : I64*
+()
+{
+If (out == Null || This.count == 0) { Return -1; } *out=This.data[0]; Return 0;
+}
+
+I32
+Pop
+out : I64*
+()
+{
+If (out == Null || This.count == 0) { Return -1; } *out=This.data[0]; This.count--; If (This.count == 0) { Return 0; }
+value : I64 = This.data[This.count]; i : I64 = 0;
+While (i < This.count/2) { child : I64 = i*2+1; If (child+1 < This.count && This.data[child+1] < This.data[child]) { child++; } If (value <= This.data[child]) { Break; } This.data[i]=This.data[child]; i=child; }
+This.data[i]=value; Return 0;
+}
+
+Void
+Clear
+()
+{
+This.count=0;
+}
+}
+};

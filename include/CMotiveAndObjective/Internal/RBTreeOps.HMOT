@@ -1,0 +1,68 @@
+// CMotiveAndObjective. Boost Software License 1.0.
+#include "RBNode.HMOT"
+Package CMotiveAndObjective;
+Class
+RBTreeOps
+{
+Public
+{
+
+RBNode*
+Left
+root : RBNode*
+node : RBNode*
+()
+{
+right : RBNode* = node.right; node.right=right.left; child : RBNode* = right.left; If (child != Null) { child.parent=node; }
+parent : RBNode* = node.parent; right.parent=parent;
+If (parent == Null) { root=right; } Elif (node == parent.left) { parent.left=right; } Else { parent.right=right; }
+right.left=node; node.parent=right; Return root;
+}
+
+RBNode*
+Right
+root : RBNode*
+node : RBNode*
+()
+{
+left : RBNode* = node.left; node.left=left.right; child : RBNode* = left.right; If (child != Null) { child.parent=node; }
+parent : RBNode* = node.parent; left.parent=parent;
+If (parent == Null) { root=left; } Elif (node == parent.right) { parent.right=left; } Else { parent.left=left; }
+left.right=node; node.parent=left; Return root;
+}
+
+RBNode*
+Transplant
+root : RBNode*
+old : RBNode*
+replacement : RBNode*
+()
+{
+parent : RBNode* = old.parent; If (parent == Null) { root=replacement; } Elif (old == parent.left) { parent.left=replacement; } Else { parent.right=replacement; } If (replacement != Null) { replacement.parent=parent; } Return root;
+}
+
+RBNode*
+Minimum
+node : RBNode*
+()
+{
+If (node == Null) { Return Null; } While (node.left != Null) { node=node.left; } Return node;
+}
+
+RBNode*
+Maximum
+node : RBNode*
+()
+{
+If (node == Null) { Return Null; } While (node.right != Null) { node=node.right; } Return node;
+}
+
+I32
+IsBlack
+node : RBNode*
+()
+{
+Return node == Null || node.red == 0;
+}
+}
+};

@@ -1,0 +1,76 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+BitManip
+{
+Public
+{
+
+
+I32
+PopCount
+x : U64
+()
+{
+n : I32 = 0; While (x != 0) { x &= x-1; n++; } Return n;
+}
+
+I32
+CountLeadingZeros
+x : U64
+()
+{
+If (x == 0) { Return 64; } n : I32 = 0; mask : U64 = ((U64)1 << 63); While ((x & mask) == 0) { n++; mask = mask >> 1; } Return n;
+}
+
+I32
+CountTrailingZeros
+x : U64
+()
+{
+If (x == 0) { Return 64; } n : I32 = 0; While ((x & 1) == 0) { x = x >> 1; n++; } Return n;
+}
+
+U64
+RotateLeft
+x : U64
+shift : U32
+()
+{
+s : U32 = shift & 63; If (s == 0) { Return x; } Return (x << s) | (x >> (64-s));
+}
+
+U64
+RotateRight
+x : U64
+shift : U32
+()
+{
+s : U32 = shift & 63; If (s == 0) { Return x; } Return (x >> s) | (x << (64-s));
+}
+
+U64
+ByteSwap
+x : U64
+()
+{
+y : U64 = 0; i : I32 = 0; While (i < 8) { y = (y << 8) | (x & 255); x = x >> 8; i++; } Return y;
+}
+
+U64
+ReverseBits
+x : U64
+()
+{
+y : U64 = 0; i : I32 = 0; While (i < 64) { y = (y << 1) | (x & 1); x = x >> 1; i++; } Return y;
+}
+
+I32
+IsPowerOfTwo
+x : U64
+()
+{
+Return x != 0 && (x & (x-1)) == 0;
+}
+}
+};

@@ -1,0 +1,56 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+Utf8
+{
+Public
+{
+
+
+I32
+DecodeFirst
+data : Uchar*
+n : I64
+consumed : I32*
+()
+{
+If (consumed == Null) { Return -1; } *consumed=0; If (n <= 0 || data == Null) { Return -1; }
+b : U32 = data[0]; If (b < 128) { *consumed=1; Return (I32)b; }
+width : I32 = 0; value : U32 = 0; minimum : U32 = 0;
+If (b >= 194 && b <= 223) { width=2; value=b & 31; minimum=128; }
+Elif (b >= 224 && b <= 239) { width=3; value=b & 15; minimum=2048; }
+Elif (b >= 240 && b <= 244) { width=4; value=b & 7; minimum=65536; }
+Else { Return -2; }
+If (n < width) { Return -2; } i : I32 = 1;
+While (i < width) { b=data[i]; If ((b & 192) != 128) { Return -2; } value=(value << 6) | (b & 63); i++; }
+If (value < minimum || value > 1114111 || (value >= 55296 && value <= 57343)) { Return -2; }
+*consumed=width; Return (I32)value;
+}
+
+I64
+Count
+data : Uchar*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } decoder : Utf8 = Zero; i : I64 = 0; count : I64 = 0; While (i < n) { width : I32 = 0; cp : I32 = decoder.DecodeFirst(data+i,n-i,&width); If (cp < 0) { Return -2; } i+=width; count++; } Return count;
+}
+
+I32
+Encode
+cp : U32
+out : Uchar*
+capacity : I64
+()
+{
+If (cp > 1114111 || (cp >= 55296 && cp <= 57343)) { Return -2; }
+w : I32 = 1; If (cp >= 65536) { w=4; } Elif (cp >= 2048) { w=3; } Elif (cp >= 128) { w=2; }
+If (out == Null || capacity < w) { Return -1; }
+If (w == 1) { out[0]=(Uchar)cp; }
+Elif (w == 2) { out[0]=(Uchar)(192 | (cp >> 6)); out[1]=(Uchar)(128 | (cp & 63)); }
+Elif (w == 3) { out[0]=(Uchar)(224 | (cp >> 12)); out[1]=(Uchar)(128 | ((cp >> 6) & 63)); out[2]=(Uchar)(128 | (cp & 63)); }
+Else { out[0]=(Uchar)(240 | (cp >> 18)); out[1]=(Uchar)(128 | ((cp >> 12) & 63)); out[2]=(Uchar)(128 | ((cp >> 6) & 63)); out[3]=(Uchar)(128 | (cp & 63)); }
+Return w;
+}
+}
+};

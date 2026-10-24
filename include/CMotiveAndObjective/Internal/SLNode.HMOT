@@ -1,0 +1,10 @@
+Package CMotiveAndObjective;
+Class
+SLNode
+{
+Public
+{
+value : I64 = 0; Block
+next : Void* = Null; Block
+}
+};

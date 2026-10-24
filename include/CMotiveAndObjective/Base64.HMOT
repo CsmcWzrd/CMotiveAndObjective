@@ -1,0 +1,62 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+Base64
+{
+Public
+{
+
+
+I64
+EncodedLength
+n : I64
+()
+{
+If (n < 0 || n > 6917529027641081853) { Return -1; } Return ((n+2)/3)*4;
+}
+
+I32
+Value
+c : I32
+()
+{
+If (c >= 65 && c <= 90) { Return c-65; } If (c >= 97 && c <= 122) { Return c-71; } If (c >= 48 && c <= 57) { Return c+4; } If (c == 43) { Return 62; } If (c == 47) { Return 63; } Return -1;
+}
+
+I64
+Encode
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+codec : Base64 = Zero; size : I64 = codec.EncodedLength(n); If (size < 0 || capacity < size || (n > 0 && (data == Null || out == Null))) { Return -1; }
+table : Char* = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"; i : I64 = 0; j : I64 = 0;
+While (i < n) { remain : I64 = n-i; x : U32 = (U32)data[i] << 16; If (remain > 1) { x |= (U32)data[i+1] << 8; } If (remain > 2) { x |= data[i+2]; }
+out[j]=table[(x >> 18) & 63]; out[j+1]=table[(x >> 12) & 63]; out[j+2]=61; out[j+3]=61;
+If (remain > 1) { out[j+2]=table[(x >> 6) & 63]; } If (remain > 2) { out[j+3]=table[x & 63]; }
+i+=3; j+=4; } Return size;
+}
+
+I64
+Decode
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (n < 0 || capacity < 0 || n % 4 != 0 || (n > 0 && data == Null)) { Return -1; } If (n == 0) { Return 0; }
+padding : I64 = 0; If (data[n-1] == 61) { padding++; } If (data[n-2] == 61) { padding++; }
+size : I64 = (n/4)*3-padding; If (capacity < size || (size > 0 && out == Null)) { Return -1; }
+codec : Base64 = Zero; i : I64 = 0;
+While (i < n-padding) { If (codec.Value(data[i]) < 0) { Return -2; } i++; }
+If (padding == 1 && (codec.Value(data[n-2]) & 3) != 0) { Return -2; }
+If (padding == 2 && (codec.Value(data[n-3]) & 15) != 0) { Return -2; }
+i=0; j : I64 = 0; While (i < n) { x : U32 = ((U32)codec.Value(data[i]) << 18) | ((U32)codec.Value(data[i+1]) << 12);
+If (data[i+2] != 61) { x |= (U32)codec.Value(data[i+2]) << 6; } If (data[i+3] != 61) { x |= (U32)codec.Value(data[i+3]); }
+If (j < size) { out[j]=(Uchar)(x >> 16); j++; } If (j < size) { out[j]=(Uchar)(x >> 8); j++; } If (j < size) { out[j]=(Uchar)x; j++; } i+=4; } Return size;
+}
+}
+};

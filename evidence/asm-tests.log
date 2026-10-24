@@ -1,0 +1,7 @@
+x86-le: PASS
+x86_64-le: PASS
+arm32-le: PASS
+arm32-be: PASS
+arm64-le: PASS
+arm64-be: PASS
+{"status": "PASS", "assertions": 115733, "targets": 6}

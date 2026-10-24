@@ -1,0 +1,52 @@
+make  check-am
+make  install-am
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+make  check-local
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/autotools-src/include" "/workspace/scratch/c92ad9de4f15/autotools-src/tests/abi_smoke.c" ./libCMotiveAndObjective-1.0.0.so -Wl,-rpath,"/workspace/scratch/c92ad9de4f15/autotools-build" -o abi_smoke 
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-install/include/CMotiveAndObjective'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/AlgorithmsI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/ArrayVectorI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Ascii.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Base64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/BinaryHeapI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/BitManip.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Bytes.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/CheckedInt.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Checksums.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/DListI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Date.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Hex.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/IntegerMath.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/QueueI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/RedBlackTreeI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/SListI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Sha256.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/SortedMapI64.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Uri.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Utf8.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Uuid.HMOT '/workspace/scratch/c92ad9de4f15/autotools-install/include/CMotiveAndObjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-install/include/CMotiveAndObjective/Internal'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Internal/DLNode.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Internal/RBNode.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Internal/RBTreeOps.HMOT /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective/Internal/SLNode.HMOT '/workspace/scratch/c92ad9de4f15/autotools-install/include/CMotiveAndObjective/Internal'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-install/lib'
+ /usr/bin/install -c -m 644 libCMotiveAndObjective-1.0.0.so '/workspace/scratch/c92ad9de4f15/autotools-install/lib'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-install/share/doc/cmotiveandobjective'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/autotools-src/docs/API.md /workspace/scratch/c92ad9de4f15/autotools-src/docs/API-SIGNATURES.md /workspace/scratch/c92ad9de4f15/autotools-src/docs/STL-COVERAGE.md /workspace/scratch/c92ad9de4f15/autotools-src/docs/PORTING-STATUS.md /workspace/scratch/c92ad9de4f15/autotools-src/docs/VERIFICATION.md '/workspace/scratch/c92ad9de4f15/autotools-install/share/doc/cmotiveandobjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/autotools-install/include'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/autotools-src/include/CMotiveAndObjective.h '/workspace/scratch/c92ad9de4f15/autotools-install/include'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+./abi_smoke
+C ABI and memory-boundary stress: PASS
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/autotools-build" -I"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/lib/Sys" "/workspace/scratch/c92ad9de4f15/autotools-src/tests/rb_invariants.c" -o rb_invariants  -pthread -lm
+./rb_invariants
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" -I "/workspace/scratch/c92ad9de4f15/autotools-src/include" --emit-c "/workspace/scratch/c92ad9de4f15/autotools-src/tests/smoke.CMOT" -o cmotive-smoke.c
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/lib/Sys" cmotive-smoke.c -o cmotive-smoke  -pthread -lm
+./cmotive-smoke
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/autotools-src/tests/test_core.py" "/workspace/scratch/c92ad9de4f15/autotools-build/libCMotiveAndObjective-1.0.0.so" test-result.json
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+{"api_methods_exercised": 149, "api_methods_total": 149, "assertions": 500684, "library_sha256": "bce55c5966bd9153e72694b36360401675e2ce4cf8d00fb60f1458d00dcef252", "seed": 391724, "status": "PASS"}
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/autotools-src/tests/check_metadata.py"
+API checked: 21 classes, 149 methods
+Metadata: PASS; 84 original signatures retained; 149 current methods; 174 upstream files verified
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/autotools-build'

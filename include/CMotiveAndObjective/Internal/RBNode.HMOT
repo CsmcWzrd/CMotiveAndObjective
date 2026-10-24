@@ -1,0 +1,13 @@
+Package CMotiveAndObjective;
+Class
+RBNode
+{
+Public
+{
+value : I64 = 0; Block
+left : Void* = Null; Block
+right : Void* = Null; Block
+parent : Void* = Null; Block
+red : I32 = 1; Block
+}
+};

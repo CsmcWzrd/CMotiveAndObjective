@@ -1,0 +1,40 @@
+#include "CMotiveAndObjective/Ascii.HMOT"
+#include "CMotiveAndObjective/BitManip.HMOT"
+#include "CMotiveAndObjective/AlgorithmsI64.HMOT"
+#include "CMotiveAndObjective/ArrayVectorI64.HMOT"
+#include "CMotiveAndObjective/DListI64.HMOT"
+#include "CMotiveAndObjective/RedBlackTreeI64.HMOT"
+#include "CMotiveAndObjective/SortedMapI64.HMOT"
+#include "CMotiveAndObjective/QueueI64.HMOT"
+#include "CMotiveAndObjective/Sha256.HMOT"
+I32
+main
+()
+{
+ ascii : Ascii;
+ bits : BitManip;
+ vector : ArrayVectorI64;
+ If (!ascii.IsAlpha(65) || ascii.IsAlpha(200)) { Return 1; }
+ If (bits.PopCount((U64)255) != 8) { Return 2; }
+ If (vector.Length() != 0 || vector.PushBack(1) != -1) { Return 3; }
+ list : DListI64;
+ tree : RedBlackTreeI64;
+ map : SortedMapI64;
+ queue : QueueI64;
+ sha : Sha256;
+ keys : I64[4]; values : I64[4]; ring : I64[4];
+ out : I64 = 0;
+ list.PushBack(42);
+ cursor : Void* = list.Begin();
+ If (list.Read(cursor,&out) != 0 || out != 42) { Return 4; }
+ If (list.PopBack(&out) != 0 || out != 42) { Return 5; }
+ tree.Insert(20); tree.Insert(10); tree.Insert(30);
+ If (!tree.Contains(20) || tree.Remove(20) != 0 || tree.Contains(20)) { Return 6; }
+ map.Bind(keys,values,4); map.Put(9,99);
+ If (map.Get(9,&out) != 0 || out != 99) { Return 7; }
+ queue.Bind(ring,4); queue.PushBack(7);
+ If (queue.PopFront(&out) != 0 || out != 7) { Return 8; }
+ input : Uchar[3] = {97,98,99}; digest : Uchar[32];
+ If (sha.Digest(input,3,digest,32) != 32 || digest[0] != 186 || digest[31] != 173) { Return 9; }
+ Return 0;
+}

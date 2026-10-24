@@ -1,0 +1,33 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+#include "Ascii.HMOT"
+Package CMotiveAndObjective;
+Class
+Hex
+{
+Public
+{
+
+
+I64
+Encode
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (n < 0 || n > 4611686018427387903 || capacity < n*2 || (n > 0 && (data == Null || out == Null))) { Return -1; } digits : Char* = "0123456789abcdef"; i : I64 = 0; While (i < n) { out[2*i]=digits[data[i] >> 4]; out[2*i+1]=digits[data[i] & 15]; i++; } Return n*2;
+}
+
+I64
+Decode
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (n < 0 || (n % 2) != 0 || capacity < n/2 || (n > 0 && (data == Null || out == Null))) { Return -1; } ascii : Ascii = Zero; i : I64 = 0; While (i < n) { If (ascii.HexValue(data[i]) < 0) { Return -2; } i++; } i=0; While (i < n) { out[i/2]=(Uchar)((ascii.HexValue(data[i]) << 4) | ascii.HexValue(data[i+1])); i+=2; } Return n/2;
+}
+}
+};

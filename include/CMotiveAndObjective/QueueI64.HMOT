@@ -1,0 +1,71 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+QueueI64
+{
+Private
+{
+data : I64* = Null; Block
+capacity : I64 = 0; Block
+count : I64 = 0; Block
+head : I64 = 0; Block
+tail : I64 = 0; Block
+}
+Public
+{
+
+I32
+Bind
+storage : I64*
+capacity : I64
+()
+{
+If (capacity < 0 || (capacity > 0 && storage == Null)) { Return -1; } This.data=storage; This.capacity=capacity; This.count=0; This.head=0; This.tail=0; Return 0;
+}
+
+I64
+Length
+()
+{
+Return This.count;
+}
+
+I64
+Capacity
+()
+{
+Return This.capacity;
+}
+
+I32
+PushBack
+value : I64
+()
+{
+If (This.count >= This.capacity) { Return -1; } This.data[This.tail]=value; This.tail++; If (This.tail == This.capacity) { This.tail=0; } This.count++; Return 0;
+}
+
+I32
+PopFront
+out : I64*
+()
+{
+If (out == Null || This.count == 0) { Return -1; } *out=This.data[This.head]; This.head++; If (This.head == This.capacity) { This.head=0; } This.count--; Return 0;
+}
+
+I32
+Front
+out : I64*
+()
+{
+If (out == Null || This.count == 0) { Return -1; } *out=This.data[This.head]; Return 0;
+}
+
+Void
+Clear
+()
+{
+This.count=0; This.head=0; This.tail=0;
+}
+}
+};

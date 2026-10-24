@@ -1,0 +1,30 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+Checksums
+{
+Public
+{
+
+
+U32
+Crc32
+data : Uchar*
+n : I64
+previous : U32
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return previous; } crc : U32 = ~previous; i : I64 = 0; While (i < n) { crc ^= data[i]; j : I32 = 0; While (j < 8) { If ((crc & 1) != 0) { crc = (crc >> 1) ^ (U32)3988292384; } Else { crc = crc >> 1; } j++; } i++; } Return ~crc;
+}
+
+U32
+Adler32
+data : Uchar*
+n : I64
+previous : U32
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return previous; } a : U32 = previous & 65535; b : U32 = previous >> 16; i : I64 = 0; While (i < n) { a=(a+data[i]) % 65521; b=(b+a) % 65521; i++; } Return (b << 16) | a;
+}
+}
+};

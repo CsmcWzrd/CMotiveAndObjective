@@ -1,0 +1,16 @@
+{
+  "status": "PASS_WITH_SKIP",
+  "targets": [
+    {
+      "target": "x86-le",
+      "status": "NOT RUN",
+      "reason": "Host kernel does not execute ELF32; use the CPU emulator test"
+    },
+    {
+      "target": "x86_64-le",
+      "status": "PASS",
+      "execution": "native CPU, freestanding Linux executable",
+      "routines_exercised": 9
+    }
+  ]
+}

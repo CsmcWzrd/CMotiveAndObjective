@@ -1,0 +1,11 @@
+# nmake, Visual Studio developer command prompt; set CMOTIVE_ROOT in environment.
+!IFNDEF CMOTIVE_ROOT
+CMOTIVE_ROOT=$(MAKEDIR)\toolchain\cmotive-0.3.0-selfhost
+!ENDIF
+all:
+	cmake -S . -B build-vs -G "Visual Studio 17 2022" -A x64 -DCMOTIVE_ROOT="$(CMOTIVE_ROOT)"
+	cmake --build build-vs --config Release
+test: all
+	ctest --test-dir build-vs -C Release --output-on-failure
+clean:
+	cmake -E rm -rf build-vs

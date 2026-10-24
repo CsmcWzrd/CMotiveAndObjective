@@ -1,0 +1,149 @@
+// CMotiveAndObjective. Boost Software License 1.0.
+#include "Internal/DLNode.HMOT"
+Package CMotiveAndObjective;
+Class
+DListI64
+{
+Private
+{
+head : DLNode* = Null; Block
+tail : DLNode* = Null; Block
+count : I64 = 0; Block
+}
+Public
+{
+
+I64
+Length
+()
+{
+Return This.count;
+}
+
+I32
+PushFront
+value : I64
+()
+{
+If (This.count == 9223372036854775807) { Return -2; } node : DLNode* = New DLNode(); If (node == Null) { Return -2; }
+node.value=value; node.next=This.head; old : DLNode* = This.head;
+If (old == Null) { This.tail=node; } Else { old.previous=node; }
+This.head=node; This.count++; Return 0;
+}
+
+I32
+PushBack
+value : I64
+()
+{
+If (This.count == 9223372036854775807) { Return -2; } node : DLNode* = New DLNode(); If (node == Null) { Return -2; }
+node.value=value; node.previous=This.tail; old : DLNode* = This.tail;
+If (old == Null) { This.head=node; } Else { old.next=node; } This.tail=node; This.count++; Return 0;
+}
+
+I32
+PopFront
+out : I64*
+()
+{
+If (out == Null || This.head == Null) { Return -1; } node : DLNode* = This.head; next : DLNode* = node.next;
+*out=node.value; This.head=next; If (next == Null) { This.tail=Null; } Else { next.previous=Null; } This.count--; Delete node; Return 0;
+}
+
+I32
+Front
+out : I64*
+()
+{
+If (out == Null || This.head == Null) { Return -1; } node : DLNode* = This.head; *out=node.value; Return 0;
+}
+
+I32
+Back
+out : I64*
+()
+{
+If (out == Null || This.tail == Null) { Return -1; } node : DLNode* = This.tail; *out=node.value; Return 0;
+}
+
+I32
+At
+index : I64
+out : I64*
+()
+{
+If (out == Null || index < 0 || index >= This.count) { Return -1; } node : DLNode* = This.head;
+i : I64 = 0; While (i < index) { node=node.next; i++; } *out=node.value; Return 0;
+}
+
+I32
+RemoveFirst
+value : I64
+()
+{
+previous : DLNode* = Null; node : DLNode* = This.head;
+While (node != Null && node.value != value) { previous=node; node=node.next; } If (node == Null) { Return -1; }
+next : DLNode* = node.next; If (previous == Null) { This.head=next; } Else { previous.next=next; }
+If (next == Null) { This.tail=previous; } Else { next.previous=previous; } This.count--; Delete node; Return 0;
+}
+
+Void*
+Begin
+()
+{
+Return This.head;
+}
+
+Void*
+Next
+cursor : Void*
+()
+{
+node : DLNode* = (DLNode*)cursor; If (node == Null) { Return Null; } Return node.next;
+}
+
+I32
+Read
+cursor : Void*
+out : I64*
+()
+{
+If (cursor == Null || out == Null) { Return -1; } node : DLNode* = (DLNode*)cursor; *out=node.value; Return 0;
+}
+
+Void
+Clear
+()
+{
+node : DLNode* = This.head; While (node != Null) { next : DLNode* = node.next; Delete node; node=next; } This.head=Null; This.tail=Null; This.count=0;
+}
+
+I32
+PopBack
+out : I64*
+()
+{
+If (out == Null || This.tail == Null) { Return -1; } node : DLNode* = This.tail; previous : DLNode* = node.previous; *out=node.value; This.tail=previous; If (previous == Null) { This.head=Null; } Else { previous.next=Null; } This.count--; Delete node; Return 0;
+}
+
+Void*
+Last
+()
+{
+Return This.tail;
+}
+
+Void*
+Previous
+cursor : Void*
+()
+{
+node : DLNode* = (DLNode*)cursor; If (node == Null) { Return Null; } Return node.previous;
+}
+~DListI64
+()
+{
+This.Clear();
+}
+}
+};

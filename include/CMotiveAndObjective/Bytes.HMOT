@@ -1,0 +1,60 @@
+// CMotiveAndObjective; Boost Software License 1.0. See LICENSE_1_0.txt.
+Package CMotiveAndObjective;
+Class
+Bytes
+{
+Public
+{
+
+
+I32
+Compare
+a : Uchar*
+an : I64
+b : Uchar*
+bn : I64
+()
+{
+If (an < 0 || bn < 0 || (an > 0 && a == Null) || (bn > 0 && b == Null)) { Return -2; } i : I64 = 0; While (i < an && i < bn) { If (a[i] < b[i]) { Return -1; } If (a[i] > b[i]) { Return 1; } i++; } If (an < bn) { Return -1; } If (an > bn) { Return 1; } Return 0;
+}
+
+I64
+Find
+data : Uchar*
+n : I64
+needle : Uchar*
+length : I64
+()
+{
+If (n < 0 || length < 0 || (n > 0 && data == Null) || (length > 0 && needle == Null)) { Return -2; } If (length == 0) { Return 0; } i : I64 = 0; While (i <= n-length) { j : I64 = 0; While (j < length && data[i+j] == needle[j]) { j++; } If (j == length) { Return i; } i++; } Return -1;
+}
+
+I64
+CountByte
+data : Uchar*
+n : I64
+value : Uchar
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } r : I64 = 0; i : I64 = 0; While (i < n) { If (data[i] == value) { r++; } i++; } Return r;
+}
+
+I32
+ToLowerAscii
+data : Uchar*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } i : I64 = 0; While (i < n) { If (data[i] >= 65 && data[i] <= 90) { data[i]+=32; } i++; } Return 0;
+}
+
+I32
+ToUpperAscii
+data : Uchar*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } i : I64 = 0; While (i < n) { If (data[i] >= 97 && data[i] <= 122) { data[i]-=32; } i++; } Return 0;
+}
+}
+};

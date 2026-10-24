@@ -1,0 +1,27 @@
+make -f build-support/GNUmakefile.mk BUILD=build-sanitize CFLAGS='-O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer' LDFLAGS='-fsanitize=address,undefined' build-sanitize/abi_smoke build-sanitize/rb_invariants
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/CMotiveAndObjective'
+make[1]: 'build-sanitize/abi_smoke' is up to date.
+make[1]: 'build-sanitize/rb_invariants' is up to date.
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/CMotiveAndObjective'
+ASAN_OPTIONS='detect_leaks=0' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/abi_smoke
+C ABI and memory-boundary stress: PASS
+ASAN_OPTIONS='detect_leaks=0' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/rb_invariants
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+python3 tools/run_sanitized.py "/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build-sanitize/libCMotiveAndObjective-1.0.0.so"
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+{"api_methods_exercised": 149, "api_methods_total": 149, "assertions": 500684, "library_sha256": "fbdfb2013c6c1083b149c3edbbd6e363e6ca1a9e914a19e3228519ca408f2b85", "seed": 391724, "status": "PASS"}

@@ -1,0 +1,11 @@
+Package CMotiveAndObjective;
+Class
+DLNode
+{
+Public
+{
+value : I64 = 0; Block
+next : Void* = Null; Block
+previous : Void* = Null; Block
+}
+};

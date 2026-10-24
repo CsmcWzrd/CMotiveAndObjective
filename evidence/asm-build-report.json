@@ -1,0 +1,43 @@
+{
+  "convention": "CMO-REG-1 (custom; not C cdecl, SysV, Win64 or AAPCS)",
+  "assembler_driver": "0.17.0",
+  "contract_sha256": "6d88c745575cb033663627f1f87914bafa3e1362dae9f9edb3b7e3e6a0265703",
+  "targets": [
+    {
+      "target": "x86-le",
+      "source_sha256": "f077ca71aaf398f3b07c64ba32d7314771c853a2d6b93c6d7d2fe6e197ade56f",
+      "object_sha256": "dc3281d21751cb8cd20209c59110b92d4e275c8e4f7a26c83fee1c7851d5e02b",
+      "archive_sha256": "3620274cc99970e62ce7912811d4eadc31e40a5181fb6ef8ebae16cb7f9a8d74"
+    },
+    {
+      "target": "x86_64-le",
+      "source_sha256": "80cc3abecca94b50a10b052be2cc3d8c1bc79e69288ed720ca410f8885cc73ba",
+      "object_sha256": "80cc03322ee7af4b6e88cbacb113d67a64199d7d059a3fd69bd60d9ee3e5ef73",
+      "archive_sha256": "b2e389d467de19e46c2ba7e921d1bca968a6fe02f2cfe33732dfdaec021e35ac"
+    },
+    {
+      "target": "arm32-le",
+      "source_sha256": "542a358d56afea8832da5f4af24835de8c07ab8a29457971d832477668eeaf72",
+      "object_sha256": "1cfe022f8ce9bccd05ededab3ce5063335c5a2663ac77a19aa85952c3db75598",
+      "archive_sha256": "2d9f91a255a389f76ccd2d2d3d9865957e66253544cdd3528bb5354f97098579"
+    },
+    {
+      "target": "arm32-be",
+      "source_sha256": "542a358d56afea8832da5f4af24835de8c07ab8a29457971d832477668eeaf72",
+      "object_sha256": "433e9e2a4af1081ede881bc6acccc2bf5ffbb88a8f9589db02c96b1dddea77d8",
+      "archive_sha256": "b171fdb4a110f41768026d2be0f2b06c6ced9e12ebc05442abee73849c5a7843"
+    },
+    {
+      "target": "arm64-le",
+      "source_sha256": "1d7e6c7e23266a97efb20064b8880e4d885605998930e993abfd3e3ef024a902",
+      "object_sha256": "9ae4de788b3a942e1e178ca1b5b5fe50363921e313b7297dfc89dccb30176332",
+      "archive_sha256": "8fe7f948bdc1c6b6a2484cac874a8b18890f6d39dc58306dadc42a4030a6fafc"
+    },
+    {
+      "target": "arm64-be",
+      "source_sha256": "1d7e6c7e23266a97efb20064b8880e4d885605998930e993abfd3e3ef024a902",
+      "object_sha256": "8ed70da4c7dd43ca4a6e6da6b73bb4175e8e04d06b381d9db9241f494c169d18",
+      "archive_sha256": "bc529a1d0e8e15dea6654b6cf1773690ff2a5d484415d833ca50345454690ac0"
+    }
+  ]
+}

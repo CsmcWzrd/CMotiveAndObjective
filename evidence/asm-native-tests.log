@@ -1,0 +1,2 @@
+x86: native execution unavailable (ELF32 kernel support)
+x86_64: native freestanding caller PASS

@@ -1,0 +1,45 @@
+// CMotiveAndObjective; BSL-1.0.
+Package CMotiveAndObjective;
+Class
+Pcg32
+{
+Private
+{
+state : U64;
+increment : U64;
+}
+Public
+{
+Void
+Seed
+seed : U64
+stream : U64
+()
+{
+state=0; increment=(stream << 1) | 1; generator : Pcg32 = Zero;
+old : U64 = state; state=old*6364136223846793005+increment; state+=seed;
+old=state; state=old*6364136223846793005+increment;
+}
+U32
+Next
+()
+{
+old : U64 = state; state=old*6364136223846793005+increment;
+x : U32 = (U32)(((old >> 18) ^ old) >> 27); rotation : U32 = (U32)(old >> 59);
+Return (x >> rotation) | (x << ((0-rotation) & 31));
+}
+I32
+Bounded
+bound : U32
+out : U32*
+()
+{
+If (bound == 0 || out == Null) { Return -1; }
+threshold : U32 = (0-bound) % bound;
+While (1) { old : U64 = state; state=old*6364136223846793005+increment;
+x : U32 = (U32)(((old >> 18) ^ old) >> 27); rotation : U32 = (U32)(old >> 59); value : U32 = (x >> rotation) | (x << ((0-rotation) & 31));
+If (value >= threshold) { *out=value % bound; Return 0; } } Return -1;
+}
+
+}
+};

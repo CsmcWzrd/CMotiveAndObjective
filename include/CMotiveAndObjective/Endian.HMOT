@@ -1,0 +1,37 @@
+// CMotiveAndObjective; BSL-1.0.
+Package CMotiveAndObjective;
+Class
+Endian
+{
+Public
+{
+I32
+Read
+data : Uchar*
+n : I64
+width : I32
+bigEndian : I32
+out : U64*
+()
+{
+If (data == Null || out == Null || (width != 1 && width != 2 && width != 4 && width != 8) || n < width || (bigEndian != 0 && bigEndian != 1)) { Return -1; }
+x : U64 = 0; i : I32 = 0;
+While (i < width) { index : I32 = i; If (bigEndian == 1) { index=width-1-i; } x |= (U64)data[index] << (i*8); i++; }
+*out=x; Return 0;
+}
+I32
+Write
+value : U64
+width : I32
+bigEndian : I32
+out : Uchar*
+capacity : I64
+()
+{
+If (out == Null || (width != 1 && width != 2 && width != 4 && width != 8) || capacity < width || (bigEndian != 0 && bigEndian != 1)) { Return -1; }
+If (width < 8 && (value >> (width*8)) != 0) { Return -2; }
+i : I32 = 0; While (i < width) { index : I32 = i; If (bigEndian == 1) { index=width-1-i; } out[index]=(Uchar)(value >> (i*8)); i++; } Return 0;
+}
+
+}
+};

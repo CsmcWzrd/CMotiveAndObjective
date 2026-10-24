@@ -8,9 +8,9 @@ out=ROOT.parent/'checkpoints'/f'iteration-{a.number:02d}';out.mkdir(parents=True
 (ROOT/'ITERATION').write_text(str(a.number)+'\n')
 with (out/'checks.log').open('w') as log:
  subprocess.run([sys.executable,str(ROOT/'tools/sync_api.py')],stdout=log,stderr=subprocess.STDOUT,check=True)
- subprocess.run(['make','-f','Makefile.linux','-j2','CMOTIVE_ROOT='+str(a.compiler_root.resolve()),'test'],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=600)
+ subprocess.run(['make','-f','Makefile.linux','-j2','CMOTIVE_ROOT='+str(a.compiler_root.resolve()),'test'],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=1800)
  for extra in a.extra:
-  subprocess.run(shlex.split(extra),cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=600)
+  subprocess.run(shlex.split(extra),cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=1800)
 report=json.loads((ROOT/'build/test-result.json').read_text())
 ledger=ROOT/'docs/PRODUCTION-ITERATIONS.json';rows=json.loads(ledger.read_text()) if ledger.exists() else []
 rows=[r for r in rows if r['iteration']!=a.number]

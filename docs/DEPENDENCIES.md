@@ -1,4 +1,4 @@
-# Dependency policy — iteration 23
+# Dependency policy — iteration 43
 
 The maintained library permits self-contained algorithms and OS-provided
 facilities. Third-party library wrappers are excluded. Existing STL/container
@@ -7,7 +7,7 @@ implementations remain part of the library and its regression suite.
 ## Included and retained
 
 All 149 original public methods and 21 classes are retained. The current core
-has 199 public methods in 27 classes, including
+has 227 public methods in 36 classes, including
 ArrayVectorI64, BinaryHeapI64, SListI64, DListI64, RedBlackTreeI64, SortedMapI64,
 QueueI64 and AlgorithmsI64. Their algorithms remain CMotive implementations;
 no C++ STL library or compiler built-in container wrapper implements them.
@@ -46,8 +46,7 @@ OS sockets alone provide HTTP/TLS semantics.
 The pinned CMotive 0.3.0 frontend emits a large generic prelude and includes all
 of runtime.c even for this algorithm-only core. tools/emit_core.py replaces that
 unused prelude with standard type/allocation declarations and the original two
-allocation definitions copied verbatim from the pinned compiler runtime. Every
-generated class body remains byte-for-byte unchanged. Exact prelude and runtime
+allocation definitions copied verbatim from the pinned compiler runtime. Class algorithm bodies remain unchanged. Unused empty PublicData helper structs receive a byte member for ISO C11 compatibility. Exact prelude and runtime
 hashes, allowed generated calls and unexpected directives are checked before
 writing the output. A changed compiler fails closed and needs a reviewed profile.
 
@@ -64,7 +63,7 @@ replace the frontend with a native backend, change the legacy dynamic-library
 calling convention, or connect the standalone assembly convention to class calls.
 CMotive application builds using the unmodified compiler directly still include
 its ordinary OS runtime; the minimal profile applies to this shared library.
-Windows and macOS core builds and their OS-runtime import sets remain unverified.
+Windows and macOS core builds now have cross-build audits: PE imports OS Kernel32/UCRT, Mach-O imports libSystem. Native OS execution is still outstanding.
 
 ## Release gates
 
@@ -91,5 +90,5 @@ platforms remain outstanding; see PORTING-STATUS.md and VERIFICATION.md.
 
 The expanded hash/set/multimap/stack, Unicode and integer-conversion algorithms
 are self-contained CMotive implementations as well. Current Linux ELF audits
-also require the correct architecture, SONAME and exact 253-symbol public ABI.
+also require the correct architecture, SONAME and exact 299-symbol public ABI.
 Behavioral reports bind the exact test sources and exercised method names.

@@ -630,6 +630,74 @@
     ]
   },
   {
+    "cls": "Base64Url",
+    "name": "EncodedLength",
+    "returns": "I64",
+    "params": [
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Base64Url",
+    "name": "Value",
+    "returns": "I32",
+    "params": [
+      [
+        "c",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Base64Url",
+    "name": "Encode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Base64Url",
+    "name": "Decode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
     "cls": "BinaryHeapI64",
     "name": "Bind",
     "returns": "I32",
@@ -782,6 +850,83 @@
       [
         "x",
         "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "ByteStrings",
+    "name": "TrimAscii",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "start",
+        "I64*"
+      ],
+      [
+        "length",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "ByteStrings",
+    "name": "SplitNext",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "delimiter",
+        "Uchar"
+      ],
+      [
+        "cursor",
+        "I64*"
+      ],
+      [
+        "start",
+        "I64*"
+      ],
+      [
+        "length",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "ByteStrings",
+    "name": "SubstituteByte",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "oldByte",
+        "Uchar"
+      ],
+      [
+        "newByte",
+        "Uchar"
       ]
     ]
   },
@@ -1006,6 +1151,70 @@
       [
         "previous",
         "U32"
+      ]
+    ]
+  },
+  {
+    "cls": "Checksums",
+    "name": "Crc64ECMA",
+    "returns": "U64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Checksums",
+    "name": "Crc64ISO",
+    "returns": "U64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Csv",
+    "name": "Bind",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Csv",
+    "name": "Next",
+    "returns": "I64",
+    "params": [
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ],
+      [
+        "rowEnd",
+        "I32*"
       ]
     ]
   },
@@ -1242,6 +1451,60 @@
       [
         "day",
         "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Endian",
+    "name": "Read",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "width",
+        "I32"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ],
+      [
+        "out",
+        "U64*"
+      ]
+    ]
+  },
+  {
+    "cls": "Endian",
+    "name": "Write",
+    "returns": "I32",
+    "params": [
+      [
+        "value",
+        "U64"
+      ],
+      [
+        "width",
+        "I32"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
       ]
     ]
   },
@@ -1678,6 +1941,129 @@
     ]
   },
   {
+    "cls": "JsonString",
+    "name": "EncodedLength",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "JsonString",
+    "name": "Encode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "JsonString",
+    "name": "Decode",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "JsonTokens",
+    "name": "Validate",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "work",
+        "I32*"
+      ],
+      [
+        "depth",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "JsonTokens",
+    "name": "Tokenize",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "types",
+        "I32*"
+      ],
+      [
+        "starts",
+        "I64*"
+      ],
+      [
+        "lengths",
+        "I64*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ],
+      [
+        "work",
+        "I32*"
+      ],
+      [
+        "depth",
+        "I64"
+      ]
+    ]
+  },
+  {
     "cls": "MultiMapI64",
     "name": "Bind",
     "returns": "I32",
@@ -1806,6 +2192,42 @@
     "name": "Clear",
     "returns": "Void",
     "params": []
+  },
+  {
+    "cls": "Pcg32",
+    "name": "Seed",
+    "returns": "Void",
+    "params": [
+      [
+        "seed",
+        "U64"
+      ],
+      [
+        "stream",
+        "U64"
+      ]
+    ]
+  },
+  {
+    "cls": "Pcg32",
+    "name": "Next",
+    "returns": "U32",
+    "params": []
+  },
+  {
+    "cls": "Pcg32",
+    "name": "Bounded",
+    "returns": "I32",
+    "params": [
+      [
+        "bound",
+        "U32"
+      ],
+      [
+        "out",
+        "U32*"
+      ]
+    ]
   },
   {
     "cls": "QueueI64",
@@ -2449,6 +2871,71 @@
     ]
   },
   {
+    "cls": "Utf32",
+    "name": "DecodeFirst",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ],
+      [
+        "consumed",
+        "I32*"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf32",
+    "name": "Count",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf32",
+    "name": "Encode",
+    "returns": "I32",
+    "params": [
+      [
+        "cp",
+        "U32"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ]
+    ]
+  },
+  {
     "cls": "Utf8",
     "name": "DecodeFirst",
     "returns": "I32",
@@ -2650,6 +3137,90 @@
       [
         "n",
         "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "VarInt",
+    "name": "EncodeU64",
+    "returns": "I32",
+    "params": [
+      [
+        "value",
+        "U64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "VarInt",
+    "name": "DecodeU64",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "U64*"
+      ],
+      [
+        "consumed",
+        "I32*"
+      ]
+    ]
+  },
+  {
+    "cls": "VarInt",
+    "name": "EncodeI64",
+    "returns": "I32",
+    "params": [
+      [
+        "value",
+        "I64"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "VarInt",
+    "name": "DecodeI64",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ],
+      [
+        "consumed",
+        "I32*"
       ]
     ]
   }

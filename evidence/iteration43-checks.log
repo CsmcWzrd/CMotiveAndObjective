@@ -1,0 +1,1224 @@
+API updated: 36 classes, 227 methods
+python3 tools/emit_core.py --compiler "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" --compiler-root "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost" --output "build/CMotiveAndObjective.c"
+"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" -I "/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/include" tests/smoke.CMOT -o "build/cmotive-smoke"
+python3 tests/check_metadata.py
+API checked: 36 classes, 227 methods
+Metadata: PASS; 84 original signatures retained; 227 current methods; 174 upstream files verified
+Dependency policy: PASS; all 149 iteration-2 methods and STL classes retained
+cc -O2 -std=c11 -I"build" "tests/guard_pages.c" -o "build/guard_pages" 
+"build/cmotive-smoke"
+cc -O2 -std=c11 -I"build" "tests/unicode_exhaustive.c" -o "build/unicode_exhaustive" 
+cc -O2 -std=c11 -fPIC -shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so -Wl,--version-script=build-support/exports.map -fstack-protector-strong -Wl,--no-undefined,-z,relro,-z,now,-z,noexecstack "build/CMotiveAndObjective.c" -o "build/libCMotiveAndObjective-1.0.0.so" 
+cc -O2 -std=c11 -I"build" "tests/rb_invariants.c" -o "build/rb_invariants" 
+"build/guard_pages"
+Hardware guard pages: PASS; 3630 checks
+"build/unicode_exhaustive"
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+cc -O2 -std=c11 -Iinclude "tests/abi_smoke.c" "build/libCMotiveAndObjective-1.0.0.so" -Wl,-rpath,'$ORIGIN' -o "build/abi_smoke" 
+"build/abi_smoke"
+C ABI and memory-boundary stress: PASS
+"build/rb_invariants"
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+python3 tests/test_core.py "build/libCMotiveAndObjective-1.0.0.so" "build/test-result.json"
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "b3f59d728b4e5769d71b35e4ff694b52b1e327d406b66b5eb37e345fa7bf50d2", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+python3 tests/test_release_gates.py "build/libCMotiveAndObjective-1.0.0.so" "build/test-result.json"
+Test report gates: PASS; 8 invalid/stale/incomplete reports rejected
+python3 tests/check_dependencies.py "build/libCMotiveAndObjective-1.0.0.so" --report "build/dependency-report.json"
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "library_sha256": "b3f59d728b4e5769d71b35e4ff694b52b1e327d406b66b5eb37e345fa7bf50d2",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "memset": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "memmove": "GLOBAL",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "abi_exports": 299,
+  "elf_target": "linux-x86_64",
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
+}
+python3 tests/test_runtime_profile.py "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost"
+Runtime profile: PASS; class bodies unchanged; STL retained; 15 negative cases rejected
+make -f build-support/GNUmakefile.mk BUILD=build-sanitize CFLAGS='-O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer' LDFLAGS='-fsanitize=address,undefined' build-sanitize/abi_smoke build-sanitize/rb_invariants build-sanitize/guard_pages build-sanitize/unicode_exhaustive
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/CMotiveAndObjective'
+python3 tools/emit_core.py --compiler "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" --compiler-root "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost" --output "build-sanitize/CMotiveAndObjective.c"
+cc -O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer -fPIC -shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so -Wl,--version-script=build-support/exports.map -fstack-protector-strong -Wl,--no-undefined,-z,relro,-z,now,-z,noexecstack "build-sanitize/CMotiveAndObjective.c" -o "build-sanitize/libCMotiveAndObjective-1.0.0.so" -fsanitize=address,undefined
+cc -O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude "tests/abi_smoke.c" "build-sanitize/libCMotiveAndObjective-1.0.0.so" -Wl,-rpath,'$ORIGIN' -o "build-sanitize/abi_smoke" -fsanitize=address,undefined
+cc -O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer -I"build-sanitize" "tests/rb_invariants.c" -o "build-sanitize/rb_invariants" -fsanitize=address,undefined
+cc -O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer -I"build-sanitize" "tests/guard_pages.c" -o "build-sanitize/guard_pages" -fsanitize=address,undefined
+cc -O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer -I"build-sanitize" "tests/unicode_exhaustive.c" -o "build-sanitize/unicode_exhaustive" -fsanitize=address,undefined
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/CMotiveAndObjective'
+ASAN_OPTIONS='detect_leaks=0' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/abi_smoke
+C ABI and memory-boundary stress: PASS
+ASAN_OPTIONS='detect_leaks=0' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/rb_invariants
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+ASAN_OPTIONS='detect_leaks=0' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/guard_pages
+Hardware guard pages: PASS; 3630 checks
+ASAN_OPTIONS='detect_leaks=0' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/unicode_exhaustive
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+python3 tools/run_sanitized.py "/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build-sanitize/libCMotiveAndObjective-1.0.0.so"
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "dbdec56ec454645409a3bad724531f2dadfa7f522b7e6e618a2680840847406f", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+{"standalone_headers": 43, "abi_exports": 299, "global_cleanup_push_calls": 0, "status": "PASS"}
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "839dfca378647eb2c4242fd6d1783e40e5f36518536d4d1d654a7ed3827b4f0e", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "library_sha256": "839dfca378647eb2c4242fd6d1783e40e5f36518536d4d1d654a7ed3827b4f0e",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "memset": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "abi_exports": 299,
+  "elf_target": "linux-x86_64",
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
+}
+C ABI and memory-boundary stress: PASS
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+Hardware guard pages: PASS; 3630 checks
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+Optimization O0: PASS
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "b3f59d728b4e5769d71b35e4ff694b52b1e327d406b66b5eb37e345fa7bf50d2", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "library_sha256": "b3f59d728b4e5769d71b35e4ff694b52b1e327d406b66b5eb37e345fa7bf50d2",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "memset": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "memmove": "GLOBAL",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "abi_exports": 299,
+  "elf_target": "linux-x86_64",
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
+}
+C ABI and memory-boundary stress: PASS
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+Hardware guard pages: PASS; 3630 checks
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+Optimization O2: PASS
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "2dde16488951032b73cc40eba68ba90a3dae735ca1730d838c5666845d25cfd7", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "library_sha256": "2dde16488951032b73cc40eba68ba90a3dae735ca1730d838c5666845d25cfd7",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "memset": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "memmove": "GLOBAL",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "abi_exports": 299,
+  "elf_target": "linux-x86_64",
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
+}
+C ABI and memory-boundary stress: PASS
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+Hardware guard pages: PASS; 3630 checks
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+Optimization O3: PASS
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "6848f4fd1b4f21eeb05acf4dea21c1b6a68df7ca172eb4b81fbf9c10487ec450", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "library_sha256": "6848f4fd1b4f21eeb05acf4dea21c1b6a68df7ca172eb4b81fbf9c10487ec450",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "abi_exports": 299,
+  "elf_target": "linux-x86_64",
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
+}
+C ABI and memory-boundary stress: PASS
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+Hardware guard pages: PASS; 3630 checks
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+Optimization Os: PASS
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python3: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 (found version "3.12.14") found components: Interpreter
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (0.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/cmake
+[ 14%] Generating CMotiveAndObjective.c
+[ 14%] Generating cmotive-smoke.c
+[ 21%] Building C object CMakeFiles/cmo_source_test.dir/cmotive-smoke.c.o
+[ 28%] Building C object CMakeFiles/CMotiveAndObjective.dir/CMotiveAndObjective.c.o
+[ 35%] Linking C shared library libCMotiveAndObjective-1.0.0.so
+[ 35%] Built target CMotiveAndObjective
+[ 42%] Building C object CMakeFiles/cmo_abi_test.dir/tests/abi_smoke.c.o
+[ 50%] Linking C executable cmo_abi_test
+[ 50%] Built target cmo_abi_test
+[ 57%] Building C object CMakeFiles/cmo_rb_invariants.dir/tests/rb_invariants.c.o
+[ 64%] Linking C executable cmo_source_test
+[ 64%] Built target cmo_source_test
+[ 71%] Building C object CMakeFiles/cmo_unicode_exhaustive.dir/tests/unicode_exhaustive.c.o
+[ 78%] Linking C executable cmo_unicode_exhaustive
+[ 78%] Built target cmo_unicode_exhaustive
+[ 85%] Building C object CMakeFiles/cmo_guard_pages.dir/tests/guard_pages.c.o
+[ 92%] Linking C executable cmo_rb_invariants
+[ 92%] Built target cmo_rb_invariants
+[100%] Linking C executable cmo_guard_pages
+[100%] Built target cmo_guard_pages
+Test project /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/cmake
+      Start  1: abi
+ 1/10 Test  #1: abi ..............................   Passed    0.01 sec
+      Start  2: guard_pages
+ 2/10 Test  #2: guard_pages ......................   Passed    0.00 sec
+      Start  3: unicode_exhaustive
+ 3/10 Test  #3: unicode_exhaustive ...............   Passed    0.04 sec
+      Start  4: rb_invariants
+ 4/10 Test  #4: rb_invariants ....................   Passed    0.19 sec
+      Start  5: cmotive_source
+ 5/10 Test  #5: cmotive_source ...................   Passed    0.00 sec
+      Start  6: core
+ 6/10 Test  #6: core .............................   Passed    5.13 sec
+      Start  7: dependencies
+ 7/10 Test  #7: dependencies .....................   Passed    0.04 sec
+      Start  8: runtime_profile
+ 8/10 Test  #8: runtime_profile ..................   Passed    0.42 sec
+      Start  9: release_reports
+ 9/10 Test  #9: release_reports ..................   Passed    0.07 sec
+      Start 10: metadata
+10/10 Test #10: metadata .........................   Passed    0.11 sec
+
+100% tests passed out of 10
+
+Total Test time (real) =   6.02 sec
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/lib/libCMotiveAndObjective-1.0.0.so
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective.h
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/CheckedInt.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/ByteStrings.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Sha256.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/HashMapI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/IntegerMath.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/StackI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/SortedMapI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/MultiMapI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/IntegerText.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Utf8.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/RedBlackTreeI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Pcg32.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Checksums.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/JsonString.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Date.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/SListI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/QueueI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/DListI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Base64Url.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Uuid.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Endian.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Base64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/JsonTokens.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Utf32.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/BinaryHeapI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Csv.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Utf16.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Uri.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Hex.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal/JsonLex.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal/JsonOps.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal/HashOps.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal/DLNode.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal/SLNode.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal/RBTreeOps.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Internal/RBNode.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Ascii.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/VarInt.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/HashSetI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/BitManip.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/ArrayVectorI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/Bytes.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/include/CMotiveAndObjective/AlgorithmsI64.HMOT
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/LICENSE_1_0.txt
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/CMotive-LICENSE-MIT.txt
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/API-EXTENSIONS.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/API-SIGNATURES.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/API.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/COMPONENTS.json
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/DEPENDENCIES.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/NATIVE-QUALIFICATION.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/PHOBOS-MODULES.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/PORTING-STATUS.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/PRODUCTION-ITERATIONS.json
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/PRODUCTION-ITERATIONS.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/PRODUCTION-READINESS.json
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/REMAINING-PHOBOS.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/RESTORED-APIS.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/STL-COVERAGE.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/VERIFICATION.md
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/share/doc/CMotiveAndObjective/phobos-inventory.json
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveTargets.cmake
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveTargets-release.cmake
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveConfig.cmake
+-- Installing: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-cmake/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveConfigVersion.cmake
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/consumer
+[ 50%] Building C object CMakeFiles/cmo_installed_consumer.dir/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/tests/abi_smoke.c.o
+[100%] Linking C executable cmo_installed_consumer
+[100%] Built target cmo_installed_consumer
+Test project /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/consumer
+    Start 1: installed_abi
+1/1 Test #1: installed_abi ....................   Passed    0.01 sec
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.01 sec
+configure.ac:4: installing './compile'
+configure.ac:14: installing './config.guess'
+configure.ac:14: installing './config.sub'
+configure.ac:3: installing './install-sh'
+configure.ac:3: installing './missing'
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... none
+checking for python3... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: executing depfiles commands
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tools/emit_core.py" --compiler "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" --compiler-root "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost" --output "CMotiveAndObjective.c"
+make  check-am
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+gcc -g -O2 -std=c11 -fPIC -shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so -Wl,--version-script=/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/build-support/exports.map -fstack-protector-strong -Wl,--no-undefined,-z,relro,-z,now,-z,noexecstack CMotiveAndObjective.c -o libCMotiveAndObjective-1.0.0.so 
+make  check-local
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/abi_smoke.c" ./libCMotiveAndObjective-1.0.0.so -Wl,-rpath,"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build" -o abi_smoke 
+./abi_smoke
+C ABI and memory-boundary stress: PASS
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/rb_invariants.c" -o rb_invariants 
+./rb_invariants
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/unicode_exhaustive.c" -o unicode_exhaustive 
+./unicode_exhaustive
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+if test "so" = so; then set -e; gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/guard_pages.c" -o guard_pages ; ./guard_pages; fi
+Hardware guard pages: PASS; 3630 checks
+"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" -I "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include" --emit-c "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/smoke.CMOT" -o cmotive-smoke.c
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/lib/Sys" cmotive-smoke.c -o cmotive-smoke  -pthread -lm
+./cmotive-smoke
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/test_core.py" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/libCMotiveAndObjective-1.0.0.so" test-result.json
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/phobos_cases.py:125: SyntaxWarning: invalid escape sequence '\u'
+  for literal in [b'',b'"',b'"\uD800"',b'"\uDC00"',b'"\uD800\u0041"',b'"\x00"',b'"\q"',b'"a"x',b'"\xff"']:
+/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/phobos_cases.py:125: SyntaxWarning: invalid escape sequence '\u'
+  for literal in [b'',b'"',b'"\uD800"',b'"\uDC00"',b'"\uD800\u0041"',b'"\x00"',b'"\q"',b'"a"x',b'"\xff"']:
+/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/phobos_cases.py:125: SyntaxWarning: invalid escape sequence '\u'
+  for literal in [b'',b'"',b'"\uD800"',b'"\uDC00"',b'"\uD800\u0041"',b'"\x00"',b'"\q"',b'"a"x',b'"\xff"']:
+/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/phobos_cases.py:125: SyntaxWarning: invalid escape sequence '\q'
+  for literal in [b'',b'"',b'"\uD800"',b'"\uDC00"',b'"\uD800\u0041"',b'"\x00"',b'"\q"',b'"a"x',b'"\xff"']:
+/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/phobos_cases.py:148: SyntaxWarning: invalid escape sequence '\u'
+  for data in [b'',b'01',b'1.',b'1e+',b'+1',b'[1,]',b'{"a":}',b'{1:2}',b'{}[]',b'"\uD800"',b'[',b'{"x":1,}',b'NaN',b'truefalse',b'\xff']:
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "099fc9fd21421d99c22d3f4017a1e4176528ea74d5379ef146826b33c0251218", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/test_release_gates.py" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/libCMotiveAndObjective-1.0.0.so" test-result.json
+Test report gates: PASS; 8 invalid/stale/incomplete reports rejected
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/check_metadata.py"
+API checked: 36 classes, 227 methods
+Metadata: PASS; 84 original signatures retained; 227 current methods; 174 upstream files verified
+Dependency policy: PASS; all 149 iteration-2 methods and STL classes retained
+if test "so" = so; then set -e; /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/check_dependencies.py" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/libCMotiveAndObjective-1.0.0.so" --report dependency-report.json; /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/tests/test_runtime_profile.py" "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost"; fi
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "library_sha256": "099fc9fd21421d99c22d3f4017a1e4176528ea74d5379ef146826b33c0251218",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "memset": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "memmove": "GLOBAL",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "abi_exports": 299,
+  "elf_target": "linux-x86_64",
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
+}
+Runtime profile: PASS; class bodies unchanged; STL retained; 15 negative cases rejected
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+make  install-am
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/include/CMotiveAndObjective'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/AlgorithmsI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/ArrayVectorI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Ascii.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Base64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Base64Url.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/BinaryHeapI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/BitManip.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/ByteStrings.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Bytes.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/CheckedInt.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Checksums.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Csv.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/DListI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Date.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Endian.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/HashMapI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/HashSetI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Hex.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/IntegerMath.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/IntegerText.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/JsonString.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/JsonTokens.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/MultiMapI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Pcg32.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/QueueI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/RedBlackTreeI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/SListI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Sha256.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/SortedMapI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/StackI64.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Uri.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Utf16.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Utf32.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Utf8.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Uuid.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/VarInt.HMOT '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/include/CMotiveAndObjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/include/CMotiveAndObjective/Internal'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Internal/DLNode.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Internal/HashOps.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Internal/JsonLex.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Internal/JsonOps.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Internal/RBNode.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Internal/RBTreeOps.HMOT /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective/Internal/SLNode.HMOT '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/include/CMotiveAndObjective/Internal'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/lib'
+ /usr/bin/install -c -m 644 libCMotiveAndObjective-1.0.0.so '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/lib'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/share/doc/cmotiveandobjective'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/toolchain/CMotive-LICENSE-MIT.txt /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/API.md /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/API-SIGNATURES.md /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/STL-COVERAGE.md /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/PORTING-STATUS.md /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/VERIFICATION.md /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/DEPENDENCIES.md /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/API-EXTENSIONS.md /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/docs/PRODUCTION-ITERATIONS.md '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/share/doc/cmotiveandobjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/include'
+ /usr/bin/install -c -m 644 /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/include/CMotiveAndObjective.h '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/installed-autotools/include'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+make  dist-gzip am__post_remove_distdir='@:'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+make  distdir-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+test -d "cmotiveandobjective-1.0.0" || mkdir "cmotiveandobjective-1.0.0"
+test -n "" \
+|| find "cmotiveandobjective-1.0.0" -type d ! -perm -755 \
+	-exec chmod u+rwx,go+rx {} \; -o \
+  ! -type d ! -perm -444 -links 1 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -400 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -444 -exec /bin/bash /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-source/install-sh -c -m a+r {} {} \; \
+|| chmod -R a+r "cmotiveandobjective-1.0.0"
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+tardir=cmotiveandobjective-1.0.0 && ${TAR-tar} chof - "$tardir" | eval GZIP= gzip --best -c >cmotiveandobjective-1.0.0.tar.gz
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+case 'cmotiveandobjective-1.0.0.tar.gz' in \
+*.tar.gz*) \
+  eval GZIP= gzip --best -dc cmotiveandobjective-1.0.0.tar.gz | ${TAR-tar} xf - ;;\
+*.tar.bz2*) \
+  bzip2 -dc cmotiveandobjective-1.0.0.tar.bz2 | ${TAR-tar} xf - ;;\
+*.tar.lz*) \
+  lzip -dc cmotiveandobjective-1.0.0.tar.lz | ${TAR-tar} xf - ;;\
+*.tar.xz*) \
+  xz -dc cmotiveandobjective-1.0.0.tar.xz | ${TAR-tar} xf - ;;\
+*.tar.Z*) \
+  uncompress -c cmotiveandobjective-1.0.0.tar.Z | ${TAR-tar} xf - ;;\
+*.shar.gz*) \
+  eval GZIP= gzip --best -dc cmotiveandobjective-1.0.0.shar.gz | unshar ;;\
+*.zip*) \
+  unzip cmotiveandobjective-1.0.0.zip ;;\
+*.tar.zst*) \
+  zstd -dc cmotiveandobjective-1.0.0.tar.zst | ${TAR-tar} xf - ;;\
+esac
+chmod -R a-w cmotiveandobjective-1.0.0
+chmod u+w cmotiveandobjective-1.0.0
+mkdir cmotiveandobjective-1.0.0/_build cmotiveandobjective-1.0.0/_build/sub cmotiveandobjective-1.0.0/_inst
+chmod a-w cmotiveandobjective-1.0.0
+test -d cmotiveandobjective-1.0.0/_build || exit 0; \
+dc_install_base=`CDPATH="${ZSH_VERSION+.}:" && cd cmotiveandobjective-1.0.0/_inst && pwd | sed -e 's,^[^:\\/]:[\\/],/,'` \
+  && dc_destdir="${TMPDIR-/tmp}/am-dc-$$/" \
+  && am__cwd=`pwd` \
+  && CDPATH="${ZSH_VERSION+.}:" && cd cmotiveandobjective-1.0.0/_build/sub \
+  && ../../configure \
+     \
+     \
+    --srcdir=../.. --prefix="$dc_install_base" \
+  && make  \
+  && make  dvi \
+  && make  check \
+  && make  install \
+  && make  installcheck \
+  && make  uninstall \
+  && make  distuninstallcheck_dir="$dc_install_base" \
+        distuninstallcheck \
+  && chmod -R a-w "$dc_install_base" \
+  && ({ \
+       (cd ../.. && umask 077 && mkdir "$dc_destdir") \
+       && make  DESTDIR="$dc_destdir" install \
+       && make  DESTDIR="$dc_destdir" uninstall \
+       && make  DESTDIR="$dc_destdir" \
+            distuninstallcheck_dir="$dc_destdir" distuninstallcheck; \
+      } || { rm -rf "$dc_destdir"; exit 1; }) \
+  && rm -rf "$dc_destdir" \
+  && make  dist \
+  && rm -rf cmotiveandobjective-1.0.0.tar.gz \
+  && make  distcleancheck \
+  && cd "$am__cwd" \
+  || exit 1
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... none
+checking for python3... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: executing depfiles commands
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tools/emit_core.py" --compiler "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" --compiler-root "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost" --output "CMotiveAndObjective.c"
+make  all-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+gcc -g -O2 -std=c11 -fPIC -shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so -Wl,--version-script=../../build-support/exports.map -fstack-protector-strong -Wl,--no-undefined,-z,relro,-z,now,-z,noexecstack CMotiveAndObjective.c -o libCMotiveAndObjective-1.0.0.so 
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Nothing to be done for 'dvi'.
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  check-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  check-local
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../include" "../../tests/abi_smoke.c" ./libCMotiveAndObjective-1.0.0.so -Wl,-rpath,"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub" -o abi_smoke 
+./abi_smoke
+C ABI and memory-boundary stress: PASS
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub" "../../tests/rb_invariants.c" -o rb_invariants 
+./rb_invariants
+Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub" "../../tests/unicode_exhaustive.c" -o unicode_exhaustive 
+./unicode_exhaustive
+Exhaustive Unicode: PASS; 1112064 scalars; 23365381 checks
+if test "so" = so; then set -e; gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub" "../../tests/guard_pages.c" -o guard_pages ; ./guard_pages; fi
+Hardware guard pages: PASS; 3630 checks
+"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" -I "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../include" --emit-c "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub/../../tests/smoke.CMOT" -o cmotive-smoke.c
+gcc -g -O2 -std=c11 -I"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/lib/Sys" cmotive-smoke.c -o cmotive-smoke  -pthread -lm
+./cmotive-smoke
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tests/test_core.py" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub/libCMotiveAndObjective-1.0.0.so" test-result.json
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "864efd792241ba94926cf0ed7fe2435118fb573b072aeb2ea0ef4bd60ed81203", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tests/test_release_gates.py" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub/libCMotiveAndObjective-1.0.0.so" test-result.json
+Test report gates: PASS; 8 invalid/stale/incomplete reports rejected
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tests/check_metadata.py"
+API checked: 36 classes, 227 methods
+Metadata: PASS; 84 original signatures retained; 227 current methods; 174 upstream files verified
+Dependency policy: PASS; all 149 iteration-2 methods and STL classes retained
+if test "so" = so; then set -e; /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tests/check_dependencies.py" "/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub/libCMotiveAndObjective-1.0.0.so" --report dependency-report.json; /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 "../../tests/test_runtime_profile.py" "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost"; fi
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "library_sha256": "864efd792241ba94926cf0ed7fe2435118fb573b072aeb2ea0ef4bd60ed81203",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "memset": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "memmove": "GLOBAL",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "abi_exports": 299,
+  "elf_target": "linux-x86_64",
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
+}
+Runtime profile: PASS; class bodies unchanged; STL retained; 15 negative cases rejected
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  install-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/AlgorithmsI64.HMOT ../../include/CMotiveAndObjective/ArrayVectorI64.HMOT ../../include/CMotiveAndObjective/Ascii.HMOT ../../include/CMotiveAndObjective/Base64.HMOT ../../include/CMotiveAndObjective/Base64Url.HMOT ../../include/CMotiveAndObjective/BinaryHeapI64.HMOT ../../include/CMotiveAndObjective/BitManip.HMOT ../../include/CMotiveAndObjective/ByteStrings.HMOT ../../include/CMotiveAndObjective/Bytes.HMOT ../../include/CMotiveAndObjective/CheckedInt.HMOT ../../include/CMotiveAndObjective/Checksums.HMOT ../../include/CMotiveAndObjective/Csv.HMOT ../../include/CMotiveAndObjective/DListI64.HMOT ../../include/CMotiveAndObjective/Date.HMOT ../../include/CMotiveAndObjective/Endian.HMOT ../../include/CMotiveAndObjective/HashMapI64.HMOT ../../include/CMotiveAndObjective/HashSetI64.HMOT ../../include/CMotiveAndObjective/Hex.HMOT ../../include/CMotiveAndObjective/IntegerMath.HMOT ../../include/CMotiveAndObjective/IntegerText.HMOT ../../include/CMotiveAndObjective/JsonString.HMOT ../../include/CMotiveAndObjective/JsonTokens.HMOT ../../include/CMotiveAndObjective/MultiMapI64.HMOT ../../include/CMotiveAndObjective/Pcg32.HMOT ../../include/CMotiveAndObjective/QueueI64.HMOT ../../include/CMotiveAndObjective/RedBlackTreeI64.HMOT ../../include/CMotiveAndObjective/SListI64.HMOT ../../include/CMotiveAndObjective/Sha256.HMOT ../../include/CMotiveAndObjective/SortedMapI64.HMOT ../../include/CMotiveAndObjective/StackI64.HMOT ../../include/CMotiveAndObjective/Uri.HMOT ../../include/CMotiveAndObjective/Utf16.HMOT ../../include/CMotiveAndObjective/Utf32.HMOT ../../include/CMotiveAndObjective/Utf8.HMOT ../../include/CMotiveAndObjective/Uuid.HMOT ../../include/CMotiveAndObjective/VarInt.HMOT '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/Internal/DLNode.HMOT ../../include/CMotiveAndObjective/Internal/HashOps.HMOT ../../include/CMotiveAndObjective/Internal/JsonLex.HMOT ../../include/CMotiveAndObjective/Internal/JsonOps.HMOT ../../include/CMotiveAndObjective/Internal/RBNode.HMOT ../../include/CMotiveAndObjective/Internal/RBTreeOps.HMOT ../../include/CMotiveAndObjective/Internal/SLNode.HMOT '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/install -c -m 644 libCMotiveAndObjective-1.0.0.so '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/install -c -m 644 ../../toolchain/CMotive-LICENSE-MIT.txt ../../docs/API.md ../../docs/API-SIGNATURES.md ../../docs/STL-COVERAGE.md ../../docs/PORTING-STATUS.md ../../docs/VERIFICATION.md ../../docs/DEPENDENCIES.md ../../docs/API-EXTENSIONS.md ../../docs/PRODUCTION-ITERATIONS.md '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/mkdir -p '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective.h '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Nothing to be done for 'installcheck'.
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+ ( cd '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective' && rm -f AlgorithmsI64.HMOT ArrayVectorI64.HMOT Ascii.HMOT Base64.HMOT Base64Url.HMOT BinaryHeapI64.HMOT BitManip.HMOT ByteStrings.HMOT Bytes.HMOT CheckedInt.HMOT Checksums.HMOT Csv.HMOT DListI64.HMOT Date.HMOT Endian.HMOT HashMapI64.HMOT HashSetI64.HMOT Hex.HMOT IntegerMath.HMOT IntegerText.HMOT JsonString.HMOT JsonTokens.HMOT MultiMapI64.HMOT Pcg32.HMOT QueueI64.HMOT RedBlackTreeI64.HMOT SListI64.HMOT Sha256.HMOT SortedMapI64.HMOT StackI64.HMOT Uri.HMOT Utf16.HMOT Utf32.HMOT Utf8.HMOT Uuid.HMOT VarInt.HMOT )
+ ( cd '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal' && rm -f DLNode.HMOT HashOps.HMOT JsonLex.HMOT JsonOps.HMOT RBNode.HMOT RBTreeOps.HMOT SLNode.HMOT )
+ ( cd '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/lib' && rm -f libCMotiveAndObjective-1.0.0.so )
+ ( cd '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective' && rm -f CMotive-LICENSE-MIT.txt API.md API-SIGNATURES.md STL-COVERAGE.md PORTING-STATUS.md VERIFICATION.md DEPENDENCIES.md API-EXTENSIONS.md PRODUCTION-ITERATIONS.md )
+ ( cd '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include' && rm -f CMotiveAndObjective.h )
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  install-am
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/AlgorithmsI64.HMOT ../../include/CMotiveAndObjective/ArrayVectorI64.HMOT ../../include/CMotiveAndObjective/Ascii.HMOT ../../include/CMotiveAndObjective/Base64.HMOT ../../include/CMotiveAndObjective/Base64Url.HMOT ../../include/CMotiveAndObjective/BinaryHeapI64.HMOT ../../include/CMotiveAndObjective/BitManip.HMOT ../../include/CMotiveAndObjective/ByteStrings.HMOT ../../include/CMotiveAndObjective/Bytes.HMOT ../../include/CMotiveAndObjective/CheckedInt.HMOT ../../include/CMotiveAndObjective/Checksums.HMOT ../../include/CMotiveAndObjective/Csv.HMOT ../../include/CMotiveAndObjective/DListI64.HMOT ../../include/CMotiveAndObjective/Date.HMOT ../../include/CMotiveAndObjective/Endian.HMOT ../../include/CMotiveAndObjective/HashMapI64.HMOT ../../include/CMotiveAndObjective/HashSetI64.HMOT ../../include/CMotiveAndObjective/Hex.HMOT ../../include/CMotiveAndObjective/IntegerMath.HMOT ../../include/CMotiveAndObjective/IntegerText.HMOT ../../include/CMotiveAndObjective/JsonString.HMOT ../../include/CMotiveAndObjective/JsonTokens.HMOT ../../include/CMotiveAndObjective/MultiMapI64.HMOT ../../include/CMotiveAndObjective/Pcg32.HMOT ../../include/CMotiveAndObjective/QueueI64.HMOT ../../include/CMotiveAndObjective/RedBlackTreeI64.HMOT ../../include/CMotiveAndObjective/SListI64.HMOT ../../include/CMotiveAndObjective/Sha256.HMOT ../../include/CMotiveAndObjective/SortedMapI64.HMOT ../../include/CMotiveAndObjective/StackI64.HMOT ../../include/CMotiveAndObjective/Uri.HMOT ../../include/CMotiveAndObjective/Utf16.HMOT ../../include/CMotiveAndObjective/Utf32.HMOT ../../include/CMotiveAndObjective/Utf8.HMOT ../../include/CMotiveAndObjective/Uuid.HMOT ../../include/CMotiveAndObjective/VarInt.HMOT '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective'
+ /usr/bin/mkdir -p '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective/Internal/DLNode.HMOT ../../include/CMotiveAndObjective/Internal/HashOps.HMOT ../../include/CMotiveAndObjective/Internal/JsonLex.HMOT ../../include/CMotiveAndObjective/Internal/JsonOps.HMOT ../../include/CMotiveAndObjective/Internal/RBNode.HMOT ../../include/CMotiveAndObjective/Internal/RBTreeOps.HMOT ../../include/CMotiveAndObjective/Internal/SLNode.HMOT '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal'
+ /usr/bin/mkdir -p '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/install -c -m 644 libCMotiveAndObjective-1.0.0.so '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/lib'
+ /usr/bin/mkdir -p '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/install -c -m 644 ../../toolchain/CMotive-LICENSE-MIT.txt ../../docs/API.md ../../docs/API-SIGNATURES.md ../../docs/STL-COVERAGE.md ../../docs/PORTING-STATUS.md ../../docs/VERIFICATION.md ../../docs/DEPENDENCIES.md ../../docs/API-EXTENSIONS.md ../../docs/PRODUCTION-ITERATIONS.md '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective'
+ /usr/bin/mkdir -p '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+ /usr/bin/install -c -m 644 ../../include/CMotiveAndObjective.h '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include'
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+ ( cd '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective' && rm -f AlgorithmsI64.HMOT ArrayVectorI64.HMOT Ascii.HMOT Base64.HMOT Base64Url.HMOT BinaryHeapI64.HMOT BitManip.HMOT ByteStrings.HMOT Bytes.HMOT CheckedInt.HMOT Checksums.HMOT Csv.HMOT DListI64.HMOT Date.HMOT Endian.HMOT HashMapI64.HMOT HashSetI64.HMOT Hex.HMOT IntegerMath.HMOT IntegerText.HMOT JsonString.HMOT JsonTokens.HMOT MultiMapI64.HMOT Pcg32.HMOT QueueI64.HMOT RedBlackTreeI64.HMOT SListI64.HMOT Sha256.HMOT SortedMapI64.HMOT StackI64.HMOT Uri.HMOT Utf16.HMOT Utf32.HMOT Utf8.HMOT Uuid.HMOT VarInt.HMOT )
+ ( cd '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include/CMotiveAndObjective/Internal' && rm -f DLNode.HMOT HashOps.HMOT JsonLex.HMOT JsonOps.HMOT RBNode.HMOT RBTreeOps.HMOT SLNode.HMOT )
+ ( cd '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/lib' && rm -f libCMotiveAndObjective-1.0.0.so )
+ ( cd '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/share/doc/cmotiveandobjective' && rm -f CMotive-LICENSE-MIT.txt API.md API-SIGNATURES.md STL-COVERAGE.md PORTING-STATUS.md VERIFICATION.md DEPENDENCIES.md API-EXTENSIONS.md PRODUCTION-ITERATIONS.md )
+ ( cd '/tmp/am-dc-2075//workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_inst/include' && rm -f CMotiveAndObjective.h )
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  dist-gzip am__post_remove_distdir='@:'
+make[2]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make  distdir-am
+make[3]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+test -d "cmotiveandobjective-1.0.0" || mkdir "cmotiveandobjective-1.0.0"
+test -n "" \
+|| find "cmotiveandobjective-1.0.0" -type d ! -perm -755 \
+	-exec chmod u+rwx,go+rx {} \; -o \
+  ! -type d ! -perm -444 -links 1 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -400 -exec chmod a+r {} \; -o \
+  ! -type d ! -perm -444 -exec /bin/bash /workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/install-sh -c -m a+r {} {} \; \
+|| chmod -R a+r "cmotiveandobjective-1.0.0"
+make[3]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+tardir=cmotiveandobjective-1.0.0 && ${TAR-tar} chof - "$tardir" | eval GZIP= gzip --best -c >cmotiveandobjective-1.0.0.tar.gz
+make[2]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+make[1]: Entering directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+test -z "guard_pages unicode_exhaustive dependency-report.json CMotiveAndObjective.c cmotive-smoke.c cmotive-smoke libCMotiveAndObjective-1.0.0.so abi_smoke rb_invariants test-result.json" || rm -f guard_pages unicode_exhaustive dependency-report.json CMotiveAndObjective.c cmotive-smoke.c cmotive-smoke libCMotiveAndObjective-1.0.0.so abi_smoke rb_invariants test-result.json
+test -z "" || rm -f 
+test . = "../.." || test -z "" || rm -f 
+rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
+rm -f cscope.out cscope.in.out cscope.po.out cscope.files
+rm -f config.status config.cache config.log configure.lineno config.status.lineno
+rm -f Makefile
+make[1]: Leaving directory '/workspace/scratch/c92ad9de4f15/qualification-builds/iteration-43/autotools-build/cmotiveandobjective-1.0.0/_build/sub'
+if test -d "cmotiveandobjective-1.0.0"; then find "cmotiveandobjective-1.0.0" -type d ! -perm -200 -exec chmod u+w {} ';' && rm -rf "cmotiveandobjective-1.0.0" || { sleep 5 && rm -rf "cmotiveandobjective-1.0.0"; }; else :; fi
+===========================================================
+cmotiveandobjective-1.0.0 archives ready for distribution: 
+cmotiveandobjective-1.0.0.tar.gz
+===========================================================
+{"status": "PASS", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "cmake_ctest": 10, "installed_package_test": 1, "autotools_distcheck": "PASS", "installed_header_consumers": ["cmake", "autotools"], "source_consumer_includes_new_classes": true}
+x86-le: PASS
+x86_64-le: PASS
+arm32-le: PASS
+arm32-be: PASS
+arm64-le: PASS
+arm64-be: PASS
+{"status": "PASS", "assertions": 115733, "targets": 6}
+x86: native execution unavailable (ELF32 kernel support)
+x86_64: native freestanding caller PASS
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+production_hash_map: PASS
+production_hash_set: PASS
+production_multi_map: PASS
+production_stack: PASS
+production_merge_sort: PASS
+production_checked_sum: PASS
+production_utf32_transcode: PASS
+production_utf16: PASS
+production_integer_text: PASS
+production_gregorian_cycle: PASS; 146097 dates
+production_adversarial_hash_collisions: PASS
+production_independent_container_concurrency: PASS; 100872 checks
+production_malformed_codec_fuzz: PASS; 5 seeds and 12500 inputs
+phobos_endian: PASS
+phobos_byte_strings: PASS
+phobos_utf32: PASS
+phobos_crc64: PASS
+phobos_pcg32: PASS
+phobos_csv: PASS
+phobos_json_string: PASS
+phobos_json_tokens: PASS
+phobos_varint: PASS
+phobos_base64url: PASS
+{"api_methods_exercised": 227, "api_methods_total": 227, "assertions": 1505040, "library_sha256": "b3f59d728b4e5769d71b35e4ff694b52b1e327d406b66b5eb37e345fa7bf50d2", "methods_exercised": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "ArrayVectorI64.At", "ArrayVectorI64.Bind", "ArrayVectorI64.Capacity", "ArrayVectorI64.Clear", "ArrayVectorI64.Erase", "ArrayVectorI64.Insert", "ArrayVectorI64.Length", "ArrayVectorI64.PopBack", "ArrayVectorI64.PushBack", "ArrayVectorI64.Set", "ArrayVectorI64.Sort", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BinaryHeapI64.Bind", "BinaryHeapI64.Clear", "BinaryHeapI64.Length", "BinaryHeapI64.Peek", "BinaryHeapI64.Pop", "BinaryHeapI64.Push", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Csv.Bind", "Csv.Next", "DListI64.At", "DListI64.Back", "DListI64.Begin", "DListI64.Clear", "DListI64.Front", "DListI64.Last", "DListI64.Length", "DListI64.Next", "DListI64.PopBack", "DListI64.PopFront", "DListI64.Previous", "DListI64.PushBack", "DListI64.PushFront", "DListI64.Read", "DListI64.RemoveFirst", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "HashMapI64.Bind", "HashMapI64.Capacity", "HashMapI64.Clear", "HashMapI64.Contains", "HashMapI64.Get", "HashMapI64.KeyAt", "HashMapI64.Length", "HashMapI64.NextSlot", "HashMapI64.Put", "HashMapI64.Remove", "HashMapI64.ValueAt", "HashSetI64.Bind", "HashSetI64.Capacity", "HashSetI64.Clear", "HashSetI64.Contains", "HashSetI64.Insert", "HashSetI64.KeyAt", "HashSetI64.Length", "HashSetI64.NextSlot", "HashSetI64.Remove", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "MultiMapI64.Bind", "MultiMapI64.Capacity", "MultiMapI64.Clear", "MultiMapI64.Count", "MultiMapI64.FindNext", "MultiMapI64.Insert", "MultiMapI64.KeyAt", "MultiMapI64.Length", "MultiMapI64.RemoveAll", "MultiMapI64.RemoveOne", "MultiMapI64.ValueAt", "Pcg32.Bounded", "Pcg32.Next", "Pcg32.Seed", "QueueI64.Bind", "QueueI64.Capacity", "QueueI64.Clear", "QueueI64.Front", "QueueI64.Length", "QueueI64.PopFront", "QueueI64.PushBack", "RedBlackTreeI64.Begin", "RedBlackTreeI64.Clear", "RedBlackTreeI64.Contains", "RedBlackTreeI64.Insert", "RedBlackTreeI64.Last", "RedBlackTreeI64.Length", "RedBlackTreeI64.LowerBound", "RedBlackTreeI64.Next", "RedBlackTreeI64.Previous", "RedBlackTreeI64.Read", "RedBlackTreeI64.Remove", "RedBlackTreeI64.UpperBound", "SListI64.At", "SListI64.Back", "SListI64.Begin", "SListI64.Clear", "SListI64.Front", "SListI64.Length", "SListI64.Next", "SListI64.PopFront", "SListI64.PushBack", "SListI64.PushFront", "SListI64.Read", "SListI64.RemoveFirst", "Sha256.Digest", "SortedMapI64.Bind", "SortedMapI64.Capacity", "SortedMapI64.Clear", "SortedMapI64.Contains", "SortedMapI64.Get", "SortedMapI64.KeyAt", "SortedMapI64.Length", "SortedMapI64.Put", "SortedMapI64.Remove", "SortedMapI64.ValueAt", "StackI64.Bind", "StackI64.Capacity", "StackI64.Clear", "StackI64.Length", "StackI64.Peek", "StackI64.Pop", "StackI64.Push", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "seed": 391724, "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "status": "PASS", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+{"status": "PASS", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4", "results": {"static": "Portable replay: PASS; 56064 checks", "shared": "Portable replay: PASS; 56064 checks"}, "vectors": {"status": "CAPTURED_AFTER_PASS", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4", "scalar_methods": 111, "cases": 1110, "methods": ["AlgorithmsI64.BinarySearch", "AlgorithmsI64.Count", "AlgorithmsI64.Fill", "AlgorithmsI64.Find", "AlgorithmsI64.HeapSort", "AlgorithmsI64.IsSorted", "AlgorithmsI64.LowerBound", "AlgorithmsI64.MaxIndex", "AlgorithmsI64.MergeSort", "AlgorithmsI64.MinIndex", "AlgorithmsI64.Reverse", "AlgorithmsI64.RotateLeft", "AlgorithmsI64.SumChecked", "AlgorithmsI64.UniqueAdjacent", "AlgorithmsI64.UpperBound", "Ascii.HexValue", "Ascii.IsAlnum", "Ascii.IsAlpha", "Ascii.IsAscii", "Ascii.IsBlank", "Ascii.IsControl", "Ascii.IsDigit", "Ascii.IsGraph", "Ascii.IsHexDigit", "Ascii.IsLower", "Ascii.IsPrint", "Ascii.IsPunct", "Ascii.IsUpper", "Ascii.IsWhite", "Ascii.ToLower", "Ascii.ToUpper", "Base64.Decode", "Base64.Encode", "Base64.EncodedLength", "Base64.Value", "Base64Url.Decode", "Base64Url.Encode", "Base64Url.EncodedLength", "Base64Url.Value", "BitManip.ByteSwap", "BitManip.CountLeadingZeros", "BitManip.CountTrailingZeros", "BitManip.IsPowerOfTwo", "BitManip.PopCount", "BitManip.ReverseBits", "BitManip.RotateLeft", "BitManip.RotateRight", "ByteStrings.SplitNext", "ByteStrings.SubstituteByte", "ByteStrings.TrimAscii", "Bytes.Compare", "Bytes.CountByte", "Bytes.Find", "Bytes.ToLowerAscii", "Bytes.ToUpperAscii", "CheckedInt.Add", "CheckedInt.Divide", "CheckedInt.Multiply", "CheckedInt.Negate", "CheckedInt.Subtract", "Checksums.Adler32", "Checksums.Crc32", "Checksums.Crc64ECMA", "Checksums.Crc64ISO", "Date.DaysInMonth", "Date.DaysSinceEpoch", "Date.IsLeapYear", "Date.IsValid", "Date.Weekday", "Endian.Read", "Endian.Write", "Hex.Decode", "Hex.Encode", "IntegerMath.Gcd", "IntegerMath.Lcm", "IntegerMath.Power", "IntegerMath.Sqrt", "IntegerText.FormatI64", "IntegerText.FormatU64", "IntegerText.ParseI64", "IntegerText.ParseU64", "JsonString.Decode", "JsonString.Encode", "JsonString.EncodedLength", "JsonTokens.Tokenize", "JsonTokens.Validate", "Sha256.Digest", "Uri.DecodeComponent", "Uri.EncodeComponent", "Uri.EncodedLength", "Utf16.Count", "Utf16.DecodeFirst", "Utf16.Encode", "Utf32.Count", "Utf32.DecodeFirst", "Utf32.Encode", "Utf8.Count", "Utf8.DecodeFirst", "Utf8.DecodeTo32", "Utf8.Encode", "Utf8.EncodeFrom32", "Utf8.EncodedLength32", "Uuid.Format", "Uuid.IsNil", "Uuid.Parse", "Uuid.Variant", "Uuid.Version", "VarInt.DecodeI64", "VarInt.DecodeU64", "VarInt.EncodeI64", "VarInt.EncodeU64"], "replay_sha256": "f444db2f8edf844fdc036684e4ff1f7f82de3feefbe96a912fcfd1a4038657c7"}}
+Portable method coverage: PASS; 227 methods
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/tests/replay_freestanding.c:15:
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/portable/portable_replay.c:9:
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+{"target": "x86-le", "status": "CPU_EMULATION_PASS", "checks": 56064, "elf_sha256": "8edad6f075372204eb28edaf549483f9072b835ecc2deb8a29c058a03ea4f844", "native_os": false, "allocator": "test-only simulated calloc/free; bump heap", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/tests/replay_freestanding.c:15:
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/portable/portable_replay.c:9:
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+{"target": "x86_64-le", "status": "CPU_EMULATION_PASS", "checks": 56064, "elf_sha256": "7885a8cb52b46b8da7999df0ad927d742c4a1ab8fb1aad38de8efcdee4af6f95", "native_os": false, "allocator": "test-only simulated calloc/free; bump heap", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/tests/replay_freestanding.c:15:
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/portable/portable_replay.c:9:
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+{"target": "arm32-le", "status": "CPU_EMULATION_PASS", "checks": 56064, "elf_sha256": "3525f19483fde4514de9b70d473045daded9425102d9b67c86347b96956773b9", "native_os": false, "allocator": "test-only simulated calloc/free; bump heap", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/tests/replay_freestanding.c:15:
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/portable/portable_replay.c:9:
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+{"target": "arm32-be", "status": "CPU_EMULATION_PASS", "checks": 56064, "elf_sha256": "c8502763e07ff97132498570fe9bf66138f4a3022d7bbad96ad9effc14f0bf7a", "native_os": false, "allocator": "test-only simulated calloc/free; bump heap", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/tests/replay_freestanding.c:15:
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/portable/portable_replay.c:9:
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+{"target": "arm64-le", "status": "CPU_EMULATION_PASS", "checks": 56064, "elf_sha256": "cad1e10e6ca44bf664c284674b72b9d0bd0924c277f4f30533ea670dc0b83da6", "native_os": false, "allocator": "test-only simulated calloc/free; bump heap", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/tests/replay_freestanding.c:15:
+In file included from /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/portable/portable_replay.c:9:
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+{"target": "arm64-be", "status": "CPU_EMULATION_PASS", "checks": 56064, "elf_sha256": "ffa24ebf0396cf785921d2466767acf4fef222595f46e4ff640f442181fc5b18", "native_os": false, "allocator": "test-only simulated calloc/free; bump heap", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"}
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+x86-le: ELF audit PASS
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+x86_64-le: ELF audit PASS
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+arm32-le: ELF audit PASS
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+arm32-be: ELF audit PASS
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+arm64-le: ELF audit PASS
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+arm64-be: ELF audit PASS
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build/CMotiveAndObjective.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+{"format": "PE32+", "exports": 299, "imports": ["api-ms-win-crt-heap-l1-1-0.dll", "api-ms-win-crt-runtime-l1-1-0.dll", "KERNEL32.dll", "api-ms-win-crt-stdio-l1-1-0.dll", "api-ms-win-crt-string-l1-1-0.dll"], "aslr": true, "nx": true, "writable_executable_sections": false}
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build-platform/macos-x86_64/visibility.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+macos-x86_64: Mach-O audit PASS
+/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build-platform/macos-arm64/visibility.c:1940:17: warning: use of unary operator that may be intended as compound assignment (-=)
+ 1940 |   this->position=- 1;
+      |                 ^~
+1 warning generated.
+macos-arm64: Mach-O audit PASS
+Prepared source-bound native host kit: /workspace/scratch/c92ad9de4f15/native-kit43
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python3: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 (found version "3.12.14") found components: Interpreter
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/scratch/c92ad9de4f15/native-kit43/native-build
+[ 10%] Building C object CMakeFiles/rb_invariants.dir/workspace/scratch/c92ad9de4f15/native-kit43/tests/rb_invariants.c.o
+[ 20%] Building C object CMakeFiles/CMotiveAndObjective.dir/workspace/scratch/c92ad9de4f15/native-kit43/prebuilt/generated/CMotiveAndObjective.c.o
+[ 30%] Linking C shared library libCMotiveAndObjective-1.0.0.so
+[ 30%] Built target CMotiveAndObjective
+[ 40%] Building C object CMakeFiles/unicode_exhaustive.dir/workspace/scratch/c92ad9de4f15/native-kit43/tests/unicode_exhaustive.c.o
+[ 50%] Linking C executable rb_invariants
+[ 50%] Built target rb_invariants
+[ 60%] Building C object CMakeFiles/guard_pages.dir/workspace/scratch/c92ad9de4f15/native-kit43/tests/guard_pages.c.o
+[ 70%] Linking C executable unicode_exhaustive
+[ 70%] Built target unicode_exhaustive
+[ 80%] Building C object CMakeFiles/portable_shared.dir/workspace/scratch/c92ad9de4f15/native-kit43/tests/replay_host.c.o
+[ 90%] Linking C executable guard_pages
+[ 90%] Built target guard_pages
+[100%] Linking C executable portable_shared
+[100%] Built target portable_shared
+Test project /workspace/scratch/c92ad9de4f15/native-kit43/native-build
+    Start 1: portable_shared
+1/7 Test #1: portable_shared ..................   Passed    0.00 sec
+    Start 2: rb_invariants
+2/7 Test #2: rb_invariants ....................   Passed    0.21 sec
+    Start 3: unicode_exhaustive
+3/7 Test #3: unicode_exhaustive ...............   Passed    0.04 sec
+    Start 4: guard_pages
+4/7 Test #4: guard_pages ......................   Passed    0.00 sec
+    Start 5: core
+5/7 Test #5: core .............................   Passed    5.01 sec
+    Start 6: metadata
+6/7 Test #6: metadata .........................   Passed    0.12 sec
+    Start 7: reports
+7/7 Test #7: reports ..........................   Passed    0.06 sec
+
+100% tests passed out of 7
+
+Total Test time (real) =   5.46 sec
+{"status": "PASS", "execution": "native_host", "os": "Linux", "machine": "x86_64", "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6", "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4", "library_sha256": "2dde16488951032b73cc40eba68ba90a3dae735ca1730d838c5666845d25cfd7", "api_methods": 227, "assertions": 1505040, "tests": ["portable_shared", "rb_invariants", "unicode_exhaustive", "guard_pages", "core", "metadata", "reports"], "attestation": "local runner report, not cryptographic host attestation"}
+Promotion guard: PASS; current blockers and edited ready flag cannot promote candidate
+Native receipt validation: PASS; 10 invalid/emulated/stale reports rejected
+FINAL IMPLEMENTED-CORE QUALIFICATION PASS; full production remains blocked

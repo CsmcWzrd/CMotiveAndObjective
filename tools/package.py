@@ -11,7 +11,13 @@ parser.add_argument('--require-production',action='store_true',help='Refuse cand
 parser.add_argument('--asm-build',type=Path,default=ROOT/'build-asm');args=parser.parse_args()
 if args.require_production:
     readiness=json.loads((ROOT/'docs/PRODUCTION-READINESS.json').read_text())
-    if not readiness.get('production_ready'):raise SystemExit('Production promotion blocked: '+', '.join(b['id'] for b in readiness['blockers']))
+    # Fail closed for the pinned backend: promotion cannot be enabled by editing a JSON flag.
+    from emit_core import source_fingerprint
+    if not readiness.get('production_ready') or readiness.get('blockers'):
+        raise SystemExit('Production promotion blocked: unresolved readiness blockers')
+    if readiness.get('source_fingerprint')!=source_fingerprint():
+        raise SystemExit('Production promotion blocked: stale readiness')
+    raise SystemExit('Production promotion blocked: pinned C-emission backend lacks native CMotive qualification')
 subprocess.run([sys.executable,str(ROOT/'tests/check_metadata.py')],check=True)
 binary=args.binary.resolve();report=json.loads(args.test_report.read_text());api=json.loads((ROOT/'api.json').read_text())
 digest=hashlib.sha256(binary.read_bytes()).hexdigest()
@@ -20,12 +26,36 @@ validate_report(report,binary)
 if binary.name!='libCMotiveAndObjective-1.0.0.so' or binary.read_bytes()[:4]!=b'\x7fELF':
     raise SystemExit('This release packager currently expects the Linux ELF library')
 names=['README.md','LICENSE_1_0.txt','VERSION','ITERATION','api.json','Makefile','Makefile.linux','Makefile.mac','Makefile.windows','Makefile.am','configure.ac','CMakeLists.txt']
-dirs=['src','include','tools','tests','docs','cmake','build-support','upstream','toolchain','evidence','.github','asm']
+dirs=['src','include','tools','tests','docs','cmake','build-support','upstream','toolchain','evidence','.github','asm','native']
+# Replace the historical final summary only after final source-bound readiness is present.
+if (ROOT/'ITERATION').read_text().strip()=='43':
+    readiness=json.loads((ROOT/'docs/PRODUCTION-READINESS.json').read_text())
+    if readiness.get('source_fingerprint')==report['source_fingerprint']:
+        summary={'iteration':43,'status':'PASS_FOR_IMPLEMENTED_CORE','production_ready':False,
+                 'source_fingerprint':report['source_fingerprint'],'tests_fingerprint':report['tests_fingerprint'],
+                 'normal_binary_sha256':digest,'assertions':report['assertions'],
+                 'api_methods':report['api_methods_exercised'],'native_qualified_hosts':readiness['native_qualified_hosts'],
+                 'outstanding_native_hosts':readiness['outstanding_native_hosts'],
+                 'cross_execution':readiness['cross_execution']}
+        (ROOT/'evidence/final-qualification.json').write_text(json.dumps(summary,indent=2)+'\n')
 payload={n:(ROOT/n).read_bytes() for n in names}
 for d in dirs:
     for f in sorted((ROOT/d).rglob('*')):
         if f.is_file() and '__pycache__' not in f.parts and f.suffix!='.pyc':payload[f.relative_to(ROOT).as_posix()]=f.read_bytes()
 payload['prebuilt/linux-x86_64/'+binary.name]=binary.read_bytes()
+# Include cross artifacts only when the final source/tests and exact bytes match.
+from emit_core import source_fingerprint
+from release_checks import tests_fingerprint
+for mode in ['linux','windows','macos']:
+    evidence=ROOT/('evidence/cross-'+mode+'-report.json')
+    if not evidence.exists():continue
+    cross=json.loads(evidence.read_text())
+    if cross.get('source_fingerprint')!=source_fingerprint() or cross.get('tests_fingerprint')!=tests_fingerprint():continue
+    for row in cross['targets']:
+        path=ROOT/row['path'];data=path.read_bytes()
+        if hashlib.sha256(data).hexdigest()!=row['sha256']:raise SystemExit('Cross artifact differs from audited bytes')
+        payload['prebuilt/platforms/'+path.relative_to(ROOT/'build-platform').as_posix()]=data
+
 assembly=json.loads((ROOT/'asm/contract.json').read_text())
 asm_build=json.loads((args.asm_build/'build-report.json').read_text())
 asm_tests=json.loads((args.asm_build/'test-report.json').read_text())

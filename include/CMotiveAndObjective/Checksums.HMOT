@@ -26,5 +26,26 @@ previous : U32
 {
 If (n < 0 || (n > 0 && data == Null)) { Return previous; } a : U32 = previous & 65535; b : U32 = previous >> 16; i : I64 = 0; While (i < n) { a=(a+data[i]) % 65521; b=(b+a) % 65521; i++; } Return (b << 16) | a;
 }
+U64
+Crc64ECMA
+data : Uchar*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return 0; }
+x : U64 = 0xffffffffffffffff; i : I64 = 0;
+While (i < n) { x ^= (U64)data[i]; bit : I32 = 0; While (bit < 8) { low : U64 = x & 1; x=x >> 1; If (low != 0) { x ^= 0xc96c5795d7870f42; } bit++; } i++; } Return ~x;
+}
+U64
+Crc64ISO
+data : Uchar*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return 0; }
+x : U64 = 0xffffffffffffffff; i : I64 = 0;
+While (i < n) { x ^= (U64)data[i]; bit : I32 = 0; While (bit < 8) { low : U64 = x & 1; x=x >> 1; If (low != 0) { x ^= 0xd800000000000000; } bit++; } i++; } Return ~x;
+}
+
 }
 };

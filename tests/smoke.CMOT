@@ -1,3 +1,13 @@
+#include "CMotiveAndObjective/Endian.HMOT"
+#include "CMotiveAndObjective/ByteStrings.HMOT"
+#include "CMotiveAndObjective/Utf32.HMOT"
+#include "CMotiveAndObjective/Pcg32.HMOT"
+#include "CMotiveAndObjective/Csv.HMOT"
+#include "CMotiveAndObjective/JsonString.HMOT"
+#include "CMotiveAndObjective/JsonTokens.HMOT"
+#include "CMotiveAndObjective/VarInt.HMOT"
+#include "CMotiveAndObjective/Base64Url.HMOT"
+#include "CMotiveAndObjective/Checksums.HMOT"
 #include "CMotiveAndObjective/HashMapI64.HMOT"
 #include "CMotiveAndObjective/HashSetI64.HMOT"
 #include "CMotiveAndObjective/MultiMapI64.HMOT"
@@ -50,5 +60,15 @@ main
  If (stack.Bind(st,4) != 0 || stack.Push(42) != 0 || stack.Pop(&out) != 0 || out != 42) { Return 13; }
  If (wide.Encode(128512,bytes,4,1) != 4 || wide.DecodeFirst(bytes,4,1,&used) != 128512 || used != 4) { Return 14; }
  If (text.FormatI64(-9223372036854775807-1,10,bytes,65) != 20 || text.ParseI64(bytes,20,10,&out) != 0 || out != (-9223372036854775807-1)) { Return 15; }
+ endian : Endian; strings : ByteStrings; wide32 : Utf32; pcg : Pcg32; csv : Csv; jsonString : JsonString; jsonTokens : JsonTokens; varint : VarInt; url64 : Base64Url; crc : Checksums;
+ number : U64 = 0; start : I64 = 0; length : I64 = 0; rowEnd : I32 = 0; work : I32[4];
+ If (endian.Write(258,2,1,bytes,65) != 0 || endian.Read(bytes,2,2,1,&number) != 0 || number != 258) { Return 16; }
+ If (strings.TrimAscii(input,3,&start,&length) != 0 || start != 0 || length != 3) { Return 17; }
+ If (wide32.Encode(65,bytes,65,1) != 4 || wide32.DecodeFirst(bytes,4,1,&used) != 65) { Return 18; }
+ pcg.Seed(42,54); If (pcg.Next() != 2707161783) { Return 19; }
+ If (csv.Bind(input,3) != 0 || csv.Next(bytes,65,&rowEnd) != 3 || rowEnd != 1) { Return 20; }
+ If (jsonString.Encode(input,3,bytes,65) != 5 || jsonTokens.Validate(bytes,5,work,4) != 1) { Return 21; }
+ If (varint.EncodeU64(128,bytes,65) != 2 || varint.DecodeU64(bytes,2,&number,&used) != 0 || number != 128) { Return 22; }
+ If (url64.Encode(input,3,bytes,65) != 4 || bytes[0] != 89 || crc.Crc64ECMA(input,0) != 0) { Return 23; }
  Return 0;
 }

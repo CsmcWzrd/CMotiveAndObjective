@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Emit the core with a fail-closed, pinned, minimal compiler-runtime profile.
 
-Class code is preserved byte for byte. Only the compiler's unused prelude is
+Class algorithm bodies are preserved byte for byte. Empty unused compiler helper structs are normalized to ISO C11. Only the compiler's unused prelude is
 removed; the two allocation definitions are copied from the pinned runtime.
 This is a compatibility path for the current C-emission compiler, not a new ABI.
 """
@@ -34,6 +34,11 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def portable_declarations(body):
+    # ISO C requires a member; this unused helper struct is never part of public layout.
+    return re.sub(r'(typedef struct CMotiveAndObjective__\w+__PublicData\s*\{)\s*(\} CMotiveAndObjective__\w+__PublicData;)', r'\1\n  unsigned char __cmo_empty;\n\2', body)
+
+
 def specialize(source, runtime, policy):
     marker = 'typedef struct AlgorithmsI64 {'
     if source.count(marker) != 1:
@@ -61,7 +66,7 @@ def specialize(source, runtime, policy):
             ' * See toolchain/CMotive-LICENSE-MIT.txt. */\n'
             '#include <stdint.h>\n#include <stddef.h>\n#include <stdlib.h>\n#include <string.h>\n'
             + 'const char CMO_Source_Fingerprint[] = "CMO-SOURCE-SHA256:' + source_fingerprint() + '";\n'
-            + '\n'.join(allocators) + '\n' + body)
+            + '\n'.join(allocators) + '\n' + portable_declarations(body))
 
 
 def main():

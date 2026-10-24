@@ -1,131 +1,15 @@
-# Iteration 23 — tested core candidate; full production promotion blocked
+# Porting status, iteration 43
 
-Version 1.0.0 is the requested output name/version. It does not certify full
-Phobos parity, production readiness, stable ABI or cross-platform verification.
+The implemented core has 36 public classes and 227 methods. Typed STL APIs are
+preserved. RESTORED-APIS.md defines restored functionality. PHOBOS-MODULES.md and
+REMAINING-PHOBOS.md document exact snapshot coverage and remaining work. No claim
+of full Phobos parity is made. Excluded external-library wrappers remain excluded.
 
-The supplied snapshot contains 174 D files, without embedded release tag/commit
-metadata. The unmodified reference ZIP is under upstream/. Its SHA-256 is
-218efa1d7fa6cb1900d5f5dfea3921ee026c121e115bd0c41278ad87b5b92e56.
-All file hashes and dispositions are in phobos-inventory.json and PHOBOS-MODULES.md.
+The pinned compiler emits C. Native class code generation, full generic templates,
+and integration of the custom-register standalone assembly are outstanding. A
+minimal C-emission profile keeps OS allocator definitions, not the unused runtime.
 
-## Implemented
-
-27 public classes and 199 methods, including the original numeric, encoding,
-byte-string and date utilities, plus SHA-256, URI component encoding, UUID text
-handling and the typed STL/container families described in STL-COVERAGE.md.
-32 CMotive .HMOT files include five internal node/helper headers. Public methods
-use CMotive source only; .c tests and the .h C ABI header are genuine interoperability
-fixtures, not CMotive files with misleading extensions. No unsupported .HMTV
-placeholders or renamed D sources are shipped.
-
-The 84 original C ABI method signatures remain unchanged. 199 methods plus 54
-new/delete functions are exported; internal helpers remain hidden. This is an
-adapted typed API, not a drop-in Phobos or general C++ STL implementation.
-
-## Compiler constraints
-
-The latest retrieved source archive, dated 2026-08-30, is
-cmotive-source-selfhost-v0.3.0-qa1200-mit-runtime-fix-interop-doc.zip.
-It is included unchanged under toolchain/ as CMotive-v0.3.0-source.zip.
-
-- src/frontend/selfhost/CMotiveFrontend.CMOT, skip_template: arbitrary Template
-  Class definitions are skipped. tests/compiler-probes/GenericBox.CMOT demonstrates
-  the resulting failure for Box<I32>. General container/range templates therefore
-  cannot currently be verified with this compiler; no template placeholders ship.
-- parse_args has no -fPIC or -shared support. Build files use --emit-c followed
-  by the platform C compiler/linker. Maintained methods are CMotive; this toolchain
-  internally uses C emission and a native C runtime. It is not a native PCC backend.
-- The lexer splits >>=, so methods use explicit shifts and assignments.
-- Names starting Vector collide with a built-in special case; the class is named
-  ArrayVectorI64.
-- Dynamic library exports are restricted to 199 methods and 54 new/delete functions.
-  The C consumer verifies separate dynamic linking. CMotive consumers currently
-  include .HMOT implementations; separate external class declarations and a direct
-  CMotive dynamic-class consumer are not verified.
-
-## Excluded direct mappings
-
-D reflection (__traits, TypeInfo), typelists/CTFE/mixins, qualifier and alias-this
-semantics, delegates, D exception/GC lifetime contracts and arbitrary templates
-cannot be faithfully mapped by this compiler. D demangling has no CMotive ABI
-equivalent. External-library wrappers for curl, ODBC, SQLite and zlib are
-excluded by dependency policy. OS-supported services are permitted, including
-Windows registry/code pages/errors, but remain deferred pending tested CMotive
-implementations. Self-contained algorithm replacements remain possible; no
-wrapper is silently substituted with a stub. See DEPENDENCIES.md.
-
-## Remaining original scope
-
-Every deferred module and the remaining functions in partial modules are absent.
-This includes arbitrary-type containers/ranges, hash/multi containers, big integers,
-floating point/special math, CSV, JSON, regex, general formatting/serialization, UUID
-generation, full Unicode normalization/case folding, compression/archives, random
-facilities, filesystem/IO/process/socket/
-timezone/concurrency facilities and associated tests. These are not all impossible;
-they require further implementation and OS services need an explicit ABI policy.
-This package does not fulfill the original request to port all implementable APIs.
-
-## Validation limits
-
-Linux x86_64 GCC build, shared C ABI, CMotive source consumer and behavioral tests
-are run locally; exact outcomes are in VERIFICATION.md. Full core-library Windows/macOS/ARM64 builds are
-unverified (separate assembly targets are tested as described below). GNU Make, CMake/CTest, installation consumers and Autoconf/Automake are now
-executed locally. See VERIFICATION.md for exact checks. No DLL/dylib is fabricated.
-
-Port code, tests and build files use Boost Software License 1.0; preserve Phobos
-notices and the original license. The bundled compiler retains its own license.
-
-## Compiler/runtime hardening in this iteration
-
-Stateless helper objects use explicit Zero initialization so library methods do
-not write this compiler's global automatic-object cleanup stack. A generated-code
-check and an eight-thread behavioral test guard this workaround. Owning-container
-allocation-failure paths and destructor cleanup are tested using native fixture
-allocation tracking. This does not certify leak freedom of every compiler/runtime
-path; LeakSanitizer remains unavailable in this environment.
-
-## Assembly runtime scope selected for iteration 2
-
-Nine native primitives implement copy/move/fill/compare/bounded string length and
-explicit LE/BE U32 loads/stores. They use CMO-REG-1 custom registers, not the C ABI.
-Four .s sources build six ELF targets: x86 LE, x86_64 LE, ARM32 LE/BE8 and ARM64
-LE/BE. x86 has no big-endian execution mode; its endian routines support BE data.
-All six target modes are exercised by CPU emulation, and the x86_64 freestanding
-caller runs natively. ELF32 native execution is not available on this host.
-No C wrapper, libc import, C startup or C language build is used for this layer.
-See asm/README.md for the complete contract and standalone CMake/Make build.
-
-The scope explicitly does not replace the compiler C backend. These primitives
-are not yet called directly by the current frontend; its custom-convention bridge,
-allocator and OS runtime replacement remain future work. The separate assembly
-ZIP contains only this native layer and its build/test tools, without C interfaces.
-
-## Iteration 3 dependency scope
-
-All 149 iteration-2 methods and all typed STL implementations are retained.
-The shared-library build now removes the unused compiler runtime prelude with
-a pinned, fail-closed profile; generated class code is preserved unchanged.
-Only the compiler's two original system allocation definitions remain. On
-tested Linux, the only needed shared library is libc.so.6. No libcurl, ODBC,
-SQLite, zlib, C++ STL or other third-party runtime library is linked. The
-standalone assembly primitives remain independent and unchanged.
-
-Linux release builds and packaging now enforce an import/dependency allowlist,
-undefined-symbol rejection, full RELRO, immediate binding and non-executable
-stack/segments. Rejection fixtures guard the policy. These changes do not
-complete the remaining Phobos APIs or native compiler integration.
-
-## Twenty-checkpoint continuation (iterations 4–23)
-
-All 20 requested checkpoints have source/archive and test evidence. The core adds
-four typed containers (hash map/set, duplicate-key map and stack), caller-workspace
-merge sort, checked summation, UTF-16 LE/BE, UTF-8/scalar transcoding and strict
-signed/unsigned integer text conversion. All original STL methods remain.
-
-The current evidence covers exhaustive Unicode scalars, a complete Gregorian
-cycle, hardware guard pages, adversarial hash collisions, nth-allocation failures,
-concurrent independent lifetimes, malformed-input fuzzing, four optimization modes,
-sanitizers, clean builds and installed consumers. See PRODUCTION-ITERATIONS.md,
-VERIFICATION.md and PRODUCTION-READINESS.json. These are verified core-subset
-checkpoints; the full project is not promoted to GA. Native frontend integration,
-generic templates, full Phobos parity and platform qualification remain blockers.
+Native full-suite evidence is Linux x86_64. Six compiled-core CPU modes, Linux
+ELF cross-builds, Windows PE audits and macOS Mach-O audits add portability
+evidence. Native Windows/macOS/ARM tests are still required. The native-host kit
+runs those tests on available systems and binds receipts to source/test hashes.

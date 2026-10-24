@@ -60,6 +60,13 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I64 Encode(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
 `I64 Decode(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
 
+## Base64Url
+
+`I64 EncodedLength(n: I64)`  
+`I32 Value(c: I32)`  
+`I64 Encode(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
+`I64 Decode(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
+
 ## BinaryHeapI64
 
 `I32 Bind(storage: I64*, capacity: I64)`  
@@ -79,6 +86,12 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `U64 ByteSwap(x: U64)`  
 `U64 ReverseBits(x: U64)`  
 `I32 IsPowerOfTwo(x: U64)`  
+
+## ByteStrings
+
+`I32 TrimAscii(data: Uchar*, n: I64, start: I64*, length: I64*)`  
+`I32 SplitNext(data: Uchar*, n: I64, delimiter: Uchar, cursor: I64*, start: I64*, length: I64*)`  
+`I64 SubstituteByte(data: Uchar*, n: I64, oldByte: Uchar, newByte: Uchar)`  
 
 ## Bytes
 
@@ -100,6 +113,13 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 
 `U32 Crc32(data: Uchar*, n: I64, previous: U32)`  
 `U32 Adler32(data: Uchar*, n: I64, previous: U32)`  
+`U64 Crc64ECMA(data: Uchar*, n: I64)`  
+`U64 Crc64ISO(data: Uchar*, n: I64)`  
+
+## Csv
+
+`I32 Bind(data: Uchar*, n: I64)`  
+`I64 Next(out: Uchar*, capacity: I64, rowEnd: I32*)`  
 
 ## DListI64
 
@@ -126,6 +146,11 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I32 IsValid(year: I32, month: I32, day: I32)`  
 `I64 DaysSinceEpoch(year: I32, month: I32, day: I32)`  
 `I32 Weekday(year: I32, month: I32, day: I32)`  
+
+## Endian
+
+`I32 Read(data: Uchar*, n: I64, width: I32, bigEndian: I32, out: U64*)`  
+`I32 Write(value: U64, width: I32, bigEndian: I32, out: Uchar*, capacity: I64)`  
 
 ## HashMapI64
 
@@ -172,6 +197,17 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I64 FormatI64(value: I64, base: I32, out: Uchar*, capacity: I64)`  
 `I32 ParseI64(data: Uchar*, n: I64, base: I32, out: I64*)`  
 
+## JsonString
+
+`I64 EncodedLength(data: Uchar*, n: I64)`  
+`I64 Encode(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
+`I64 Decode(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
+
+## JsonTokens
+
+`I64 Validate(data: Uchar*, n: I64, work: I32*, depth: I64)`  
+`I64 Tokenize(data: Uchar*, n: I64, types: I32*, starts: I64*, lengths: I64*, capacity: I64, work: I32*, depth: I64)`  
+
 ## MultiMapI64
 
 `I32 Bind(keys: I64*, values: I64*, capacity: I64)`  
@@ -185,6 +221,12 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I32 RemoveOne(key: I64)`  
 `I64 RemoveAll(key: I64)`  
 `Void Clear()`  
+
+## Pcg32
+
+`Void Seed(seed: U64, stream: U64)`  
+`U32 Next()`  
+`I32 Bounded(bound: U32, out: U32*)`  
 
 ## QueueI64
 
@@ -265,6 +307,12 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I64 Count(data: Uchar*, n: I64, bigEndian: I32)`  
 `I32 Encode(cp: U32, out: Uchar*, capacity: I64, bigEndian: I32)`  
 
+## Utf32
+
+`I32 DecodeFirst(data: Uchar*, n: I64, bigEndian: I32, consumed: I32*)`  
+`I64 Count(data: Uchar*, n: I64, bigEndian: I32)`  
+`I32 Encode(cp: U32, out: Uchar*, capacity: I64, bigEndian: I32)`  
+
 ## Utf8
 
 `I32 DecodeFirst(data: Uchar*, n: I64, consumed: I32*)`  
@@ -281,4 +329,11 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I32 Version(data: Uchar*, n: I64)`  
 `I32 Variant(data: Uchar*, n: I64)`  
 `I32 IsNil(data: Uchar*, n: I64)`  
+
+## VarInt
+
+`I32 EncodeU64(value: U64, out: Uchar*, capacity: I64)`  
+`I32 DecodeU64(data: Uchar*, n: I64, out: U64*, consumed: I32*)`  
+`I32 EncodeI64(value: I64, out: Uchar*, capacity: I64)`  
+`I32 DecodeI64(data: Uchar*, n: I64, out: I64*, consumed: I32*)`  
 

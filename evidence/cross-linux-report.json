@@ -1,0 +1,73 @@
+{
+  "status": "CROSS_BUILD_AUDIT_PASS",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4",
+  "targets": [
+    {
+      "target": "x86-le",
+      "path": "build-platform/x86-le/libCMotiveAndObjective-1.0.0.so",
+      "sha256": "d19e69cd72d01f6879fe0cb8c3d2d787ded7f7e0465439379a8695d3ef0f3949",
+      "exports": 299,
+      "imports": [
+        "libc.so"
+      ],
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    },
+    {
+      "target": "x86_64-le",
+      "path": "build-platform/x86_64-le/libCMotiveAndObjective-1.0.0.so",
+      "sha256": "616df1be25c1ad59f3c49f1462a3e749e279d64d2788aed98c4f9e678fb8c063",
+      "exports": 299,
+      "imports": [
+        "libc.so"
+      ],
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    },
+    {
+      "target": "arm32-le",
+      "path": "build-platform/arm32-le/libCMotiveAndObjective-1.0.0.so",
+      "sha256": "1de21823bb14a043ade2b42cf1481437ea9c006eaa0ff4f1debcb743d5cb9784",
+      "exports": 299,
+      "imports": [
+        "libc.so"
+      ],
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    },
+    {
+      "target": "arm32-be",
+      "path": "build-platform/arm32-be/libCMotiveAndObjective-1.0.0.so",
+      "sha256": "60fc134d468a0b04703babad04221a5d114da60f42ad769f90515d73eda6fb10",
+      "exports": 299,
+      "imports": [
+        "libc.so"
+      ],
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    },
+    {
+      "target": "arm64-le",
+      "path": "build-platform/arm64-le/libCMotiveAndObjective-1.0.0.so",
+      "sha256": "50c15fa199df8bb0fbc2577a35ed15d5ff4999952fad8ded2f876a27d3388821",
+      "exports": 299,
+      "imports": [
+        "libc.so"
+      ],
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    },
+    {
+      "target": "arm64-be",
+      "path": "build-platform/arm64-be/libCMotiveAndObjective-1.0.0.so",
+      "sha256": "0d74e07964f457bb854466a76986664d5d3e7b224e95962b2ac77453d54544a4",
+      "exports": 299,
+      "imports": [
+        "libc.so"
+      ],
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    }
+  ]
+}

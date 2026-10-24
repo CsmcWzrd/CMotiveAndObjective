@@ -1,0 +1,28 @@
+{
+  "status": "CROSS_BUILD_AUDIT_PASS",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4",
+  "targets": [
+    {
+      "target": "windows-x86_64",
+      "path": "build-platform/windows-x86_64/CMotiveAndObjective-1.0.0.dll",
+      "sha256": "9adfe98289e14e443ef3c17898a82cc432a936c764d9ef8e1029a75b81bb7eb8",
+      "audit": {
+        "format": "PE32+",
+        "exports": 299,
+        "imports": [
+          "api-ms-win-crt-heap-l1-1-0.dll",
+          "api-ms-win-crt-runtime-l1-1-0.dll",
+          "KERNEL32.dll",
+          "api-ms-win-crt-stdio-l1-1-0.dll",
+          "api-ms-win-crt-string-l1-1-0.dll"
+        ],
+        "aslr": true,
+        "nx": true,
+        "writable_executable_sections": false
+      },
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    }
+  ]
+}

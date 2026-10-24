@@ -5,7 +5,7 @@ from emit_core import source_fingerprint
 ROOT=Path(__file__).resolve().parents[1]
 def tests_fingerprint():
     paths=[ROOT/'tools/release_checks.py',ROOT/'tools/emit_core.py']
-    paths += [p for p in (ROOT/'tests').rglob('*') if p.is_file() and p.suffix in {'.py','.c','.CMOT','.json'}]
+    paths += [p for p in (ROOT/'tests').rglob('*') if p.is_file() and p.suffix in {'.py','.c','.CMOT','.json','.h','.HMOT','.txt'}]
     h=hashlib.sha256()
     for p in sorted(paths):
         name=p.relative_to(ROOT).as_posix().encode();data=p.read_bytes()

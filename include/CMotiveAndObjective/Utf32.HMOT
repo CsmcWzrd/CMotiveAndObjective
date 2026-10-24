@@ -1,0 +1,44 @@
+// CMotiveAndObjective; BSL-1.0.
+Package CMotiveAndObjective;
+Class
+Utf32
+{
+Public
+{
+I32
+DecodeFirst
+data : Uchar*
+n : I64
+bigEndian : I32
+consumed : I32*
+()
+{
+If (consumed == Null) { Return -1; } *consumed=0;
+If (n <= 0 || data == Null || (bigEndian != 0 && bigEndian != 1)) { Return -1; } If (n < 4) { Return -2; }
+x : U32 = 0; i : I32 = 0; While (i < 4) { index : I32 = i; If (bigEndian == 1) { index=3-i; } x |= (U32)data[index] << (8*i); i++; }
+If (x > 1114111 || (x >= 55296 && x <= 57343)) { Return -2; } *consumed=4; Return (I32)x;
+}
+I64
+Count
+data : Uchar*
+n : I64
+bigEndian : I32
+()
+{
+If (n < 0 || (n > 0 && data == Null) || (bigEndian != 0 && bigEndian != 1)) { Return -1; }
+codec : Utf32 = Zero; i : I64 = 0; While (i < n) { used : I32 = 0; If (codec.DecodeFirst(data+i,n-i,bigEndian,&used) < 0) { Return -2; } i+=used; } Return n/4;
+}
+I32
+Encode
+cp : U32
+out : Uchar*
+capacity : I64
+bigEndian : I32
+()
+{
+If (bigEndian != 0 && bigEndian != 1) { Return -1; } If (cp > 1114111 || (cp >= 55296 && cp <= 57343)) { Return -2; }
+If (out == Null || capacity < 4) { Return -1; } i : I32 = 0; While (i < 4) { index : I32 = i; If (bigEndian == 1) { index=3-i; } out[index]=(Uchar)(cp >> (8*i)); i++; } Return 4;
+}
+
+}
+};

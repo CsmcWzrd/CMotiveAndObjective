@@ -1,0 +1,68 @@
+{
+  "status": "CROSS_BUILD_AUDIT_PASS",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4",
+  "targets": [
+    {
+      "target": "macos-x86_64",
+      "path": "build-platform/macos-x86_64/libCMotiveAndObjective-1.0.0.dylib",
+      "sha256": "a52186f65a58b710a040f998605b02816e649f19f5b865062f35e1a84a6579a3",
+      "audit": {
+        "format": "Mach-O64",
+        "cpu": 16777223,
+        "exports": 299,
+        "linker_markers": [
+          "___dso_handle",
+          "__mh_dylib_header"
+        ],
+        "imports": [
+          "/usr/lib/libSystem.B.dylib"
+        ],
+        "undefined": [
+          "___bzero",
+          "_calloc",
+          "_free",
+          "dyld_stub_binder"
+        ],
+        "install_name": "@rpath/libCMotiveAndObjective-1.0.0.dylib",
+        "writable_executable_segments": false
+      },
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    },
+    {
+      "target": "macos-arm64",
+      "path": "build-platform/macos-arm64/libCMotiveAndObjective-1.0.0.dylib",
+      "sha256": "402342e444171d1e9269ed4d54b4cd333c8c4b004991dca3e19b16bea8b3e9b6",
+      "audit": {
+        "format": "Mach-O64",
+        "cpu": 16777228,
+        "exports": 299,
+        "linker_markers": [
+          "___dso_handle",
+          "__mh_dylib_header"
+        ],
+        "imports": [
+          "/usr/lib/libSystem.B.dylib"
+        ],
+        "undefined": [
+          "_bzero",
+          "_calloc",
+          "_free",
+          "dyld_stub_binder"
+        ],
+        "install_name": "@rpath/libCMotiveAndObjective-1.0.0.dylib",
+        "writable_executable_segments": false
+      },
+      "status": "CROSS_BUILD_AUDIT_PASS",
+      "native_os_execution": false
+    },
+    {
+      "target": "macos-universal",
+      "path": "build-platform/macos-universal/libCMotiveAndObjective-1.0.0.dylib",
+      "sha256": "9c98ce05da64d6e44514a57378b84ddaa9186f40df6584bb671015effafda698",
+      "status": "FAT_CONTAINER_VERIFIED",
+      "native_os_execution": false
+    }
+  ]
+}

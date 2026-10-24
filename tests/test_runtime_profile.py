@@ -30,7 +30,7 @@ def main():
         raw = raw_path.read_text()
         trimmed = emit.specialize(raw, runtime, policy)
         marker = 'typedef struct AlgorithmsI64 {'
-        assert trimmed[trimmed.index(marker):] == raw[raw.index(marker):]
+        assert trimmed[trimmed.index(marker):] == emit.portable_declarations(raw[raw.index(marker):])
         assert 'runtime.c' not in trimmed and 'cmotive_sys_' not in trimmed
         assert 'CMotive_Cleanup_' not in trimmed
         for cls in policy['retained_stl_classes']:

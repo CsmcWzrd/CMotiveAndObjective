@@ -1,180 +1,181 @@
-# Supplied Phobos source inventory — iteration 2
+# Exact supplied Phobos snapshot inventory
 
-All 174 D files are listed. Partial does not mean complete or API-compatible. Deferred does not mean impossible.
+Original source hashes and byte sizes are retained in phobos-inventory.json.
+Partial means a tested explicit subset, not full Phobos API parity. External wrappers stay excluded.
 
-| Module / file | Status | Subset / reason |
+| Module | Status | Implemented classes |
 |---|---|---|
-| `etc.c.curl` (`etc/c/curl.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `etc.c.odbc.sql` (`etc/c/odbc/sql.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `etc.c.odbc.sqlext` (`etc/c/odbc/sqlext.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `etc.c.odbc.sqltypes` (`etc/c/odbc/sqltypes.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `etc.c.odbc.sqlucode` (`etc/c/odbc/sqlucode.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `etc.c.sqlite3` (`etc/c/sqlite3.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `etc.c.zlib` (`etc/c/zlib.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `std.algorithm.comparison` (`std/algorithm/comparison.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.algorithm.internal` (`std/algorithm/internal.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.algorithm.iteration` (`std/algorithm/iteration.d`) | partial | Adapted typed subset only; full upstream generic and package APIs remain deferred. |
-| `std.algorithm.mutation` (`std/algorithm/mutation.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.algorithm` (`std/algorithm/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.algorithm.searching` (`std/algorithm/searching.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.algorithm.setops` (`std/algorithm/setops.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.algorithm.sorting` (`std/algorithm/sorting.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.array` (`std/array.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.ascii` (`std/ascii.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.base64` (`std/base64.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.bigint` (`std/bigint.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.bitmanip` (`std/bitmanip.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.checkedint` (`std/checkedint.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.compiler` (`std/compiler.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.complex` (`std/complex.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.concurrency` (`std/concurrency.d`) | blocked-direct-port | D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler. |
-| `std.container.array` (`std/container/array.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.container.binaryheap` (`std/container/binaryheap.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.container.dlist` (`std/container/dlist.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.container` (`std/container/package.d`) | partial | Adapted typed subset only; full upstream generic and package APIs remain deferred. |
-| `std.container.rbtree` (`std/container/rbtree.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.container.slist` (`std/container/slist.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.container.util` (`std/container/util.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.conv` (`std/conv.d`) | partial | Adapted typed subset only; full upstream generic and package APIs remain deferred. |
-| `std.csv` (`std/csv.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.datetime.date` (`std/datetime/date.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.datetime.interval` (`std/datetime/interval.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.datetime` (`std/datetime/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.datetime.stopwatch` (`std/datetime/stopwatch.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.datetime.systime` (`std/datetime/systime.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.datetime.timezone` (`std/datetime/timezone.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.demangle` (`std/demangle.d`) | blocked-direct-port | D symbol mangling is not a CMotive ABI equivalent; a D demangler would be a separate utility. |
-| `std.digest.crc` (`std/digest/crc.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.digest.hmac` (`std/digest/hmac.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.digest.md` (`std/digest/md.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.digest.murmurhash` (`std/digest/murmurhash.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.digest` (`std/digest/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.digest.ripemd` (`std/digest/ripemd.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.digest.sha` (`std/digest/sha.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.encoding` (`std/encoding.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.exception` (`std/exception.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.affix_allocator` (`std/experimental/allocator/building_blocks/affix_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.aligned_block_list` (`std/experimental/allocator/building_blocks/aligned_block_list.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.allocator_list` (`std/experimental/allocator/building_blocks/allocator_list.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.ascending_page_allocator` (`std/experimental/allocator/building_blocks/ascending_page_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.bitmapped_block` (`std/experimental/allocator/building_blocks/bitmapped_block.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.bucketizer` (`std/experimental/allocator/building_blocks/bucketizer.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.fallback_allocator` (`std/experimental/allocator/building_blocks/fallback_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.free_list` (`std/experimental/allocator/building_blocks/free_list.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.free_tree` (`std/experimental/allocator/building_blocks/free_tree.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.kernighan_ritchie` (`std/experimental/allocator/building_blocks/kernighan_ritchie.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.null_allocator` (`std/experimental/allocator/building_blocks/null_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks` (`std/experimental/allocator/building_blocks/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.quantizer` (`std/experimental/allocator/building_blocks/quantizer.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.region` (`std/experimental/allocator/building_blocks/region.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.scoped_allocator` (`std/experimental/allocator/building_blocks/scoped_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.segregator` (`std/experimental/allocator/building_blocks/segregator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.building_blocks.stats_collector` (`std/experimental/allocator/building_blocks/stats_collector.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.common` (`std/experimental/allocator/common.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.gc_allocator` (`std/experimental/allocator/gc_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.mallocator` (`std/experimental/allocator/mallocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.mmap_allocator` (`std/experimental/allocator/mmap_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator` (`std/experimental/allocator/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.showcase` (`std/experimental/allocator/showcase.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.allocator.typed` (`std/experimental/allocator/typed.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.checkedint` (`std/experimental/checkedint.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.logger.core` (`std/experimental/logger/core.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.logger.filelogger` (`std/experimental/logger/filelogger.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.logger.multilogger` (`std/experimental/logger/multilogger.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.logger.nulllogger` (`std/experimental/logger/nulllogger.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.experimental.logger` (`std/experimental/logger/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.file` (`std/file.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.format.internal.floats` (`std/format/internal/floats.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.format.internal.read` (`std/format/internal/read.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.format.internal.write` (`std/format/internal/write.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.format` (`std/format/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.format.read` (`std/format/read.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.format.spec` (`std/format/spec.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.format.write` (`std/format/write.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.functional` (`std/functional.d`) | blocked-direct-port | D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler. |
-| `std.getopt` (`std/getopt.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.int128` (`std/int128.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.internal.attributes` (`std/internal/attributes.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.cstring` (`std/internal/cstring.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.digest.sha_SSSE3` (`std/internal/digest/sha_SSSE3.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.math.biguintcore` (`std/internal/math/biguintcore.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.math.biguintnoasm` (`std/internal/math/biguintnoasm.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.math.biguintx86` (`std/internal/math/biguintx86.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.math.errorfunction` (`std/internal/math/errorfunction.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.math.gammafunction` (`std/internal/math/gammafunction.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.memory` (`std/internal/memory.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.scopebuffer` (`std/internal/scopebuffer.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.test.dummyrange` (`std/internal/test/dummyrange.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.test.range` (`std/internal/test/range.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.test.uda` (`std/internal/test/uda.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.unicode_comp` (`std/internal/unicode_comp.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.unicode_decomp` (`std/internal/unicode_decomp.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.unicode_grapheme` (`std/internal/unicode_grapheme.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.unicode_norm` (`std/internal/unicode_norm.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.unicode_tables` (`std/internal/unicode_tables.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.internal.windows.advapi32` (`std/internal/windows/advapi32.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.json` (`std/json.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.logger.core` (`std/logger/core.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.logger.filelogger` (`std/logger/filelogger.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.logger.multilogger` (`std/logger/multilogger.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.logger.nulllogger` (`std/logger/nulllogger.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.logger` (`std/logger/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.algebraic` (`std/math/algebraic.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.constants` (`std/math/constants.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.exponential` (`std/math/exponential.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.hardware` (`std/math/hardware.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.operations` (`std/math/operations.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math` (`std/math/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.remainder` (`std/math/remainder.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.rounding` (`std/math/rounding.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.traits` (`std/math/traits.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.math.trigonometry` (`std/math/trigonometry.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.mathspecial` (`std/mathspecial.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.meta` (`std/meta.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.mmfile` (`std/mmfile.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.net.curl` (`std/net/curl.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `std.net.isemail` (`std/net/isemail.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.numeric` (`std/numeric.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.outbuffer` (`std/outbuffer.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std` (`std/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.parallelism` (`std/parallelism.d`) | blocked-direct-port | D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler. |
-| `std.path` (`std/path.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.process` (`std/process.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.random` (`std/random.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.range.interfaces` (`std/range/interfaces.d`) | blocked-direct-port | D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler. |
-| `std.range` (`std/range/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.range.primitives` (`std/range/primitives.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.regex.internal.backtracking` (`std/regex/internal/backtracking.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex.internal.generator` (`std/regex/internal/generator.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex.internal.ir` (`std/regex/internal/ir.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex.internal.kickstart` (`std/regex/internal/kickstart.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex.internal.parser` (`std/regex/internal/parser.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex.internal.tests` (`std/regex/internal/tests.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex.internal.tests2` (`std/regex/internal/tests2.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex.internal.thompson` (`std/regex/internal/thompson.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.regex` (`std/regex/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.signals` (`std/signals.d`) | blocked-direct-port | D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler. |
-| `std.socket` (`std/socket.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.stdint` (`std/stdint.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.stdio` (`std/stdio.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.string` (`std/string.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.sumtype` (`std/sumtype.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.system` (`std/system.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.traits` (`std/traits.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.typecons` (`std/typecons.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.typetuple` (`std/typetuple.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.uni` (`std/uni/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.uri` (`std/uri.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.utf` (`std/utf.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.uuid` (`std/uuid.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.variant` (`std/variant.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.windows.charset` (`std/windows/charset.d`) | deferred-os-service | OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided. |
-| `std.windows.registry` (`std/windows/registry.d`) | deferred-os-service | OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided. |
-| `std.windows.syserror` (`std/windows/syserror.d`) | deferred-os-service | OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided. |
-| `std.zip` (`std/zip.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.zlib` (`std/zlib.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
-| `test.betterc_module_tests` (`test/betterc_module_tests.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `test.dub_stdx_allocator` (`test/dub_stdx_allocator.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `test.dub_stdx_checkedint` (`test/dub_stdx_checkedint.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `std.unicode_table_generator` (`tools/unicode_table_generator.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
-| `unittest` (`unittest.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
+| etc.c.curl | excluded-external-dependency |  |
+| etc.c.odbc.sql | excluded-external-dependency |  |
+| etc.c.odbc.sqlext | excluded-external-dependency |  |
+| etc.c.odbc.sqltypes | excluded-external-dependency |  |
+| etc.c.odbc.sqlucode | excluded-external-dependency |  |
+| etc.c.sqlite3 | excluded-external-dependency |  |
+| etc.c.zlib | excluded-external-dependency |  |
+| std.algorithm.comparison | partial | AlgorithmsI64, Bytes |
+| std.algorithm.internal | deferred |  |
+| std.algorithm.iteration | partial | AlgorithmsI64 |
+| std.algorithm.mutation | partial | AlgorithmsI64 |
+| std.algorithm | deferred |  |
+| std.algorithm.searching | partial | AlgorithmsI64 |
+| std.algorithm.setops | deferred |  |
+| std.algorithm.sorting | partial | AlgorithmsI64 |
+| std.array | partial | Bytes, ArrayVectorI64 |
+| std.ascii | partial | Ascii |
+| std.base64 | partial | Base64, Base64Url |
+| std.bigint | deferred |  |
+| std.bitmanip | partial | BitManip, Endian |
+| std.checkedint | partial | CheckedInt |
+| std.compiler | deferred |  |
+| std.complex | deferred |  |
+| std.concurrency | blocked-direct-port |  |
+| std.container.array | partial | ArrayVectorI64 |
+| std.container.binaryheap | partial | BinaryHeapI64 |
+| std.container.dlist | partial | DListI64 |
+| std.container | partial | ArrayVectorI64, BinaryHeapI64, SListI64, DListI64, RedBlackTreeI64, SortedMapI64, QueueI64, HashMapI64, HashSetI64, MultiMapI64, StackI64 |
+| std.container.rbtree | partial | RedBlackTreeI64 |
+| std.container.slist | partial | SListI64 |
+| std.container.util | deferred |  |
+| std.conv | partial | IntegerText |
+| std.csv | partial | Csv |
+| std.datetime.date | partial | Date |
+| std.datetime.interval | deferred |  |
+| std.datetime | deferred |  |
+| std.datetime.stopwatch | deferred |  |
+| std.datetime.systime | deferred |  |
+| std.datetime.timezone | deferred |  |
+| std.demangle | blocked-direct-port |  |
+| std.digest.crc | partial | Checksums |
+| std.digest.hmac | deferred |  |
+| std.digest.md | deferred |  |
+| std.digest.murmurhash | deferred |  |
+| std.digest | deferred |  |
+| std.digest.ripemd | deferred |  |
+| std.digest.sha | partial | Sha256 |
+| std.encoding | deferred |  |
+| std.exception | deferred |  |
+| std.experimental.allocator.building_blocks.affix_allocator | deferred |  |
+| std.experimental.allocator.building_blocks.aligned_block_list | deferred |  |
+| std.experimental.allocator.building_blocks.allocator_list | deferred |  |
+| std.experimental.allocator.building_blocks.ascending_page_allocator | deferred |  |
+| std.experimental.allocator.building_blocks.bitmapped_block | deferred |  |
+| std.experimental.allocator.building_blocks.bucketizer | deferred |  |
+| std.experimental.allocator.building_blocks.fallback_allocator | deferred |  |
+| std.experimental.allocator.building_blocks.free_list | deferred |  |
+| std.experimental.allocator.building_blocks.free_tree | deferred |  |
+| std.experimental.allocator.building_blocks.kernighan_ritchie | deferred |  |
+| std.experimental.allocator.building_blocks.null_allocator | deferred |  |
+| std.experimental.allocator.building_blocks | deferred |  |
+| std.experimental.allocator.building_blocks.quantizer | deferred |  |
+| std.experimental.allocator.building_blocks.region | deferred |  |
+| std.experimental.allocator.building_blocks.scoped_allocator | deferred |  |
+| std.experimental.allocator.building_blocks.segregator | deferred |  |
+| std.experimental.allocator.building_blocks.stats_collector | deferred |  |
+| std.experimental.allocator.common | deferred |  |
+| std.experimental.allocator.gc_allocator | deferred |  |
+| std.experimental.allocator.mallocator | deferred |  |
+| std.experimental.allocator.mmap_allocator | deferred |  |
+| std.experimental.allocator | deferred |  |
+| std.experimental.allocator.showcase | deferred |  |
+| std.experimental.allocator.typed | deferred |  |
+| std.experimental.checkedint | deferred |  |
+| std.experimental.logger.core | deferred |  |
+| std.experimental.logger.filelogger | deferred |  |
+| std.experimental.logger.multilogger | deferred |  |
+| std.experimental.logger.nulllogger | deferred |  |
+| std.experimental.logger | deferred |  |
+| std.file | deferred |  |
+| std.format.internal.floats | upstream-support |  |
+| std.format.internal.read | upstream-support |  |
+| std.format.internal.write | upstream-support |  |
+| std.format | deferred |  |
+| std.format.read | deferred |  |
+| std.format.spec | deferred |  |
+| std.format.write | deferred |  |
+| std.functional | blocked-direct-port |  |
+| std.getopt | deferred |  |
+| std.int128 | deferred |  |
+| std.internal.attributes | upstream-support |  |
+| std.internal.cstring | upstream-support |  |
+| std.internal.digest.sha_SSSE3 | upstream-support |  |
+| std.internal.math.biguintcore | upstream-support |  |
+| std.internal.math.biguintnoasm | upstream-support |  |
+| std.internal.math.biguintx86 | upstream-support |  |
+| std.internal.math.errorfunction | upstream-support |  |
+| std.internal.math.gammafunction | upstream-support |  |
+| std.internal.memory | upstream-support |  |
+| std.internal.scopebuffer | upstream-support |  |
+| std.internal.test.dummyrange | upstream-support |  |
+| std.internal.test.range | upstream-support |  |
+| std.internal.test.uda | upstream-support |  |
+| std.internal.unicode_comp | upstream-support |  |
+| std.internal.unicode_decomp | upstream-support |  |
+| std.internal.unicode_grapheme | upstream-support |  |
+| std.internal.unicode_norm | upstream-support |  |
+| std.internal.unicode_tables | upstream-support |  |
+| std.internal.windows.advapi32 | upstream-support |  |
+| std.json | partial | JsonString, JsonTokens |
+| std.logger.core | deferred |  |
+| std.logger.filelogger | deferred |  |
+| std.logger.multilogger | deferred |  |
+| std.logger.nulllogger | deferred |  |
+| std.logger | deferred |  |
+| std.math.algebraic | deferred |  |
+| std.math.constants | deferred |  |
+| std.math.exponential | deferred |  |
+| std.math.hardware | deferred |  |
+| std.math.operations | deferred |  |
+| std.math | deferred |  |
+| std.math.remainder | deferred |  |
+| std.math.rounding | deferred |  |
+| std.math.traits | deferred |  |
+| std.math.trigonometry | deferred |  |
+| std.mathspecial | deferred |  |
+| std.meta | blocked-direct-port |  |
+| std.mmfile | deferred |  |
+| std.net.curl | excluded-external-dependency |  |
+| std.net.isemail | deferred |  |
+| std.numeric | partial | IntegerMath |
+| std.outbuffer | deferred |  |
+| std | deferred |  |
+| std.parallelism | blocked-direct-port |  |
+| std.path | deferred |  |
+| std.process | deferred |  |
+| std.random | partial | Pcg32 |
+| std.range.interfaces | blocked-direct-port |  |
+| std.range | deferred |  |
+| std.range.primitives | blocked-direct-port |  |
+| std.regex.internal.backtracking | upstream-support |  |
+| std.regex.internal.generator | upstream-support |  |
+| std.regex.internal.ir | upstream-support |  |
+| std.regex.internal.kickstart | upstream-support |  |
+| std.regex.internal.parser | upstream-support |  |
+| std.regex.internal.tests | upstream-support |  |
+| std.regex.internal.tests2 | upstream-support |  |
+| std.regex.internal.thompson | upstream-support |  |
+| std.regex | deferred |  |
+| std.signals | blocked-direct-port |  |
+| std.socket | deferred |  |
+| std.stdint | deferred |  |
+| std.stdio | deferred |  |
+| std.string | partial | ByteStrings, Bytes |
+| std.sumtype | blocked-direct-port |  |
+| std.system | deferred |  |
+| std.traits | blocked-direct-port |  |
+| std.typecons | blocked-direct-port |  |
+| std.typetuple | blocked-direct-port |  |
+| std.uni | deferred |  |
+| std.uri | partial | Uri |
+| std.utf | partial | Utf16, Utf32, Utf8 |
+| std.uuid | partial | Uuid |
+| std.variant | blocked-direct-port |  |
+| std.windows.charset | deferred-os-service |  |
+| std.windows.registry | deferred-os-service |  |
+| std.windows.syserror | deferred-os-service |  |
+| std.zip | deferred |  |
+| std.zlib | excluded-external-dependency |  |
+| test.betterc_module_tests | upstream-support |  |
+| test.dub_stdx_allocator | upstream-support |  |
+| test.dub_stdx_checkedint | upstream-support |  |
+| std.unicode_table_generator | upstream-support |  |
+| unittest | deferred |  |

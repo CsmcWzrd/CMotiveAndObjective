@@ -1,7 +1,11 @@
 /* Test fixture only. BSL-1.0. Linux hardware bounds checks, not a library wrapper. */
 #define _DEFAULT_SOURCE 1
+#if defined(_WIN32)
+#include <windows.h>
+#else
 #include <sys/mman.h>
 #include <unistd.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,9 +14,20 @@
 static unsigned long checks;
 #define CHECK(x) do{checks++;if(!(x)){fprintf(stderr,"guard check line %d\n",__LINE__);exit(1);}}while(0)
 static size_t page;
+#if defined(_WIN32)
+static unsigned char*arena(void){unsigned char*p=VirtualAlloc(NULL,page*3,MEM_RESERVE|MEM_COMMIT,PAGE_NOACCESS);CHECK(p);DWORD old;CHECK(VirtualProtect(p+page,page,PAGE_READWRITE,&old));return p;}
+static int release_arena(void*p){return VirtualFree(p,0,MEM_RELEASE)?0:-1;}
+#else
 static unsigned char *arena(void){unsigned char *p=mmap(NULL,page*3,PROT_NONE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);CHECK(p!=MAP_FAILED);CHECK(mprotect(p+page,page,PROT_READ|PROT_WRITE)==0);return p;}
+static int release_arena(void*p){return munmap(p,page*3);}
+#endif
 int main(void){
- page=(size_t)sysconf(_SC_PAGESIZE);CHECK(page>=4096);
+#if defined(_WIN32)
+ SYSTEM_INFO info;GetSystemInfo(&info);page=info.dwPageSize;
+#else
+ page=(size_t)sysconf(_SC_PAGESIZE);
+#endif
+ CHECK(page>=4096);
  unsigned char *x=arena(),*y=arena();
  Base64 *b=A(Base64,new)();Hex*h=A(Hex,new)();Uri*u=A(Uri,new)();Sha256*s=A(Sha256,new)();Bytes*z=A(Bytes,new)();Utf8*v=A(Utf8,new)();Utf16*w=A(Utf16,new)();
  CHECK(b&&h&&u&&s&&z&&v&&w);
@@ -37,8 +52,8 @@ int main(void){
   for(int i=0;i<cap;i++)CHECK(A(HashMapI64,Put)(map,i,i*7)==0);
   CHECK(A(HashMapI64,Put)(map,-1,0)==-1);
   for(int i=0;i<cap;i++){int64_t value=0;CHECK(A(HashMapI64,Get)(map,i,&value)==0);CHECK(value==i*7);CHECK(A(HashMapI64,Remove)(map,i)==0);}
-  A(HashMapI64,delete)(map);CHECK(!munmap(ka,page*3));CHECK(!munmap(va,page*3));CHECK(!munmap(ta,page*3));
+  A(HashMapI64,delete)(map);CHECK(!release_arena(ka));CHECK(!release_arena(va));CHECK(!release_arena(ta));
  }
  A(Base64,delete)(b);A(Hex,delete)(h);A(Uri,delete)(u);A(Sha256,delete)(s);A(Bytes,delete)(z);A(Utf8,delete)(v);A(Utf16,delete)(w);
- CHECK(!munmap(x,page*3));CHECK(!munmap(y,page*3));printf("Hardware guard pages: PASS; %lu checks\n",checks);return 0;
+ CHECK(!release_arena(x));CHECK(!release_arena(y));printf("Hardware guard pages: PASS; %lu checks\n",checks);return 0;
 }

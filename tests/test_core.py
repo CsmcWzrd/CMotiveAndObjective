@@ -30,9 +30,14 @@ for cls in dict.fromkeys(a['cls'] for a in API):
     f=getattr(lib,'CMotiveAndObjective__'+cls+'__new'); f.argtypes=[]; f.restype=C.c_void_p
     handles[cls]=f()
     if not handles[cls]: raise MemoryError(cls)
+from native_vectors import Recorder
+import os
+recorder=Recorder(API) if os.environ.get("CMO_RECORD_VECTORS") else None
+api_by_name={a["cls"]+"."+a["name"]:a for a in API}
 def call(cls,method,*args):
     seen.add(cls+'.'+method)
-    return calls[cls+'.'+method](handles[cls],*args)
+    execute=lambda:calls[cls+'.'+method](handles[cls],*args)
+    return recorder.capture(api_by_name[cls+'.'+method],args,execute) if recorder else execute()
 def eq(a,b):
     global checks
     checks+=1
@@ -472,10 +477,13 @@ try:
         test(); print(test.__name__+': PASS',flush=True)
     from production_cases import run
     run(globals())
+    from phobos_cases import run as run_phobos
+    run_phobos(globals())
     eq(set(calls)-seen,set())
     report={'status':'PASS','assertions':checks,'api_methods_exercised':len(seen),'api_methods_total':len(API),'seed':391724,
             'library_sha256':hashlib.sha256(Path(sys.argv[1]).read_bytes()).hexdigest(),
             'source_fingerprint':source_fingerprint(),'tests_fingerprint':tests_fingerprint(),'methods_exercised':sorted(seen)}
+    if recorder:recorder.write(os.environ['CMO_RECORD_VECTORS'],source_fingerprint(),tests_fingerprint())
     print(json.dumps(report,sort_keys=True))
     if len(sys.argv)>2: Path(sys.argv[2]).write_text(json.dumps(report,indent=2)+'\n')
 finally:

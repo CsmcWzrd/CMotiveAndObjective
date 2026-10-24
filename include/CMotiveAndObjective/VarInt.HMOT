@@ -1,0 +1,52 @@
+// CMotiveAndObjective; BSL-1.0.
+Package CMotiveAndObjective;
+Class
+VarInt
+{
+Public
+{
+I32
+EncodeU64
+value : U64
+out : Uchar*
+capacity : I64
+()
+{
+copy : U64 = value; width : I32 = 1; While (copy >= 128) { copy=copy >> 7; width++; }
+If (out == Null || capacity < width) { Return -1; } i : I32 = 0; While (value >= 128) { out[i]=(Uchar)((value & 127) | 128); value=value >> 7; i++; } out[i]=(Uchar)value; Return width;
+}
+I32
+DecodeU64
+data : Uchar*
+n : I64
+out : U64*
+consumed : I32*
+()
+{
+If (consumed == Null) { Return -1; } *consumed=0; If (data == Null || n <= 0 || out == Null) { Return -1; }
+x : U64 = 0; i : I32 = 0; While (i < 10 && i < n) { c : U32 = data[i]; If (i == 9 && c > 1) { Return -2; } x |= (U64)(c & 127) << (i*7);
+If ((c & 128) == 0) { If (i > 0 && c == 0) { Return -2; } *out=x; *consumed=i+1; Return 0; } i++; } Return -2;
+}
+I32
+EncodeI64
+value : I64
+out : Uchar*
+capacity : I64
+()
+{
+mask : U64 = 0; If (value < 0) { mask=0xffffffffffffffff; } x : U64 = ((U64)value << 1) ^ mask; codec : VarInt = Zero; Return codec.EncodeU64(x,out,capacity);
+}
+I32
+DecodeI64
+data : Uchar*
+n : I64
+out : I64*
+consumed : I32*
+()
+{
+If (out == Null) { If (consumed != Null) { *consumed=0; } Return -1; } x : U64 = 0; codec : VarInt = Zero; status : I32 = codec.DecodeU64(data,n,&x,consumed); If (status < 0) { Return status; }
+value : I64 = (I64)(x >> 1); If ((x & 1) != 0) { value=-1-value; } *out=value; Return 0;
+}
+
+}
+};

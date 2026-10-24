@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "targets": [
+    {
+      "target": "x86-le",
+      "status": "CPU_EMULATION_PASS",
+      "checks": 56064,
+      "elf_sha256": "8edad6f075372204eb28edaf549483f9072b835ecc2deb8a29c058a03ea4f844",
+      "native_os": false,
+      "allocator": "test-only simulated calloc/free; bump heap",
+      "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+      "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"
+    },
+    {
+      "target": "x86_64-le",
+      "status": "CPU_EMULATION_PASS",
+      "checks": 56064,
+      "elf_sha256": "7885a8cb52b46b8da7999df0ad927d742c4a1ab8fb1aad38de8efcdee4af6f95",
+      "native_os": false,
+      "allocator": "test-only simulated calloc/free; bump heap",
+      "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+      "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"
+    },
+    {
+      "target": "arm32-le",
+      "status": "CPU_EMULATION_PASS",
+      "checks": 56064,
+      "elf_sha256": "3525f19483fde4514de9b70d473045daded9425102d9b67c86347b96956773b9",
+      "native_os": false,
+      "allocator": "test-only simulated calloc/free; bump heap",
+      "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+      "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"
+    },
+    {
+      "target": "arm32-be",
+      "status": "CPU_EMULATION_PASS",
+      "checks": 56064,
+      "elf_sha256": "c8502763e07ff97132498570fe9bf66138f4a3022d7bbad96ad9effc14f0bf7a",
+      "native_os": false,
+      "allocator": "test-only simulated calloc/free; bump heap",
+      "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+      "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"
+    },
+    {
+      "target": "arm64-le",
+      "status": "CPU_EMULATION_PASS",
+      "checks": 56064,
+      "elf_sha256": "cad1e10e6ca44bf664c284674b72b9d0bd0924c277f4f30533ea670dc0b83da6",
+      "native_os": false,
+      "allocator": "test-only simulated calloc/free; bump heap",
+      "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+      "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"
+    },
+    {
+      "target": "arm64-be",
+      "status": "CPU_EMULATION_PASS",
+      "checks": 56064,
+      "elf_sha256": "ffa24ebf0396cf785921d2466767acf4fef222595f46e4ff640f442181fc5b18",
+      "native_os": false,
+      "allocator": "test-only simulated calloc/free; bump heap",
+      "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+      "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4"
+    }
+  ]
+}

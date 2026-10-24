@@ -2,15 +2,15 @@
   "status": "NOT_GA",
   "production_ready": false,
   "quality_level": "verified implemented-core candidate",
-  "iteration": 23,
+  "iteration": 43,
   "continuation_checkpoints": 20,
-  "source_fingerprint": "d189d9ce31058748a80a771790ec9c0116c38dbcf48ba6d799fde85a83f9613f",
-  "tests_fingerprint": "383bac65d1c75d401859b197a1865f3e6fdc713a9cc089270ecf138d4dd6981a",
-  "api_methods": 199,
-  "public_classes": 27,
-  "headers": 32,
-  "exports": 253,
-  "behavioral_assertions": 1417340,
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4",
+  "api_methods": 227,
+  "public_classes": 36,
+  "headers": 43,
+  "exports": 299,
+  "behavioral_assertions": 1505040,
   "unicode_scalars": 1112064,
   "native_unicode_checks": 23365381,
   "hardware_guard_checks": 3630,
@@ -29,11 +29,22 @@
     },
     {
       "id": "PLATFORM_QUALIFICATION",
-      "detail": "Full core execution is verified on Linux x86_64 only; Windows/macOS and full ARM/x86 core qualification remain outstanding."
+      "detail": "Windows/macOS libraries cross-built and audited; compiled core replay runs in six CPU modes with a simulated allocator. Native Windows/macOS/ARM host tests remain required."
     },
     {
       "id": "LIFETIME_AND_RACE_QUALIFICATION",
       "detail": "Tracked ownership and concurrency tests pass, but LSan inspection is unavailable and a ThreadSanitizer pass is not claimed."
     }
+  ],
+  "cross_execution": "six compiled-core CPU modes, simulated allocator; not native OS",
+  "native_qualified_hosts": [
+    "Linux x86_64"
+  ],
+  "outstanding_native_hosts": [
+    "Windows x86_64",
+    "macOS x86_64",
+    "macOS ARM64",
+    "Linux ARM32",
+    "Linux ARM64"
   ]
 }

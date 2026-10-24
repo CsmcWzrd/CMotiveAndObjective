@@ -8,7 +8,7 @@ cmoinclude_HEADERS = $(cmo_public_headers)
 cmointernaldir = $(includedir)/CMotiveAndObjective/Internal
 cmointernal_HEADERS = $(cmo_internal_headers)
 dist_doc_DATA = toolchain/CMotive-LICENSE-MIT.txt docs/API.md docs/API-SIGNATURES.md docs/STL-COVERAGE.md docs/PORTING-STATUS.md docs/VERIFICATION.md docs/DEPENDENCIES.md docs/API-EXTENSIONS.md docs/PRODUCTION-ITERATIONS.md
-EXTRA_DIST = src asm api.json tests tools docs cmake build-support upstream toolchain VERSION ITERATION LICENSE_1_0.txt CMakeLists.txt README.md Makefile.linux Makefile.mac Makefile.windows
+EXTRA_DIST = native src asm api.json tests tools docs cmake build-support upstream toolchain VERSION ITERATION LICENSE_1_0.txt CMakeLists.txt README.md Makefile.linux Makefile.mac Makefile.windows
 BUILT_SOURCES = CMotiveAndObjective.c
 CLEANFILES = guard_pages unicode_exhaustive dependency-report.json CMotiveAndObjective.c cmotive-smoke.c cmotive-smoke libCMotiveAndObjective-1.0.0.@CMO_EXT@ abi_smoke rb_invariants test-result.json
 CMotiveAndObjective.c: $(srcdir)/VERSION $(srcdir)/ITERATION $(srcdir)/api.json $(srcdir)/src/CMotiveAndObjective.CMOT $(addprefix $(srcdir)/,$(cmo_header_files)) $(CMOTIVE) $(srcdir)/tools/emit_core.py $(srcdir)/build-support/dependency-policy.json $(CMOTIVE_ROOT)/lib/Sys/runtime.c

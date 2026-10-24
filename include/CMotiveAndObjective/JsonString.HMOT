@@ -1,0 +1,46 @@
+#include "CMotiveAndObjective/Internal/JsonOps.HMOT"
+// CMotiveAndObjective; BSL-1.0.
+Package CMotiveAndObjective;
+Class
+JsonString
+{
+Public
+{
+I64
+EncodedLength
+data : Uchar*
+n : I64
+()
+{
+utf : Utf8 = Zero; If (utf.Count(data,n) < 0) { Return -2; }
+count : I64 = 2; i : I64 = 0; While (i < n) { width : I32 = 1; c : Uchar = data[i]; If (c < 32) { width=6; } Elif (c == 34 || c == 92) { width=2; } If (count > 9223372036854775807-width) { Return -1; } count+=width; i++; } Return count;
+}
+I64
+Encode
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+codec : JsonString = Zero; count : I64 = codec.EncodedLength(data,n); If (count < 0) { Return count; }
+If (capacity < count || out == Null) { Return -1; }
+hex : Char* = "0123456789abcdef"; out[0]=34; j : I64 = 1; i : I64 = 0;
+While (i < n) { c : Uchar = data[i]; If (c < 32) { out[j]=92; out[j+1]=117; out[j+2]=48; out[j+3]=48; out[j+4]=hex[c >> 4]; out[j+5]=hex[c & 15]; j+=6; }
+Else { If (c == 34 || c == 92) { out[j]=92; j++; } out[j]=c; j++; } i++; } out[j]=34; Return count;
+}
+I64
+Decode
+data : Uchar*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (n < 0 || data == Null || capacity < 0) { Return -1; }
+scan : JsonOps = Zero; count : I64 = 0; end : I64 = scan.String(data,n,0,Null,0,&count); If (end < 0 || end != n) { Return -2; }
+If (capacity < count || (count > 0 && out == Null)) { Return -1; } scan.String(data,n,0,out,1,&count); Return count;
+}
+
+}
+};

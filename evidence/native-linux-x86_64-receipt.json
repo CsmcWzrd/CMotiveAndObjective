@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "execution": "native_host",
+  "os": "Linux",
+  "machine": "x86_64",
+  "source_fingerprint": "b5424487fc96cd061b2ac2f2351ec1b589cc788872cb45178a2a64f3259a7ec6",
+  "tests_fingerprint": "9f8503b5c5715753a0615b27c5d11616d5d6978e9b2e39d73c537a5185047ac4",
+  "library_sha256": "2dde16488951032b73cc40eba68ba90a3dae735ca1730d838c5666845d25cfd7",
+  "api_methods": 227,
+  "assertions": 1505040,
+  "tests": [
+    "portable_shared",
+    "rb_invariants",
+    "unicode_exhaustive",
+    "guard_pages",
+    "core",
+    "metadata",
+    "reports"
+  ],
+  "attestation": "local runner report, not cryptographic host attestation"
+}

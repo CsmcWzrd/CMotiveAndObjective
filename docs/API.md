@@ -1,9 +1,11 @@
 # Implemented core API
 
-The 199 maintained methods are CMotive class implementations, not native wrappers.
+The 227 maintained methods are CMotive class implementations, not native wrappers.
 The compiler emits C; a pinned minimal profile retains its allocation definitions
 and removes unused native wrappers. The binary still uses the system C runtime. These adapted typed APIs are
 not drop-in Phobos APIs. No D compiler/runtime or C++ library is required.
+
+Restored API contracts are specified in [RESTORED-APIS.md](RESTORED-APIS.md), including CSV, JSON, UTF-32, endian serialization, varints, PCG32 and URL-safe Base64.
 
 ## Memory and ownership
 
@@ -91,4 +93,4 @@ This does not repair compiler cleanup behavior in an application's own code.
 
 Additional typed containers, merge sorting, checked accumulation, UTF-16, Unicode
 scalar transcoding and integer text conversion are documented in
-[API-EXTENSIONS.md](API-EXTENSIONS.md). All 199 signatures are in API-SIGNATURES.md.
+[API-EXTENSIONS.md](API-EXTENSIONS.md). All 227 signatures are in API-SIGNATURES.md.

@@ -1,0 +1,38 @@
+#include "CMotiveAndObjective/Internal/JsonLex.HMOT"
+// CMotiveAndObjective; BSL-1.0.
+Package CMotiveAndObjective;
+Class
+JsonTokens
+{
+Public
+{
+I64
+Validate
+data : Uchar*
+n : I64
+work : I32*
+depth : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null) || depth < 0) { Return -1; } lexer : JsonLex = Zero; Return lexer.Scan(data,n,Null,Null,Null,0,work,depth);
+}
+I64
+Tokenize
+data : Uchar*
+n : I64
+types : I32*
+starts : I64*
+lengths : I64*
+capacity : I64
+work : I32*
+depth : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null) || depth < 0 || capacity < 0) { Return -1; }
+lexer : JsonLex = Zero; count : I64 = lexer.Scan(data,n,Null,Null,Null,0,work,depth); If (count < 0) { Return count; }
+If (count > capacity || types == Null || starts == Null || lengths == Null) { Return -1; }
+Return lexer.Scan(data,n,types,starts,lengths,1,work,depth);
+}
+
+}
+};

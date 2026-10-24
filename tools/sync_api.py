@@ -47,7 +47,7 @@ def outputs():
         'include/CMotiveAndObjective.h':h,
         'src/CMotiveAndObjective.CMOT':'// Unified CMotive compilation unit. BSL-1.0.\n'+''.join('#include "CMotiveAndObjective/'+c+'.HMOT"\n' for c in classes),
         'build-support/exports.map':'CMotiveAndObjective_1_0 {\n global:\n'+''.join('  '+e+';\n' for e in exports)+' local: *;\n};\n',
-        'build-support/exports.def':'LIBRARY "CMotiveAndObjective-1.0.0"\nEXPORTS\n'+'\n'.join(exports)+'\n',
+        'build-support/exports.def':'LIBRARY "CMotiveAndObjective-1.0.0.dll"\nEXPORTS\n'+'\n'.join(exports)+'\n',
         'build-support/exports.macos':''.join('_'+e+'\n' for e in exports),
         'build-support/exported-symbols.txt':'\n'.join(exports)+'\n',
         'docs/API-SIGNATURES.md':signatures,

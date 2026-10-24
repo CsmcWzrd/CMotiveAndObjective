@@ -1,6 +1,6 @@
 {
-  "standalone_headers": 32,
-  "abi_exports": 253,
+  "standalone_headers": 43,
+  "abi_exports": 299,
   "global_cleanup_push_calls": 0,
   "status": "PASS"
 }

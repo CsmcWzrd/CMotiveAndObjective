@@ -1,0 +1,50 @@
+// Iterative bounded-workspace JSON grammar. BSL-1.0.
+#include "CMotiveAndObjective/Internal/JsonOps.HMOT"
+Package CMotiveAndObjective;
+Class
+JsonLex
+{
+Public
+{
+I64
+Scan
+data : Uchar*
+n : I64
+types : I32*
+starts : I64*
+lengths : I64*
+emit : I32
+work : I32*
+capacity : I64
+()
+{
+p : I64 = 0; level : I64 = 0; rootState : I32 = 0; count : I64 = 0; strings : JsonOps = Zero;
+While (1) {
+While (p < n && (data[p] == 32 || data[p] == 9 || data[p] == 10 || data[p] == 13)) { p++; }
+state : I32 = rootState; If (level > 0) { state=work[level-1]; }
+If (p == n) { If (level == 0 && rootState == 9) { Return count; } Return -2; }
+c : Uchar = data[p]; start : I64 = p; kind : I32 = 0;
+If ((state == 1 || state == 2) && c == 93) { level--; p++; kind=4; }
+Elif ((state == 4 || state == 7) && c == 125) { level--; p++; kind=3; }
+Elif (state == 2 || state == 7) { If (c != 44) { Return -2; } If (state == 2) { work[level-1]=3; } Else { work[level-1]=8; } p++; }
+Elif (state == 5) { If (c != 58) { Return -2; } work[level-1]=6; p++; }
+Elif (state == 4 || state == 8) { decoded : I64 = 0; end : I64 = strings.String(data,n,p,Null,0,&decoded); If (end < 0) { Return -2; } p=end; kind=5; work[level-1]=5; }
+Elif (state == 0 || state == 1 || state == 3 || state == 6) {
+If (level == 0) { rootState=9; } Else { If (state == 6) { work[level-1]=7; } Else { work[level-1]=2; } }
+If (c == 91 || c == 123) { If (level >= capacity || work == Null) { Return -1; } work[level]=1; kind=2; If (c == 123) { work[level]=4; kind=1; } level++; p++; }
+Elif (c == 34) { decoded : I64 = 0; end : I64 = strings.String(data,n,p,Null,0,&decoded); If (end < 0) { Return -2; } p=end; kind=5; }
+Elif (c == 116) { If (n-p < 4 || data[p+1] != 114 || data[p+2] != 117 || data[p+3] != 101) { Return -2; } p+=4; kind=7; }
+Elif (c == 102) { If (n-p < 5 || data[p+1] != 97 || data[p+2] != 108 || data[p+3] != 115 || data[p+4] != 101) { Return -2; } p+=5; kind=8; }
+Elif (c == 110) { If (n-p < 4 || data[p+1] != 117 || data[p+2] != 108 || data[p+3] != 108) { Return -2; } p+=4; kind=9; }
+Else {
+If (c == 45) { p++; } If (p >= n) { Return -2; }
+If (data[p] == 48) { p++; } Else { If (data[p] < 49 || data[p] > 57) { Return -2; } While (p < n && data[p] >= 48 && data[p] <= 57) { p++; } }
+If (p < n && data[p] == 46) { p++; first : I64 = p; While (p < n && data[p] >= 48 && data[p] <= 57) { p++; } If (p == first) { Return -2; } }
+If (p < n && (data[p] == 101 || data[p] == 69)) { p++; If (p < n && (data[p] == 43 || data[p] == 45)) { p++; } first : I64 = p; While (p < n && data[p] >= 48 && data[p] <= 57) { p++; } If (p == first) { Return -2; } } kind=6;
+}
+} Else { Return -2; }
+If (kind != 0) { If (emit == 1) { types[count]=kind; starts[count]=start; lengths[count]=p-start; } count++; }
+} Return -2;
+}
+}
+};

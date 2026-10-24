@@ -174,9 +174,10 @@
     "sha256": "c919959b995d81bf17bb4962582e32e14e1b172eaf4214c9a72f218aa610e47c",
     "bytes": 67812,
     "status": "partial",
-    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
     "implemented_classes": [
-      "Base64"
+      "Base64",
+      "Base64Url"
     ]
   },
   {
@@ -194,9 +195,10 @@
     "sha256": "2b215601f8dab1b47033409418d720ed392b8146ff0bb45567a60fc9a6eb843b",
     "bytes": 125321,
     "status": "partial",
-    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
     "implemented_classes": [
-      "BitManip"
+      "BitManip",
+      "Endian"
     ]
   },
   {
@@ -338,9 +340,11 @@
     "module": "std.csv",
     "sha256": "dc472b9271a246fbd9620b8f2140562d3376c59ebaa2545242b12503c0fff198",
     "bytes": 52463,
-    "status": "deferred",
-    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
-    "implemented_classes": []
+    "status": "partial",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
+    "implemented_classes": [
+      "Csv"
+    ]
   },
   {
     "path": "std/datetime/date.d",
@@ -413,7 +417,7 @@
     "sha256": "8e12326d7fa10d824e9d217251a2010842583e43f6c5aa42ed40a98116c6bc65",
     "bytes": 21943,
     "status": "partial",
-    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
     "implemented_classes": [
       "Checksums"
     ]
@@ -1037,9 +1041,12 @@
     "module": "std.json",
     "sha256": "59219796772d9c5a923e05fa8b17a67ece50f577561cb87d64798077f10017fd",
     "bytes": 73957,
-    "status": "deferred",
-    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
-    "implemented_classes": []
+    "status": "partial",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
+    "implemented_classes": [
+      "JsonString",
+      "JsonTokens"
+    ]
   },
   {
     "path": "std/logger/core.d",
@@ -1282,9 +1289,11 @@
     "module": "std.random",
     "sha256": "9b3097b05272f5c5f6dc27f9ea527bff890716ad31154e236d84830f618d9815",
     "bytes": 136495,
-    "status": "deferred",
-    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
-    "implemented_classes": []
+    "status": "partial",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
+    "implemented_classes": [
+      "Pcg32"
+    ]
   },
   {
     "path": "std/range/interfaces.d",
@@ -1436,8 +1445,9 @@
     "sha256": "e367421e2fe59753ebc28f64abee81b3f1bb714538ef852accbefd943cf736fd",
     "bytes": 222333,
     "status": "partial",
-    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
     "implemented_classes": [
+      "ByteStrings",
       "Bytes"
     ]
   },
@@ -1512,10 +1522,11 @@
     "sha256": "a182853dd4fbe23861522e35295d7a302c1e75cc134057fb085caeb17f64f33c",
     "bytes": 150746,
     "status": "partial",
-    "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
+    "reason": "Implemented explicit typed subset; see RESTORED-APIS.md. Generic Phobos API parity remains incomplete.",
     "implemented_classes": [
-      "Utf8",
-      "Utf16"
+      "Utf16",
+      "Utf32",
+      "Utf8"
     ]
   },
   {

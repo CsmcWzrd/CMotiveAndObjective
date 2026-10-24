@@ -1,0 +1,50 @@
+// CMotiveAndObjective; BSL-1.0.
+Package CMotiveAndObjective;
+Class
+ByteStrings
+{
+Public
+{
+I32
+TrimAscii
+data : Uchar*
+n : I64
+start : I64*
+length : I64*
+()
+{
+If (n < 0 || (n > 0 && data == Null) || start == Null || length == Null) { Return -1; }
+a : I64 = 0; b : I64 = n;
+While (a < b && (data[a] == 32 || (data[a] >= 9 && data[a] <= 13))) { a++; }
+While (b > a && (data[b-1] == 32 || (data[b-1] >= 9 && data[b-1] <= 13))) { b--; }
+*start=a; *length=b-a; Return 0;
+}
+I32
+SplitNext
+data : Uchar*
+n : I64
+delimiter : Uchar
+cursor : I64*
+start : I64*
+length : I64*
+()
+{
+If (n < 0 || (n > 0 && data == Null) || cursor == Null || start == Null || length == Null) { Return -1; }
+a : I64 = *cursor; If (a < 0) { Return 1; } If (a > n) { Return -1; }
+b : I64 = a; While (b < n && data[b] != delimiter) { b++; }
+*start=a; *length=b-a; *cursor=-1; If (b < n) { *cursor=b+1; } Return 0;
+}
+I64
+SubstituteByte
+data : Uchar*
+n : I64
+oldByte : Uchar
+newByte : Uchar
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; }
+i : I64 = 0; count : I64 = 0; While (i < n) { If (data[i] == oldByte) { data[i]=newByte; count++; } i++; } Return count;
+}
+
+}
+};

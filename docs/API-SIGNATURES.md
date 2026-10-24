@@ -17,6 +17,8 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I64 MinIndex(data: I64*, n: I64)`  
 `I64 MaxIndex(data: I64*, n: I64)`  
 `I32 HeapSort(data: I64*, n: I64)`  
+`I32 MergeSort(data: I64*, n: I64, workspace: I64*, capacity: I64)`  
+`I32 SumChecked(data: I64*, n: I64, initial: I64, out: I64*)`  
 
 ## ArrayVectorI64
 
@@ -125,6 +127,32 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I64 DaysSinceEpoch(year: I32, month: I32, day: I32)`  
 `I32 Weekday(year: I32, month: I32, day: I32)`  
 
+## HashMapI64
+
+`I32 Bind(keys: I64*, values: I64*, states: Uchar*, capacity: I64)`  
+`I64 Length()`  
+`I64 Capacity()`  
+`I32 Put(key: I64, value: I64)`  
+`I32 Get(key: I64, out: I64*)`  
+`I32 Contains(key: I64)`  
+`I32 Remove(key: I64)`  
+`I64 NextSlot(previous: I64)`  
+`I32 KeyAt(slot: I64, out: I64*)`  
+`I32 ValueAt(slot: I64, out: I64*)`  
+`Void Clear()`  
+
+## HashSetI64
+
+`I32 Bind(keys: I64*, states: Uchar*, capacity: I64)`  
+`I64 Length()`  
+`I64 Capacity()`  
+`I32 Insert(key: I64)`  
+`I32 Contains(key: I64)`  
+`I32 Remove(key: I64)`  
+`I64 NextSlot(previous: I64)`  
+`I32 KeyAt(slot: I64, out: I64*)`  
+`Void Clear()`  
+
 ## Hex
 
 `I64 Encode(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
@@ -136,6 +164,27 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `U64 Sqrt(x: U64)`  
 `I32 Lcm(a: U64, b: U64, out: U64*)`  
 `I32 Power(x: U64, exponent: U32, out: U64*)`  
+
+## IntegerText
+
+`I64 FormatU64(value: U64, base: I32, out: Uchar*, capacity: I64)`  
+`I32 ParseU64(data: Uchar*, n: I64, base: I32, out: U64*)`  
+`I64 FormatI64(value: I64, base: I32, out: Uchar*, capacity: I64)`  
+`I32 ParseI64(data: Uchar*, n: I64, base: I32, out: I64*)`  
+
+## MultiMapI64
+
+`I32 Bind(keys: I64*, values: I64*, capacity: I64)`  
+`I64 Length()`  
+`I64 Capacity()`  
+`I32 Insert(key: I64, value: I64)`  
+`I64 Count(key: I64)`  
+`I64 FindNext(key: I64, previous: I64)`  
+`I32 KeyAt(index: I64, out: I64*)`  
+`I32 ValueAt(index: I64, out: I64*)`  
+`I32 RemoveOne(key: I64)`  
+`I64 RemoveAll(key: I64)`  
+`Void Clear()`  
 
 ## QueueI64
 
@@ -194,17 +243,36 @@ Generated from .HMOT declarations. Contracts are in [API.md](API.md).
 `I32 ValueAt(index: I64, out: I64*)`  
 `Void Clear()`  
 
+## StackI64
+
+`I32 Bind(storage: I64*, capacity: I64)`  
+`I64 Length()`  
+`I64 Capacity()`  
+`I32 Push(value: I64)`  
+`I32 Peek(out: I64*)`  
+`I32 Pop(out: I64*)`  
+`Void Clear()`  
+
 ## Uri
 
 `I64 EncodedLength(data: Uchar*, n: I64)`  
 `I64 EncodeComponent(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
 `I64 DecodeComponent(data: Uchar*, n: I64, out: Uchar*, capacity: I64)`  
 
+## Utf16
+
+`I32 DecodeFirst(data: Uchar*, n: I64, bigEndian: I32, consumed: I32*)`  
+`I64 Count(data: Uchar*, n: I64, bigEndian: I32)`  
+`I32 Encode(cp: U32, out: Uchar*, capacity: I64, bigEndian: I32)`  
+
 ## Utf8
 
 `I32 DecodeFirst(data: Uchar*, n: I64, consumed: I32*)`  
 `I64 Count(data: Uchar*, n: I64)`  
 `I32 Encode(cp: U32, out: Uchar*, capacity: I64)`  
+`I64 DecodeTo32(data: Uchar*, n: I64, out: U32*, capacity: I64)`  
+`I64 EncodedLength32(data: U32*, n: I64)`  
+`I64 EncodeFrom32(data: U32*, n: I64, out: Uchar*, capacity: I64)`  
 
 ## Uuid
 

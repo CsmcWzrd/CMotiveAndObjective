@@ -54,29 +54,34 @@ def main():
         marker = 'CMO-SOURCE-SHA256:' + emit.source_fingerprint()
         source.write_text(source.read_text() + 'const char source_id[]="' + marker + '";\n')
         library = Path(temp) / 'probe.so'
-        base = ['cc', '-shared', '-fPIC', str(source), '-o', str(library)]
+        base = ['cc', '-shared', '-fPIC', str(source), '-o', str(library),'-Wl,-soname,libCMotiveAndObjective-1.0.0.so']
         hardening = ['-Wl,-z,relro,-z,now,-z,noexecstack']
         subprocess.run(base + hardening, check=True)
-        check.audit(library, policy)
+        check.audit(library, policy, exports={'probe','release','source_id'})
         cases = [hardening + ['-DBAD_IMPORT'], hardening + ['-Wl,--no-as-needed', '-lm'],
                  hardening + ['-Wl,-rpath,/tmp'], ['-Wl,-z,lazy'],
-                 ['-Wl,-z,now,-z,norelro'], ['-Wl,-z,now,-z,execstack']]
+                 ['-Wl,-z,now,-z,norelro'], ['-Wl,-z,now,-z,execstack'],
+                 hardening+['-Wl,-soname,unexpected.so'],hardening+['-fvisibility=hidden']]
         for flags in cases:
             subprocess.run(base + flags, check=True)
             try:
-                check.audit(library, policy)
+                check.audit(library, policy, exports={'probe','release','source_id'})
             except ValueError:
                 continue
             raise AssertionError('Unsafe/dependency-injected ELF image accepted: ' + repr(flags))
+        raw=bytearray(library.read_bytes());raw[18:20]=(183).to_bytes(2,'little');library.write_bytes(raw)
+        try:check.audit(library,policy,exports={'probe','release','source_id'})
+        except ValueError:pass
+        else:raise AssertionError('Wrong-machine ELF accepted')
         source.write_text(source.read_text().replace(marker, 'CMO-SOURCE-SHA256:' + '0' * 64))
         subprocess.run(base + hardening, check=True)
         try:
-            check.audit(library, policy)
+            check.audit(library, policy, exports={'probe','release','source_id'})
         except ValueError:
             pass
         else:
             raise AssertionError('Stale source fingerprint accepted')
-    print('Runtime profile: PASS; class bodies unchanged; STL retained; 12 negative cases rejected')
+    print('Runtime profile: PASS; class bodies unchanged; STL retained; 15 negative cases rejected')
 
 
 if __name__ == '__main__':

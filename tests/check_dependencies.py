@@ -14,7 +14,10 @@ sys.path.insert(0, str(ROOT / 'tools'))
 from emit_core import source_fingerprint
 
 
-def audit(library, policy):
+def audit(library, policy, exports=None):
+    raw=library.read_bytes()
+    if len(raw)<64 or raw[:7]!=b"\x7fELF\x02\x01\x01" or int.from_bytes(raw[16:18],"little")!=3 or int.from_bytes(raw[18:20],"little")!=62:
+        raise ValueError("Release audit requires Linux x86_64 ELF64 little-endian DYN")
     fingerprint = source_fingerprint()
     if b'CMO-SOURCE-SHA256:' + fingerprint.encode() + b'\0' not in library.read_bytes():
         raise ValueError('Library is stale relative to the maintained source/profile')
@@ -27,8 +30,18 @@ def audit(library, policy):
         raise ValueError('Unexpected OS/library dependency set: ' + repr(needed))
     if re.search(r'\((?:RPATH|RUNPATH)\)', dynamic):
         raise ValueError('Release library must not embed runtime search paths')
+    if re.findall(r'\(SONAME\).*\[(.*?)\]',dynamic)!=['libCMotiveAndObjective-1.0.0.so']:
+        raise ValueError('Unexpected or missing SONAME')
     if 'BIND_NOW' not in dynamic:
         raise ValueError('Immediate relocation binding is required')
+    expected=set((ROOT/'build-support/exported-symbols.txt').read_text().splitlines()) if exports is None else set(exports)
+    actual=set()
+    for line in readelf('--dyn-syms').splitlines():
+        fields=line.split()
+        if len(fields)>=8 and fields[6]!='UND' and fields[4] in {'GLOBAL','WEAK'} and fields[3] in {'FUNC','IFUNC','OBJECT','TLS'}:
+            if fields[6]=='ABS' and fields[7]=='CMotiveAndObjective_1_0':continue
+            actual.add(fields[7].split('@')[0])
+    if actual!=expected:raise ValueError('Export allowlist mismatch: '+repr((actual-expected,expected-actual)))
     imports = {}
     for line in readelf('--dyn-syms').splitlines():
         fields = line.split()
@@ -56,7 +69,7 @@ def audit(library, policy):
     return {'status': 'PASS', 'profile': policy['profile'],
             'source_fingerprint': fingerprint,
             'library_sha256': hashlib.sha256(library.read_bytes()).hexdigest(),
-            'needed': needed, 'imports': imports, 'full_relro': True,
+            'needed': needed, 'imports': imports, 'abi_exports':len(actual),'elf_target':'linux-x86_64','full_relro': True,
             'executable_stack': False, 'runtime_search_path': False}
 
 

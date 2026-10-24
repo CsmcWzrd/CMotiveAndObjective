@@ -3,16 +3,20 @@
 from pathlib import Path
 import argparse,gzip,hashlib,io,json,shutil,subprocess,sys,tarfile,zipfile
 ROOT=Path(__file__).resolve().parents[1]
+from release_checks import validate_report
 parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True)
 parser.add_argument('--binary',type=Path,default=ROOT/'build/libCMotiveAndObjective-1.0.0.so')
 parser.add_argument('--test-report',type=Path,default=ROOT/'build/test-result.json')
+parser.add_argument('--require-production',action='store_true',help='Refuse candidate packages unless the documented full production gate is satisfied')
 parser.add_argument('--asm-build',type=Path,default=ROOT/'build-asm');args=parser.parse_args()
+if args.require_production:
+    readiness=json.loads((ROOT/'docs/PRODUCTION-READINESS.json').read_text())
+    if not readiness.get('production_ready'):raise SystemExit('Production promotion blocked: '+', '.join(b['id'] for b in readiness['blockers']))
 subprocess.run([sys.executable,str(ROOT/'tests/check_metadata.py')],check=True)
 binary=args.binary.resolve();report=json.loads(args.test_report.read_text());api=json.loads((ROOT/'api.json').read_text())
 digest=hashlib.sha256(binary.read_bytes()).hexdigest()
 subprocess.run([sys.executable,str(ROOT/'tests/check_dependencies.py'),str(binary),'--report',str(ROOT/'evidence/dependency-report.json')],check=True)
-if not (report['status']=='PASS' and report['api_methods_exercised']==len(api) and report['library_sha256']==digest):
-    raise SystemExit('Binary must match a passing full-method behavioral report')
+validate_report(report,binary)
 if binary.name!='libCMotiveAndObjective-1.0.0.so' or binary.read_bytes()[:4]!=b'\x7fELF':
     raise SystemExit('This release packager currently expects the Linux ELF library')
 names=['README.md','LICENSE_1_0.txt','VERSION','ITERATION','api.json','Makefile','Makefile.linux','Makefile.mac','Makefile.windows','Makefile.am','configure.ac','CMakeLists.txt']

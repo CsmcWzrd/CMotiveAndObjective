@@ -13,7 +13,7 @@ All 174 D files are listed. Partial does not mean complete or API-compatible. De
 | `etc.c.zlib` (`etc/c/zlib.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
 | `std.algorithm.comparison` (`std/algorithm/comparison.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.algorithm.internal` (`std/algorithm/internal.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.algorithm.iteration` (`std/algorithm/iteration.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
+| `std.algorithm.iteration` (`std/algorithm/iteration.d`) | partial | Adapted typed subset only; full upstream generic and package APIs remain deferred. |
 | `std.algorithm.mutation` (`std/algorithm/mutation.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.algorithm` (`std/algorithm/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.algorithm.searching` (`std/algorithm/searching.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
@@ -31,11 +31,11 @@ All 174 D files are listed. Partial does not mean complete or API-compatible. De
 | `std.container.array` (`std/container/array.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.container.binaryheap` (`std/container/binaryheap.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.container.dlist` (`std/container/dlist.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
-| `std.container` (`std/container/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
+| `std.container` (`std/container/package.d`) | partial | Adapted typed subset only; full upstream generic and package APIs remain deferred. |
 | `std.container.rbtree` (`std/container/rbtree.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.container.slist` (`std/container/slist.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.container.util` (`std/container/util.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.conv` (`std/conv.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
+| `std.conv` (`std/conv.d`) | partial | Adapted typed subset only; full upstream generic and package APIs remain deferred. |
 | `std.csv` (`std/csv.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.datetime.date` (`std/datetime/date.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.datetime.interval` (`std/datetime/interval.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |

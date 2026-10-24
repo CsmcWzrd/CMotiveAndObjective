@@ -44,6 +44,10 @@
     "QueueI64",
     "RedBlackTreeI64",
     "SListI64",
-    "SortedMapI64"
+    "SortedMapI64",
+    "HashMapI64",
+    "HashSetI64",
+    "MultiMapI64",
+    "StackI64"
   ]
 }

@@ -1,0 +1,77 @@
+// CMotiveAndObjective; BSL-1.0. Strict locale-independent integer text.
+Package CMotiveAndObjective;
+Class
+IntegerText
+{
+Public
+{
+I64
+FormatU64
+value : U64
+base : I32
+out : Uchar*
+capacity : I64
+()
+{
+If (base < 2 || base > 36 || capacity < 0) { Return -1; }
+negative : I32 = 0; remaining : U64 = value;
+alphabet : Char* = "0123456789abcdefghijklmnopqrstuvwxyz"; scratch : Uchar[65]; length : I64 = 0;
+While (remaining > 0 || length == 0) { scratch[length]=alphabet[remaining % (U64)base]; remaining=remaining/(U64)base; length++; }
+size : I64 = length+negative; If (out == Null || capacity < size) { Return -1; }
+i : I64 = 0; If (negative) { out[0]=45; i=1; }
+While (length > 0) { length--; out[i]=scratch[length]; i++; } Return size;
+}
+I32
+ParseU64
+data : Uchar*
+n : I64
+base : I32
+out : U64*
+()
+{
+If (base < 2 || base > 36 || n < 0 || out == Null || (n > 0 && data == Null)) { Return -1; } If (n == 0) { Return -2; }
+start : I64 = 0; limit : U64 = ~((U64)0);
+value : U64 = 0; i : I64 = start;
+While (i < n) { c : I32 = data[i]; digit : I32 = -1; If (c >= 48 && c <= 57) { digit=c-48; } Elif (c >= 65 && c <= 90) { digit=c-55; } Elif (c >= 97 && c <= 122) { digit=c-87; }
+If (digit < 0 || digit >= base) { Return -2; }
+If (value > limit/(U64)base || (value == limit/(U64)base && (U64)digit > limit % (U64)base)) { Return -3; }
+value=value*(U64)base+(U64)digit; i++;
+}
+*out=value; Return 0;
+}
+I64
+FormatI64
+value : I64
+base : I32
+out : Uchar*
+capacity : I64
+()
+{
+If (base < 2 || base > 36 || capacity < 0) { Return -1; }
+negative : I32 = value < 0; remaining : U64 = (U64)value; If (negative) { remaining=(U64)(-(value+1))+1; }
+alphabet : Char* = "0123456789abcdefghijklmnopqrstuvwxyz"; scratch : Uchar[65]; length : I64 = 0;
+While (remaining > 0 || length == 0) { scratch[length]=alphabet[remaining % (U64)base]; remaining=remaining/(U64)base; length++; }
+size : I64 = length+negative; If (out == Null || capacity < size) { Return -1; }
+i : I64 = 0; If (negative) { out[0]=45; i=1; }
+While (length > 0) { length--; out[i]=scratch[length]; i++; } Return size;
+}
+I32
+ParseI64
+data : Uchar*
+n : I64
+base : I32
+out : I64*
+()
+{
+If (base < 2 || base > 36 || n < 0 || out == Null || (n > 0 && data == Null)) { Return -1; } If (n == 0) { Return -2; }
+negative : I32 = 0; start : I64 = 0; If (data[0] == 45 || data[0] == 43) { negative=data[0] == 45; start=1; } If (start == n) { Return -2; } limit : U64 = 9223372036854775807; If (negative) { limit+=1; }
+value : U64 = 0; i : I64 = start;
+While (i < n) { c : I32 = data[i]; digit : I32 = -1; If (c >= 48 && c <= 57) { digit=c-48; } Elif (c >= 65 && c <= 90) { digit=c-55; } Elif (c >= 97 && c <= 122) { digit=c-87; }
+If (digit < 0 || digit >= base) { Return -2; }
+If (value > limit/(U64)base || (value == limit/(U64)base && (U64)digit > limit % (U64)base)) { Return -3; }
+value=value*(U64)base+(U64)digit; i++;
+}
+If (negative) { If (value == 0x8000000000000000) { *out=-9223372036854775807-1; } Else { *out=-(I64)value; } } Else { *out=(I64)value; } Return 0;
+}
+}
+};

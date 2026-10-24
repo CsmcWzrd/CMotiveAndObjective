@@ -7,7 +7,7 @@ subprocess.run([sys.executable,str(ROOT/'tools/sync_api.py'),'--check'],check=Tr
 iteration2=json.loads((ROOT/'tests/iteration2-api-baseline.json').read_text())
 current=json.loads((ROOT/'api.json').read_text());baseline=json.loads((ROOT/'tests/abi-1.0.0-baseline.json').read_text())
 by_name={(a['cls'],a['name']):a for a in current}
-for a in baseline + iteration2:
+for a in baseline + iteration2 + json.loads((ROOT/'tests/iteration20-api-baseline.json').read_text()):
     if by_name.get((a['cls'],a['name']))!=a:raise SystemExit('ABI baseline changed: '+a['cls']+'.'+a['name'])
 pins=json.loads((ROOT/'tools/source-pins.json').read_text())
 for folder,extensions in [('src',{'.CMOT','.CMTV'}),('include/CMotiveAndObjective',{'.HMOT','.HMTV'})]:

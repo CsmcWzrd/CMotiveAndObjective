@@ -1,0 +1,53 @@
+// CMotiveAndObjective; BSL-1.0. Explicit byte-order UTF-16 codec, no BOM inference.
+Package CMotiveAndObjective;
+Class
+Utf16
+{
+Public
+{
+I32
+DecodeFirst
+data : Uchar*
+n : I64
+bigEndian : I32
+consumed : I32*
+()
+{
+If (consumed == Null) { Return -1; } *consumed=0;
+If (n <= 0 || data == Null || (bigEndian != 0 && bigEndian != 1)) { Return -1; } If (n < 2) { Return -2; }
+first : U32 = (U32)data[0] | ((U32)data[1] << 8); If (bigEndian == 1) { first=((U32)data[0] << 8) | (U32)data[1]; }
+If (first < 55296 || first > 57343) { *consumed=2; Return (I32)first; }
+If (first >= 56320 || n < 4) { Return -2; }
+second : U32 = (U32)data[2] | ((U32)data[3] << 8); If (bigEndian == 1) { second=((U32)data[2] << 8) | (U32)data[3]; }
+If (second < 56320 || second > 57343) { Return -2; }
+*consumed=4; Return (I32)(65536+((first-55296) << 10)+(second-56320));
+}
+I64
+Count
+data : Uchar*
+n : I64
+bigEndian : I32
+()
+{
+If (n < 0 || (n > 0 && data == Null) || (bigEndian != 0 && bigEndian != 1)) { Return -1; }
+codec : Utf16 = Zero; i : I64 = 0; count : I64 = 0;
+While (i < n) { consumed : I32 = 0; cp : I32 = codec.DecodeFirst(data+i,n-i,bigEndian,&consumed); If (cp < 0) { Return -2; } i+=consumed; count++; } Return count;
+}
+I32
+Encode
+cp : U32
+out : Uchar*
+capacity : I64
+bigEndian : I32
+()
+{
+If (bigEndian != 0 && bigEndian != 1) { Return -1; } If (cp > 1114111 || (cp >= 55296 && cp <= 57343)) { Return -2; }
+width : I32 = 2; first : U32 = cp; second : U32 = 0;
+If (cp >= 65536) { width=4; value : U32 = cp-65536; first=55296+(value >> 10); second=56320+(value & 1023); }
+If (out == Null || capacity < width) { Return -1; }
+If (bigEndian == 1) { out[0]=(Uchar)(first >> 8); out[1]=(Uchar)first; If (width == 4) { out[2]=(Uchar)(second >> 8); out[3]=(Uchar)second; } }
+Else { out[0]=(Uchar)first; out[1]=(Uchar)(first >> 8); If (width == 4) { out[2]=(Uchar)second; out[3]=(Uchar)(second >> 8); } }
+Return width;
+}
+}
+};

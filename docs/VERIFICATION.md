@@ -1,136 +1,83 @@
-# Verification — iteration 3 — 24 October 2026
+# Verification — iteration 23 — 24 October 2026
 
-This report distinguishes the selected standalone assembly-runtime scope from the
-CMotive core's existing compiler backend. Neither result certifies complete Phobos
-parity or a fully native, production-ready compiler/library.
+Twenty continuation checkpoints (4–23) have been completed. The implemented core
+is a verified candidate, **not a full-production/GA release**. Production promotion
+is explicitly refused while PRODUCTION-READINESS.json lists outstanding blockers.
+Version 1.0.0 remains the requested output filename/version.
 
-## Custom-register assembly runtime
+## Current scope
 
-Nine routines implement byte copy, overlap-safe move, fill, unsigned comparison,
-bounded string length, and LE/BE U32 loads/stores. CMO-REG-1 is a custom register
-convention. No C wrapper, libc import, C startup or C compiler language is used.
-The assembly CMake project declares LANGUAGES NONE. Zig 0.17.0 is used solely as
-assembler/linker/archive driver; sources passed to it are .s files.
+27 public classes, 199 methods and 32 .HMOT headers (five internal helpers).
+All 149 original methods and all original STL functionality remain. Four additional
+typed containers provide HashMapI64, HashSetI64, MultiMapI64 and StackI64. New
+algorithms include caller-workspace merge sort, checked sum, UTF-16 LE/BE,
+UTF-8/scalar transcoding and strict I64/U64 text conversion in bases 2..36.
+API-EXTENSIONS.md specifies capacities, error atomicity, lifetimes and complexity.
+All maintained library algorithms use CMotive, with no third-party library wrapper.
 
-| Target | Assemble/link | CPU-emulated execution | Native execution |
-|---|---|---|---|
-| x86 LE (i386+) | PASS | PASS | NOT RUN: host rejects ELF32 execution |
-| x86_64 LE | PASS | PASS | PASS: freestanding Linux assembly caller |
-| ARM32 LE (ARMv7-A) | PASS | PASS | NOT RUN: no physical ARM host |
-| ARM32 BE8 | PASS | PASS | NOT RUN: no physical ARM host |
-| ARM64 LE | PASS | PASS | NOT RUN: no physical ARM host |
-| ARM64 BE | PASS | PASS | NOT RUN: no physical ARM host |
+The Linux ELF uses the pinned minimal C-emission compiler profile and system
+calloc/free plus compiler/optimizer OS-runtime helpers. Its sole DT_NEEDED is
+libc.so.6. External curl, ODBC, SQLite and zlib wrappers are excluded. The original
+upstream/compiler ZIPs are provenance inputs, not linked library implementations.
 
-CPU emulation: **115,733 assertions across six targets**, Unicorn 2.1.4.
-Tests check register preservation, stack balance, return addresses, zero-length
-null-pointer operations, memory sentinels, page-edge spans, overlapping moves,
-unsigned ordering, explicit endian accesses and native data-endian mode. ELF
-machine/class/endian flags, absence of dynamic sections and absence of unresolved
-symbols are checked. ARM32 uses BE8, not BE32 instruction decoding. A separate
-A64 word-load probe verifies BE data state while instruction bytes remain LE.
-
-x86 has no native big-endian CPU mode. Both BE and LE data formats are supported
-there through explicit load/store routines. The sources/static archives currently
-use ELF; Windows COFF and macOS Mach-O adaptations remain unverified/unimplemented.
-The native x86_64 test exercises all nine routines, entered from assembly _start
-and exited using the Linux kernel syscall convention, without C startup code.
-
-The current CMotive frontend does **not** call CMO-REG-1 directly. Its C backend,
-allocator and platform runtime are not replaced by these primitives. No claim of
-end-to-end C ABI removal is made. The standalone assembly ZIP contains this native
-layer separately, without the core's legacy C compatibility fixtures.
-
-## CMotive core regression and hardening
-
-21 public classes, 149 methods, 25 .HMOT files including four internal node/helper
-headers. Maintained CMotive implementation files use .CMOT and .HMOT; no unsupported
-generic template stubs or renamed D files are shipped. Assembly retains its true
-.s extension. Genuine C compatibility fixtures retain .c/.h extensions.
-
-Host: Linux x86_64, glibc 2.39, GCC 13.3.0. Compiler: CMotive 0.3.0-selfhost from
-the retrieved 30 August 2026 archive, preserved unchanged with its SHA-256 pin.
+## Executed checks
 
 | Check | Result |
 |---|---|
-| GNU Make build and CMotive source consumer | PASS |
-| Full behavioral suite | PASS: 500,684 assertions; 149/149 methods exercised |
-| Full behavioral suite against ASan/UBSan library | PASS; leak detection disabled |
-| Native bounds/encoding/container stress | PASS |
-| Red-black tree invariant checks | PASS: 52,000 checked operations plus destruction stress |
-| Allocation-failure atomicity and tracked node cleanup | PASS |
-| Eight concurrent stateless callers | PASS: 14,400 native-operation checks |
-| Compatibility and STL retention | PASS: all 84 original and all 149 iteration-2 signatures retained |
-| Generated manifest/header/export drift | PASS |
-| Every standalone CMotive header | PASS: 25 headers compile |
-| Existing compiler-backend export allowlist | PASS: 149 methods + 42 generated new/delete entries |
-| Shipped library compiler runtime | Unused prelude/wrappers removed; only original allocation definitions retained |
-| OS/runtime dependency audit | PASS: libc.so.6 only; imports allowlisted |
-| Linux link protections | PASS: full RELRO, immediate binding, non-executable stack; no RPATH or writable executable segments |
-| Minimal profile and release rejection fixtures | PASS: unchanged class bodies, retained STL, 12 negative cases rejected |
-| Source/profile freshness | PASS: embedded fingerprint matches maintained inputs |
-| CMake build / CTest | PASS: all seven tests |
-| CMake installation, installed package consumer, installed .HMOT consumer | PASS |
-| Autoconf 2.71 / Automake 1.16.5 build, check and install | PASS |
-| Automake distribution build/check/install/uninstall/clean validation | PASS: make distcheck |
-| Autotools-installed .HMOT consumer | PASS; internal header hierarchy retained |
-| Legacy C and C++ backend compatibility clients | PASS; not the assembly interface |
-| Full core Windows/macOS/ARM64 builds | NOT RUN |
-| LeakSanitizer | UNVERIFIED: process inspection unavailable |
+| Full behavioral suite | PASS: 1,417,340 assertions, 199/199 methods |
+| Same full suite with ASan/UBSan | PASS; detect_leaks=0, halt_on_error=1 |
+| Exhaustive UTF-8 and UTF-16 LE/BE | PASS: 1,112,064 scalars, 23,365,381 native checks |
+| Independent Unicode oracle | PASS: aggregate byte hashes match Python codecs |
+| Gregorian cycle | PASS: 146,097 dates checked against Python datetime |
+| Native hardware guard pages | PASS: 3,630 checks; source/output bounds and full hash tables |
+| Owning containers | PASS: 52,000 RB invariant operations, destructor stress, 100 nth-allocation cut points, tracked allocations return to zero |
+| Adversarial hashing | PASS: discovered collisions, tombstones, full tables and duplicate updates |
+| Concurrency | PASS: 12 independent container workers, 100,872 checks; plus original stateless stress |
+| Malformed codecs | PASS: 12,500 inputs, five seeds, independent strict oracles and failure output preservation |
+| GCC optimization matrix | PASS: O0, O2, O3, Os; complete behavior and native fixtures per configuration |
+| Strict warnings | PASS: implicit declarations, incompatible pointers and return types are errors |
+| GNU Make / CMotive consumer | PASS, including all new classes |
+| Fresh CMake / CTest | PASS: all 10 tests |
+| Installed CMake package consumer | PASS |
+| Autoconf/Automake check/install/distcheck | PASS |
+| Installed CMotive consumers | PASS: CMake and Autotools installations; all headers byte-matched |
+| Standalone headers / ABI | PASS: 32 headers, exact 253 exported API symbols |
+| Linux dependency and ELF audit | PASS: target, SONAME, imports, exports, RELRO, NOW, non-executable stack, no writable executable segments or runtime search paths |
+| Negative release fixtures | PASS: 15 profile/ELF rejection cases and eight invalid/stale behavioral reports |
+| Production promotion guard | PASS: refuses GA promotion because blockers remain |
 
-The deterministic suite uses seed 391724 and independent Python oracles: arithmetic,
-math/bisect/heapq/datetime, codecs, zlib, hashlib.sha256, urllib percent encoding,
-uuid and list/dict/deque/set models. All 149 methods are exercised; this is call
-coverage, not a measured branch-coverage claim. SHA-256 includes standard vectors,
-block/padding boundaries, randomized inputs and the million-'a' case.
+The normal suite uses independent Python arithmetic/codecs/container models.
+Method-call coverage is measured; branch coverage and a complete security audit
+are not claimed. Output spans must actually exist for their declared lengths.
+Mutable shared containers require caller synchronization. Hashing is not designed
+as collision-attack resistance; fixed capacities and worst-case costs are documented.
 
-The independent native red-black checker verifies ordering, parent pointers, root
-color, red-child restrictions, equal black heights and element counts. Its test-only
-allocator tracking injects failures into node/handle allocation, verifies unchanged
-contents on failure, and checks allocation balance after destruction of populated
-lists and trees. This supports these tested ownership paths, not global leak freedom.
+The normal and sanitized binary hashes are:
 
-A compiler-generated global cleanup stack was a concurrency risk in automatic helper
-objects. Stateless helpers now use explicit Zero initialization, avoiding those
-shared writes. A generated-code guard and concurrent tests protect this workaround;
-they do not repair arbitrary application code generated by the same compiler.
+- Normal: 4addd06360b0e19411496fa5f90234b8cef7d3041ba7483a51b5dad631f80702
+- ASan/UBSan: f96bfaa2e9f461203bd991d7e29b998efff5aa113eccb3f1fed01d975cf41e90
 
-ASan/UBSan run with detect_leaks=0 and halt_on_error=1. LeakSanitizer previously failed
-on restricted process inspection, so no LSan pass is claimed. The full core binary
-is still a C-emission backend artifact, SHA-256:
-84d10c70866063b9ddf8ae450497bb55f476c9b514a058eac028ba887549cbdb
+## Assembly layer
 
-Source/provenance checks cover all 174 supplied D files. API/STL coverage and all
-remaining modules/compiler restrictions are documented separately. General templates,
-complete Phobos APIs, native frontend integration, physical ARM qualification and
-full Windows/macOS library validation remain outstanding.
+The nine unchanged CMO-REG-1 primitives have no C ABI wrappers or libc imports.
+All six ELF CPU/endian modes pass 115,733 emulated checks: x86 LE, x86_64 LE,
+ARM32 LE/BE8 and ARM64 LE/BE. The x86_64 freestanding assembly caller passes
+natively; native ELF32 execution is unsupported by this host. ARM execution is
+emulated, not physical-hardware qualification. x86 has no big-endian execution
+mode; explicit BE data loads/stores are supported. COFF/Mach-O assembly adaptations
+and direct compiler integration remain unfinished. These checks were rerun for
+this final checkpoint; the packager also validates exact source/artifact hashes.
 
-## Iteration 3 dependency changes
+## Production limitations
 
-The production Linux ELF is 75,816 bytes, versus 129,952 bytes for iteration 2
-with the same optimized GNU Make configuration (about 42% smaller). The compiler's
-generic runtime prelude is absent, including unused networking, threading,
-filesystem, I/O and built-in container wrappers. All CMotive class bodies are
-preserved byte-for-byte, and all 149 methods and eight typed STL/algorithm classes
-remain present. Existing .CMOT/.HMOT names and custom-register assembly remain.
+The current frontend is a C-emission backend, with no arbitrary template
+instantiation or direct CMO-REG-1 class-call integration. Full Phobos parity and
+OS-service APIs are incomplete. Full Windows/macOS/ARM core execution remains
+unverified; no DLL/dylib or ARM core production binary is fabricated. LSan cannot
+inspect processes here, and no ThreadSanitizer pass is claimed. Tracked allocation
+and concurrent tests support the tested paths, not global leak/race freedom.
 
-The audited Linux imports are system calloc/free, optimizer-emitted memmove,
-__stack_chk_fail and four weak compiler hooks. No libcurl, ODBC, SQLite, zlib,
-C++ STL, math or thread shared library is needed. The minimal profile copies
-only the original pinned compiler allocation definitions; its MIT license is
-included and installed. This still uses the current C-emission backend and
-system C runtime; it does not establish a native CMotive class ABI.
-
-GNU Make, CMake/CTest, installed package/header consumers, Autoconf/Automake
-build/check/install and make distcheck passed for the updated profile. The full
-500,684-assertion suite passes normally and under ASan/UBSan with leak detection
-disabled. Header/export checks confirm 25 headers and 191 allowed ABI entries.
-The separate assembly sources and prebuilt objects are unchanged; their prior
-115,733-check reports remain included and the packager revalidates artifact hashes.
-
-Twelve rejection cases cover altered prelude/runtime, native helper/include
-injection, lost class boundary, unexpected ELF import/library, embedded RPATH,
-lazy binding, missing RELRO, executable stack and stale source fingerprint. The
-packager reruns the audit on the exact release binary and requires a matching
-passing full-method test report. Reproducible ZIP/TAR output and per-file archive
-contents are checked. These are regression and packaging checks, not a complete
-security audit, branch-coverage measurement or cross-platform certification.
+Every checkpoint includes its full source/binary ZIP, test log and SHA-256 in the
+continuation history. Final ZIP/TAR packaging is deterministic and the exact
+release binary must match current source/test fingerprints and measured coverage.
+All 174 supplied upstream file hashes and compiler/source pins remain verified.

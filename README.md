@@ -1,4 +1,4 @@
-# CMotiveAndObjective 1.0.0 — iteration 2
+# CMotiveAndObjective 1.0.0 — iteration 3
 
 A separately maintained CMotive standard-library port based on the exact supplied
 Phobos snapshot. **This is a tested and hardened core, not a completed or production-ready
@@ -56,10 +56,12 @@ Use a clean source copy; configure writes Makefile. Requires autoconf and automa
 autoreconf -fi
 mkdir autotools-build
 cd autotools-build
-CMOTIVE_ROOT=/absolute/path/to/compiler ../configure --prefix=/desired/path
+export CMOTIVE_ROOT=/absolute/path/to/compiler
+../configure --prefix=/desired/path
 make
 make check
 make install
+make distcheck
 ```
 
 For macOS, build the compiler with Makefile.mac, then use Makefile.mac here or
@@ -84,7 +86,7 @@ CMotive consumers include required .HMOT implementations, as in tests/smoke.CMOT
 Shared-library consumers use opaque handles from include/CMotiveAndObjective.h;
 tests/abi_smoke.c is a complete example. Full library algorithms are in .HMOT source;
 the C file is only a test client. No handwritten C/C++ implementation backs the
-149 methods, although the compiler itself injects its native C runtime.
+149 methods. The minimal compiler profile retains only its system allocation glue.
 
 ## License
 
@@ -123,3 +125,18 @@ been extended to call this custom convention. No full-runtime replacement is cla
 The full-core prebuilt .so is an existing compiler C-backend regression artifact,
 not a C-free/native-assembly build. Use the standalone assembly-runtime package
 for CMO-REG-1 .o/.a files without C interfaces. See docs/VERIFICATION.md for limits.
+
+## Iteration 3 dependency and release hardening
+
+The core retains all 149 methods and all typed STL/container classes. External
+library wrappers are excluded; see [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md).
+A pinned minimal compiler profile removes unused runtime wrappers without
+changing generated class bodies. The Linux shared library requires only the
+system C runtime. It no longer links math/thread/socket support libraries.
+
+GNU Make, CMake and Autotools use the same profile. On Linux, `make test` and
+CTest audit dependency imports and linker hardening and exercise rejection
+fixtures. The release packager repeats the audit on the exact binary. Python 3
+is required at build time. The current C-emission backend and system allocator
+remain; the separate custom-register assembly layer is preserved. This is not
+a complete native compiler or complete Phobos port.

@@ -12,7 +12,8 @@ AS_IF([test ! -f "$CMOTIVE_ROOT/lib/Sys/runtime.c"],[AC_MSG_ERROR([CMOTIVE_ROOT 
 AC_PATH_PROG([PYTHON],[python3])
 AS_IF([test -z "$PYTHON"],[AC_MSG_ERROR([python3 required for behavioral tests])])
 AC_CANONICAL_HOST
-AS_CASE([$host_os],[darwin*],[CMO_EXT=dylib; CMO_SHARED='-dynamiclib -Wl,-install_name,@rpath/libCMotiveAndObjective-1.0.0.dylib'; CMO_EXPORTS='-Wl,-exported_symbols_list,$(srcdir)/build-support/exports.macos'],[linux*],[CMO_EXT=so; CMO_SHARED='-shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so'; CMO_EXPORTS='-Wl,--version-script=$(srcdir)/build-support/exports.map'],[AC_MSG_ERROR([use CMake for this platform])])
+AS_CASE([$host_os],[darwin*],[CMO_EXT=dylib; CMO_SHARED='-dynamiclib -Wl,-install_name,@rpath/libCMotiveAndObjective-1.0.0.dylib'; CMO_EXPORTS='-Wl,-exported_symbols_list,$(srcdir)/build-support/exports.macos'],[linux*],[CMO_HARDEN="-fstack-protector-strong -Wl,--no-undefined,-z,relro,-z,now,-z,noexecstack"; CMO_EXT=so; CMO_SHARED='-shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so'; CMO_EXPORTS='-Wl,--version-script=$(srcdir)/build-support/exports.map'],[AC_MSG_ERROR([use CMake for this platform])])
+AC_SUBST([CMO_HARDEN])
 AC_SUBST([CMO_EXT])
 AC_SUBST([CMO_SHARED])
 AC_SUBST([CMO_EXPORTS])

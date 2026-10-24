@@ -4,53 +4,53 @@ All 174 D files are listed. Partial does not mean complete or API-compatible. De
 
 | Module / file | Status | Subset / reason |
 |---|---|---|
-| `etc.c.curl` (`etc/c/curl.d`) | excluded-native-binding | Native C binding/dependency, not a pure CMotive library implementation. |
-| `etc.c.odbc.sql` (`etc/c/odbc/sql.d`) | excluded-native-binding | Native C binding/dependency, not a pure CMotive library implementation. |
-| `etc.c.odbc.sqlext` (`etc/c/odbc/sqlext.d`) | excluded-native-binding | Native C binding/dependency, not a pure CMotive library implementation. |
-| `etc.c.odbc.sqltypes` (`etc/c/odbc/sqltypes.d`) | excluded-native-binding | Native C binding/dependency, not a pure CMotive library implementation. |
-| `etc.c.odbc.sqlucode` (`etc/c/odbc/sqlucode.d`) | excluded-native-binding | Native C binding/dependency, not a pure CMotive library implementation. |
-| `etc.c.sqlite3` (`etc/c/sqlite3.d`) | excluded-native-binding | Native C binding/dependency, not a pure CMotive library implementation. |
-| `etc.c.zlib` (`etc/c/zlib.d`) | excluded-native-binding | Native C binding/dependency, not a pure CMotive library implementation. |
-| `std.algorithm.comparison` (`std/algorithm/comparison.d`) | partial | AlgorithmsI64, Bytes; remaining APIs deferred. |
+| `etc.c.curl` (`etc/c/curl.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
+| `etc.c.odbc.sql` (`etc/c/odbc/sql.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
+| `etc.c.odbc.sqlext` (`etc/c/odbc/sqlext.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
+| `etc.c.odbc.sqltypes` (`etc/c/odbc/sqltypes.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
+| `etc.c.odbc.sqlucode` (`etc/c/odbc/sqlucode.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
+| `etc.c.sqlite3` (`etc/c/sqlite3.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
+| `etc.c.zlib` (`etc/c/zlib.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
+| `std.algorithm.comparison` (`std/algorithm/comparison.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.algorithm.internal` (`std/algorithm/internal.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.algorithm.iteration` (`std/algorithm/iteration.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.algorithm.mutation` (`std/algorithm/mutation.d`) | partial | AlgorithmsI64; remaining APIs deferred. |
+| `std.algorithm.mutation` (`std/algorithm/mutation.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.algorithm` (`std/algorithm/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.algorithm.searching` (`std/algorithm/searching.d`) | partial | AlgorithmsI64; remaining APIs deferred. |
+| `std.algorithm.searching` (`std/algorithm/searching.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.algorithm.setops` (`std/algorithm/setops.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.algorithm.sorting` (`std/algorithm/sorting.d`) | partial | AlgorithmsI64; remaining APIs deferred. |
-| `std.array` (`std/array.d`) | partial | Bytes, ArrayVectorI64; remaining APIs deferred. |
-| `std.ascii` (`std/ascii.d`) | partial | Ascii; remaining APIs deferred. |
-| `std.base64` (`std/base64.d`) | partial | Base64; remaining APIs deferred. |
+| `std.algorithm.sorting` (`std/algorithm/sorting.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.array` (`std/array.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.ascii` (`std/ascii.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.base64` (`std/base64.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.bigint` (`std/bigint.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.bitmanip` (`std/bitmanip.d`) | partial | BitManip; remaining APIs deferred. |
-| `std.checkedint` (`std/checkedint.d`) | partial | CheckedInt; remaining APIs deferred. |
+| `std.bitmanip` (`std/bitmanip.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.checkedint` (`std/checkedint.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.compiler` (`std/compiler.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.complex` (`std/complex.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.concurrency` (`std/concurrency.d`) | blocked-direct-port | D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler. |
-| `std.container.array` (`std/container/array.d`) | partial | ArrayVectorI64; remaining APIs deferred. |
-| `std.container.binaryheap` (`std/container/binaryheap.d`) | partial | BinaryHeapI64; remaining APIs deferred. |
-| `std.container.dlist` (`std/container/dlist.d`) | partial | DListI64; remaining APIs deferred. |
+| `std.container.array` (`std/container/array.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.container.binaryheap` (`std/container/binaryheap.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.container.dlist` (`std/container/dlist.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.container` (`std/container/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.container.rbtree` (`std/container/rbtree.d`) | partial | RedBlackTreeI64; remaining APIs deferred. |
-| `std.container.slist` (`std/container/slist.d`) | partial | SListI64; remaining APIs deferred. |
+| `std.container.rbtree` (`std/container/rbtree.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.container.slist` (`std/container/slist.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.container.util` (`std/container/util.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.conv` (`std/conv.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.csv` (`std/csv.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.datetime.date` (`std/datetime/date.d`) | partial | Date; remaining APIs deferred. |
+| `std.datetime.date` (`std/datetime/date.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.datetime.interval` (`std/datetime/interval.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.datetime` (`std/datetime/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.datetime.stopwatch` (`std/datetime/stopwatch.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.datetime.systime` (`std/datetime/systime.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.datetime.timezone` (`std/datetime/timezone.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.demangle` (`std/demangle.d`) | blocked-direct-port | D symbol mangling is not a CMotive ABI equivalent; a D demangler would be a separate utility. |
-| `std.digest.crc` (`std/digest/crc.d`) | partial | Checksums; remaining APIs deferred. |
+| `std.digest.crc` (`std/digest/crc.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.digest.hmac` (`std/digest/hmac.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.digest.md` (`std/digest/md.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.digest.murmurhash` (`std/digest/murmurhash.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.digest` (`std/digest/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.digest.ripemd` (`std/digest/ripemd.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.digest.sha` (`std/digest/sha.d`) | partial | Sha256; remaining APIs deferred. |
+| `std.digest.sha` (`std/digest/sha.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.encoding` (`std/encoding.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.exception` (`std/exception.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.experimental.allocator.building_blocks.affix_allocator` (`std/experimental/allocator/building_blocks/affix_allocator.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
@@ -132,9 +132,9 @@ All 174 D files are listed. Partial does not mean complete or API-compatible. De
 | `std.mathspecial` (`std/mathspecial.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.meta` (`std/meta.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
 | `std.mmfile` (`std/mmfile.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.net.curl` (`std/net/curl.d`) | blocked-direct-port | External native library or OS binding requires an explicit ABI boundary, not pure portable language logic. |
+| `std.net.curl` (`std/net/curl.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
 | `std.net.isemail` (`std/net/isemail.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.numeric` (`std/numeric.d`) | partial | IntegerMath; remaining APIs deferred. |
+| `std.numeric` (`std/numeric.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.outbuffer` (`std/outbuffer.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std` (`std/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.parallelism` (`std/parallelism.d`) | blocked-direct-port | D delegate/template/runtime lifetime semantics cannot be preserved directly by this compiler. |
@@ -157,22 +157,22 @@ All 174 D files are listed. Partial does not mean complete or API-compatible. De
 | `std.socket` (`std/socket.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.stdint` (`std/stdint.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.stdio` (`std/stdio.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.string` (`std/string.d`) | partial | Bytes; remaining APIs deferred. |
+| `std.string` (`std/string.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.sumtype` (`std/sumtype.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
 | `std.system` (`std/system.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
 | `std.traits` (`std/traits.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
 | `std.typecons` (`std/typecons.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
 | `std.typetuple` (`std/typetuple.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
 | `std.uni` (`std/uni/package.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.uri` (`std/uri.d`) | partial | Uri; remaining APIs deferred. |
-| `std.utf` (`std/utf.d`) | partial | Utf8; remaining APIs deferred. |
-| `std.uuid` (`std/uuid.d`) | partial | Uuid; remaining APIs deferred. |
+| `std.uri` (`std/uri.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.utf` (`std/utf.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
+| `std.uuid` (`std/uuid.d`) | partial | Typed subset implemented; remaining upstream APIs are deferred. |
 | `std.variant` (`std/variant.d`) | blocked-direct-port | D compile-time type introspection, typelists, template evaluation, mixins or runtime TypeInfo have no verified equivalent in this compiler. |
-| `std.windows.charset` (`std/windows/charset.d`) | blocked-direct-port | External native library or OS binding requires an explicit ABI boundary, not pure portable language logic. |
-| `std.windows.registry` (`std/windows/registry.d`) | blocked-direct-port | External native library or OS binding requires an explicit ABI boundary, not pure portable language logic. |
-| `std.windows.syserror` (`std/windows/syserror.d`) | blocked-direct-port | External native library or OS binding requires an explicit ABI boundary, not pure portable language logic. |
+| `std.windows.charset` (`std/windows/charset.d`) | deferred-os-service | OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided. |
+| `std.windows.registry` (`std/windows/registry.d`) | deferred-os-service | OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided. |
+| `std.windows.syserror` (`std/windows/syserror.d`) | deferred-os-service | OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided. |
 | `std.zip` (`std/zip.d`) | deferred | Not implemented; requires further porting and tests. Not a claim of impossibility. |
-| `std.zlib` (`std/zlib.d`) | blocked-direct-port | External native library or OS binding requires an explicit ABI boundary, not pure portable language logic. |
+| `std.zlib` (`std/zlib.d`) | excluded-external-dependency | Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper. |
 | `test.betterc_module_tests` (`test/betterc_module_tests.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
 | `test.dub_stdx_allocator` (`test/dub_stdx_allocator.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |
 | `test.dub_stdx_checkedint` (`test/dub_stdx_checkedint.d`) | upstream-support | Internal implementation detail, test fixture or generator; not a separate public API promise. |

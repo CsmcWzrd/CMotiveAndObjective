@@ -10,6 +10,7 @@ parser.add_argument('--asm-build',type=Path,default=ROOT/'build-asm');args=parse
 subprocess.run([sys.executable,str(ROOT/'tests/check_metadata.py')],check=True)
 binary=args.binary.resolve();report=json.loads(args.test_report.read_text());api=json.loads((ROOT/'api.json').read_text())
 digest=hashlib.sha256(binary.read_bytes()).hexdigest()
+subprocess.run([sys.executable,str(ROOT/'tests/check_dependencies.py'),str(binary),'--report',str(ROOT/'evidence/dependency-report.json')],check=True)
 if not (report['status']=='PASS' and report['api_methods_exercised']==len(api) and report['library_sha256']==digest):
     raise SystemExit('Binary must match a passing full-method behavioral report')
 if binary.name!='libCMotiveAndObjective-1.0.0.so' or binary.read_bytes()[:4]!=b'\x7fELF':

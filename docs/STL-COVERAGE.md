@@ -1,4 +1,4 @@
-# Typed STL/container coverage — iteration 2
+# Typed STL/container coverage — iteration 3
 
 The supplied Phobos container families now have working I64 implementations.
 This is typed coverage, not complete generic Phobos or C++ STL compatibility.
@@ -64,3 +64,7 @@ The compiler does not emit forward typedefs for self-referential class fields.
 Internal node links therefore use Void*, converted to typed node pointers in
 CMotive methods. Internal node/helper headers remain .HMOT and their generated
 symbols are hidden from the shared-library ABI.
+
+All iteration-2 STL methods are retained by the iteration-3 API baseline.
+Removing unused compiler built-in wrappers does not remove these independently
+implemented CMotive containers. See DEPENDENCIES.md.

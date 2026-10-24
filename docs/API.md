@@ -1,8 +1,8 @@
 # Implemented core API
 
 The 149 maintained methods are CMotive class implementations, not native wrappers.
-The compiler automatically emits C and includes its native runtime; the binary is
-not freestanding or free of C runtime dependencies. These adapted typed APIs are
+The compiler emits C; a pinned minimal profile retains its allocation definitions
+and removes unused native wrappers. The binary still uses the system C runtime. These adapted typed APIs are
 not drop-in Phobos APIs. No D compiler/runtime or C++ library is required.
 
 ## Memory and ownership

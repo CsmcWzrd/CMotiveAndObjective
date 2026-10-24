@@ -1,0 +1,52 @@
+-- Install configuration: "Release"
+-- Installing: /workspace/scratch/c92ad9de4f15/cmake-install3/lib/libCMotiveAndObjective-1.0.0.so
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective.h
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/CheckedInt.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/RedBlackTreeI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Uri.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/SortedMapI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Utf8.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/AlgorithmsI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Internal
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Internal/RBTreeOps.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Internal/DLNode.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Internal/SLNode.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Internal/RBNode.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/IntegerMath.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Checksums.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/SListI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Ascii.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/DListI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Hex.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Base64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/ArrayVectorI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/BitManip.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Bytes.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Uuid.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/QueueI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/BinaryHeapI64.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Sha256.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/include/CMotiveAndObjective/Date.HMOT
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/LICENSE_1_0.txt
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/CMotive-LICENSE-MIT.txt
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/API.md
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/API-SIGNATURES.md
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/STL-COVERAGE.md
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/PORTING-STATUS.md
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/VERIFICATION.md
+-- Installing: /workspace/scratch/c92ad9de4f15/cmake-install3/share/doc/CMotiveAndObjective/DEPENDENCIES.md
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveTargets.cmake
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveTargets-release.cmake
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveConfig.cmake
+-- Up-to-date: /workspace/scratch/c92ad9de4f15/cmake-install3/lib/cmake/CMotiveAndObjective/CMotiveAndObjectiveConfigVersion.cmake
+[ 50%] Linking C executable cmo_installed_consumer
+[100%] Built target cmo_installed_consumer
+Test project /workspace/scratch/c92ad9de4f15/consumer-build3
+    Start 1: installed_abi
+1/1 Test #1: installed_abi ....................   Passed    0.02 sec
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.02 sec

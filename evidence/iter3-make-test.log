@@ -1,0 +1,60 @@
+make: Entering directory '/workspace/scratch/c92ad9de4f15/CMotiveAndObjective'
+python3 tools/emit_core.py --compiler "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" --compiler-root "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost" --output "build/CMotiveAndObjective.c"
+"/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" -I "/workspace/scratch/c92ad9de4f15/CMotiveAndObjective/include" tests/smoke.CMOT -o "build/cmotive-smoke"
+python3 tests/check_metadata.py
+API checked: 21 classes, 149 methods
+Metadata: PASS; 84 original signatures retained; 149 current methods; 174 upstream files verified
+Dependency policy: PASS; all 149 iteration-2 methods and STL classes retained
+cc -O2 -std=c11 -fPIC -shared -Wl,-soname,libCMotiveAndObjective-1.0.0.so -Wl,--version-script=build-support/exports.map -fstack-protector-strong -Wl,--no-undefined,-z,relro,-z,now,-z,noexecstack "build/CMotiveAndObjective.c" -o "build/libCMotiveAndObjective-1.0.0.so" 
+"build/cmotive-smoke"
+cc -O2 -std=c11 -I"build" "tests/rb_invariants.c" -o "build/rb_invariants" 
+cc -O2 -std=c11 -Iinclude "tests/abi_smoke.c" "build/libCMotiveAndObjective-1.0.0.so" -Wl,-rpath,'$ORIGIN' -o "build/abi_smoke" 
+"build/abi_smoke"
+C ABI and memory-boundary stress: PASS
+"build/rb_invariants"
+Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS
+python3 tests/test_core.py "build/libCMotiveAndObjective-1.0.0.so" "build/test-result.json"
+test_ascii: PASS
+test_bits: PASS
+test_integer: PASS
+test_algorithms: PASS
+test_encodings: PASS
+test_utf8: PASS
+test_bytes: PASS
+test_containers: PASS
+test_dates: PASS
+test_sha256: PASS
+test_uri: PASS
+test_uuid: PASS
+test_map_queue: PASS
+test_linked_lists: PASS
+test_red_black_tree: PASS
+test_concurrent_stateless_calls: PASS
+{"api_methods_exercised": 149, "api_methods_total": 149, "assertions": 500684, "library_sha256": "84d10c70866063b9ddf8ae450497bb55f476c9b514a058eac028ba887549cbdb", "seed": 391724, "status": "PASS"}
+python3 tests/check_dependencies.py "build/libCMotiveAndObjective-1.0.0.so" --report "build/dependency-report.json"
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "22e3db79279da9bf883732505e33b7b67424378bce75c140179e78509099b299",
+  "library_sha256": "84d10c70866063b9ddf8ae450497bb55f476c9b514a058eac028ba887549cbdb",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "memmove": "GLOBAL",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "b50f872d24a40e8a2e1d3571a4ad9c9a1e3237cb8acc5c8d56803ff196bb255c"
+}
+python3 tests/test_runtime_profile.py "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost/build/bin/cmotive" "/workspace/scratch/c92ad9de4f15/compiler/cmotive-0.3.0-selfhost"
+Runtime profile: PASS; class bodies unchanged; STL retained; 12 negative cases rejected
+make: Leaving directory '/workspace/scratch/c92ad9de4f15/CMotiveAndObjective'

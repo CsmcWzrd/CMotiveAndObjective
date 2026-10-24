@@ -1,0 +1,19 @@
+Test project /workspace/scratch/c92ad9de4f15/CMotiveAndObjective/build-cmake
+    Start 1: abi
+1/7 Test #1: abi ..............................   Passed    0.02 sec
+    Start 2: rb_invariants
+2/7 Test #2: rb_invariants ....................   Passed    0.30 sec
+    Start 3: cmotive_source
+3/7 Test #3: cmotive_source ...................   Passed    0.00 sec
+    Start 4: core
+4/7 Test #4: core .............................   Passed    2.76 sec
+    Start 5: dependencies
+5/7 Test #5: dependencies .....................   Passed    0.09 sec
+    Start 6: runtime_profile
+6/7 Test #6: runtime_profile ..................   Passed    0.74 sec
+    Start 7: metadata
+7/7 Test #7: metadata .........................   Passed    0.20 sec
+
+100% tests passed out of 7
+
+Total Test time (real) =   4.11 sec

@@ -1,4 +1,4 @@
-# Iteration 2 — hardened core, incomplete Phobos port
+# Iteration 3 — hardened core, incomplete Phobos port
 
 Version 1.0.0 is the requested output name/version. It does not certify full
 Phobos parity, production readiness, stable ABI or cross-platform verification.
@@ -48,11 +48,11 @@ It is included unchanged under toolchain/ as CMotive-v0.3.0-source.zip.
 D reflection (__traits, TypeInfo), typelists/CTFE/mixins, qualifier and alias-this
 semantics, delegates, D exception/GC lifetime contracts and arbitrary templates
 cannot be faithfully mapped by this compiler. D demangling has no CMotive ABI
-equivalent. Native C/OS bindings such as libcurl, zlib and Windows registry/code
-pages/errors cannot become pure portable language logic by renaming declarations.
-These direct mappings are excluded. Redesigned APIs or explicit ABI shims could
-support portions in future; exclusion does not prove the underlying algorithm is
-impossible in CMotive.
+equivalent. External-library wrappers for curl, ODBC, SQLite and zlib are
+excluded by dependency policy. OS-supported services are permitted, including
+Windows registry/code pages/errors, but remain deferred pending tested CMotive
+implementations. Self-contained algorithm replacements remain possible; no
+wrapper is silently substituted with a stub. See DEPENDENCIES.md.
 
 ## Remaining original scope
 
@@ -99,3 +99,18 @@ The scope explicitly does not replace the compiler C backend. These primitives
 are not yet called directly by the current frontend; its custom-convention bridge,
 allocator and OS runtime replacement remain future work. The separate assembly
 ZIP contains only this native layer and its build/test tools, without C interfaces.
+
+## Iteration 3 dependency scope
+
+All 149 iteration-2 methods and all typed STL implementations are retained.
+The shared-library build now removes the unused compiler runtime prelude with
+a pinned, fail-closed profile; generated class code is preserved unchanged.
+Only the compiler's two original system allocation definitions remain. On
+tested Linux, the only needed shared library is libc.so.6. No libcurl, ODBC,
+SQLite, zlib, C++ STL or other third-party runtime library is linked. The
+standalone assembly primitives remain independent and unchanged.
+
+Linux release builds and packaging now enforce an import/dependency allowlist,
+undefined-symbol rejection, full RELRO, immediate binding and non-executable
+stack/segments. Rejection fixtures guard the policy. These changes do not
+complete the remaining Phobos APIs or native compiler integration.

@@ -4,8 +4,8 @@
     "module": "etc.c.curl",
     "sha256": "350be1743a71e9d2d3712a914fa4b3f62d2d8a2f9bc2dd0aa60d503ab4c91b12",
     "bytes": 83520,
-    "status": "excluded-native-binding",
-    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -13,8 +13,8 @@
     "module": "etc.c.odbc.sql",
     "sha256": "3eefc6d32161489796cb39978f294e67d71edba197427136ff75bfe308e244d2",
     "bytes": 15341,
-    "status": "excluded-native-binding",
-    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -22,8 +22,8 @@
     "module": "etc.c.odbc.sqlext",
     "sha256": "a97c093736e45c4e4bf9f3edc16b6b7eb70e520567b0eee202fa6f2cdf1b0ddb",
     "bytes": 48175,
-    "status": "excluded-native-binding",
-    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -31,8 +31,8 @@
     "module": "etc.c.odbc.sqltypes",
     "sha256": "41eff4a9134b3d6fbb8f5ed0da0c157240b9c4840532ed0ff0c417d702913f6d",
     "bytes": 3711,
-    "status": "excluded-native-binding",
-    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -40,8 +40,8 @@
     "module": "etc.c.odbc.sqlucode",
     "sha256": "4f24b8be25ad36e3ec9efe6fbf06bccf09a0d5b932e2bafd8694ef1fc1ab423d",
     "bytes": 10993,
-    "status": "excluded-native-binding",
-    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -49,8 +49,8 @@
     "module": "etc.c.sqlite3",
     "sha256": "e85ade16c2acc12f0470942c36a77f2ca8cbf92d27dd090b873231e12e5eb46f",
     "bytes": 88735,
-    "status": "excluded-native-binding",
-    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -58,8 +58,8 @@
     "module": "etc.c.zlib",
     "sha256": "eebad9d30b63bcd28da145301d6531e51f0ff5b5d1368882f2419afb314e4cb0",
     "bytes": 88781,
-    "status": "excluded-native-binding",
-    "reason": "Native C binding/dependency, not a pure CMotive library implementation.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -1192,8 +1192,8 @@
     "module": "std.net.curl",
     "sha256": "ce94e983ab686e045aa5f00bfad01b0778387637f0225f2761105c6ddf4ac1a9",
     "bytes": 164374,
-    "status": "blocked-direct-port",
-    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {
@@ -1526,8 +1526,8 @@
     "module": "std.windows.charset",
     "sha256": "0ba138b46833b1c0d72f51da6473ca2dc75e3888ae9cfb73eb330e8eaf7843a2",
     "bytes": 3199,
-    "status": "blocked-direct-port",
-    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "status": "deferred-os-service",
+    "reason": "OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided.",
     "implemented_classes": []
   },
   {
@@ -1535,8 +1535,8 @@
     "module": "std.windows.registry",
     "sha256": "a1991838dacff1e842b9606fc524ee1c13a88445f5c81b0c90c2415a0d7ad977",
     "bytes": 51666,
-    "status": "blocked-direct-port",
-    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "status": "deferred-os-service",
+    "reason": "OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided.",
     "implemented_classes": []
   },
   {
@@ -1544,8 +1544,8 @@
     "module": "std.windows.syserror",
     "sha256": "2cf03c74d02767821ca4e1054d17716b3191801d5efee7ad9872308ed196ff73",
     "bytes": 7254,
-    "status": "blocked-direct-port",
-    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "status": "deferred-os-service",
+    "reason": "OS-supported functionality is permitted by dependency policy; a tested CMotive implementation is not yet provided.",
     "implemented_classes": []
   },
   {
@@ -1562,8 +1562,8 @@
     "module": "std.zlib",
     "sha256": "90e203e576dfc91ec0b780aa3d2a8c85bd2327f9005228023bd9d56c46f0b917",
     "bytes": 23725,
-    "status": "blocked-direct-port",
-    "reason": "External native library or OS binding requires an explicit ABI boundary, not pure portable language logic.",
+    "status": "excluded-external-dependency",
+    "reason": "Excluded by dependency policy: external library wrapper. A future self-contained implementation would be a separate port, not a linked wrapper.",
     "implemented_classes": []
   },
   {

@@ -1,0 +1,49 @@
+{
+  "profile": "CMO-CORE-OS-1",
+  "compiler_prelude_sha256": "3faa5d484e74336337bc59a0f4664a6c6f3be6b1272996443c0c81c1ba2c8cef",
+  "compiler_runtime_sha256": "0581383e4e0d8192be5c2cbe2d1e6ea7054f27512972e89109ff88d46e85b235",
+  "allocation_definitions": [
+    "void *CMotive_New(size_t n) { return calloc(1, n ? n : 1); }",
+    "void CMotive_Delete(void *p) { free(p); }"
+  ],
+  "linux_needed": [
+    "libc.so.6"
+  ],
+  "linux_required_imports": [
+    "calloc",
+    "free"
+  ],
+  "linux_optional_imports": [
+    "memset",
+    "memcpy",
+    "memmove",
+    "__stack_chk_fail"
+  ],
+  "linux_optional_weak_imports": [
+    "_ITM_deregisterTMCloneTable",
+    "_ITM_registerTMCloneTable",
+    "__gmon_start__",
+    "__cxa_finalize"
+  ],
+  "excluded_modules": [
+    "etc.c.curl",
+    "etc.c.odbc.sql",
+    "etc.c.odbc.sqlext",
+    "etc.c.odbc.sqltypes",
+    "etc.c.odbc.sqlucode",
+    "etc.c.sqlite3",
+    "etc.c.zlib",
+    "std.net.curl",
+    "std.zlib"
+  ],
+  "retained_stl_classes": [
+    "AlgorithmsI64",
+    "ArrayVectorI64",
+    "BinaryHeapI64",
+    "DListI64",
+    "QueueI64",
+    "RedBlackTreeI64",
+    "SListI64",
+    "SortedMapI64"
+  ]
+}

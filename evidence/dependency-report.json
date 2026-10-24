@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "profile": "CMO-CORE-OS-1",
+  "source_fingerprint": "22e3db79279da9bf883732505e33b7b67424378bce75c140179e78509099b299",
+  "library_sha256": "84d10c70866063b9ddf8ae450497bb55f476c9b514a058eac028ba887549cbdb",
+  "needed": [
+    "libc.so.6"
+  ],
+  "imports": {
+    "free": "GLOBAL",
+    "_ITM_deregisterTMCloneTable": "WEAK",
+    "__stack_chk_fail": "GLOBAL",
+    "calloc": "GLOBAL",
+    "__gmon_start__": "WEAK",
+    "memmove": "GLOBAL",
+    "_ITM_registerTMCloneTable": "WEAK",
+    "__cxa_finalize": "WEAK"
+  },
+  "full_relro": true,
+  "executable_stack": false,
+  "runtime_search_path": false,
+  "policy_sha256": "b50f872d24a40e8a2e1d3571a4ad9c9a1e3237cb8acc5c8d56803ff196bb255c"
+}

@@ -1,0 +1,96 @@
+// CMotiveAndObjective; BSL-1.0. Stable insertion-order duplicate-key map.
+Package CMotiveAndObjective;
+Class
+MultiMapI64
+{
+Private
+{
+keys : I64* = Null; Block
+values : I64* = Null; Block
+capacity : I64 = 0; Block
+count : I64 = 0; Block
+}
+Public
+{
+I32
+Bind
+keys : I64*
+values : I64*
+capacity : I64
+()
+{
+If (capacity < 0 || (capacity > 0 && (keys == Null || values == Null || keys == values))) { Return -1; } This.keys=keys; This.values=values; This.capacity=capacity; This.count=0; Return 0;
+}
+I64
+Length
+()
+{
+Return This.count;
+}
+I64
+Capacity
+()
+{
+Return This.capacity;
+}
+I32
+Insert
+key : I64
+value : I64
+()
+{
+If (This.count == This.capacity) { Return -1; } This.keys[This.count]=key; This.values[This.count]=value; This.count++; Return 0;
+}
+I64
+Count
+key : I64
+()
+{
+i : I64 = 0; result : I64 = 0; While (i < This.count) { If (This.keys[i] == key) { result++; } i++; } Return result;
+}
+I64
+FindNext
+key : I64
+previous : I64
+()
+{
+If (previous < -1 || previous >= This.count) { Return -1; } i : I64 = previous+1; While (i < This.count) { If (This.keys[i] == key) { Return i; } i++; } Return -1;
+}
+I32
+KeyAt
+index : I64
+out : I64*
+()
+{
+If (out == Null || index < 0 || index >= This.count) { Return -1; } *out=This.keys[index]; Return 0;
+}
+I32
+ValueAt
+index : I64
+out : I64*
+()
+{
+If (out == Null || index < 0 || index >= This.count) { Return -1; } *out=This.values[index]; Return 0;
+}
+I32
+RemoveOne
+key : I64
+()
+{
+i : I64 = 0; While (i < This.count && This.keys[i] != key) { i++; } If (i == This.count) { Return -1; } While (i < This.count-1) { This.keys[i]=This.keys[i+1]; This.values[i]=This.values[i+1]; i++; } This.count--; Return 0;
+}
+I64
+RemoveAll
+key : I64
+()
+{
+i : I64 = 0; write : I64 = 0; While (i < This.count) { If (This.keys[i] != key) { This.keys[write]=This.keys[i]; This.values[write]=This.values[i]; write++; } i++; } removed : I64 = This.count-write; This.count=write; Return removed;
+}
+Void
+Clear
+()
+{
+This.count=0;
+}
+}
+};

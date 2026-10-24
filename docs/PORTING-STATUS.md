@@ -1,4 +1,4 @@
-# Iteration 3 — hardened core, incomplete Phobos port
+# Iteration 23 — tested core candidate; full production promotion blocked
 
 Version 1.0.0 is the requested output name/version. It does not certify full
 Phobos parity, production readiness, stable ABI or cross-platform verification.
@@ -10,15 +10,15 @@ All file hashes and dispositions are in phobos-inventory.json and PHOBOS-MODULES
 
 ## Implemented
 
-21 public classes and 149 methods, including the original numeric, encoding,
+27 public classes and 199 methods, including the original numeric, encoding,
 byte-string and date utilities, plus SHA-256, URI component encoding, UUID text
 handling and the typed STL/container families described in STL-COVERAGE.md.
-25 CMotive .HMOT files include four internal node/helper headers. Public methods
+32 CMotive .HMOT files include five internal node/helper headers. Public methods
 use CMotive source only; .c tests and the .h C ABI header are genuine interoperability
 fixtures, not CMotive files with misleading extensions. No unsupported .HMTV
 placeholders or renamed D sources are shipped.
 
-The 84 original C ABI method signatures remain unchanged. 149 methods plus 42
+The 84 original C ABI method signatures remain unchanged. 199 methods plus 54
 new/delete functions are exported; internal helpers remain hidden. This is an
 adapted typed API, not a drop-in Phobos or general C++ STL implementation.
 
@@ -38,7 +38,7 @@ It is included unchanged under toolchain/ as CMotive-v0.3.0-source.zip.
 - The lexer splits >>=, so methods use explicit shifts and assignments.
 - Names starting Vector collide with a built-in special case; the class is named
   ArrayVectorI64.
-- Dynamic library exports are restricted to 149 methods and 42 new/delete functions.
+- Dynamic library exports are restricted to 199 methods and 54 new/delete functions.
   The C consumer verifies separate dynamic linking. CMotive consumers currently
   include .HMOT implementations; separate external class declarations and a direct
   CMotive dynamic-class consumer are not verified.
@@ -58,7 +58,7 @@ wrapper is silently substituted with a stub. See DEPENDENCIES.md.
 
 Every deferred module and the remaining functions in partial modules are absent.
 This includes arbitrary-type containers/ranges, hash/multi containers, big integers,
-floating point/special math, CSV, JSON, regex, formatting, serialization, UUID
+floating point/special math, CSV, JSON, regex, general formatting/serialization, UUID
 generation, full Unicode normalization/case folding, compression/archives, random
 facilities, filesystem/IO/process/socket/
 timezone/concurrency facilities and associated tests. These are not all impossible;
@@ -114,3 +114,18 @@ Linux release builds and packaging now enforce an import/dependency allowlist,
 undefined-symbol rejection, full RELRO, immediate binding and non-executable
 stack/segments. Rejection fixtures guard the policy. These changes do not
 complete the remaining Phobos APIs or native compiler integration.
+
+## Twenty-checkpoint continuation (iterations 4–23)
+
+All 20 requested checkpoints have source/archive and test evidence. The core adds
+four typed containers (hash map/set, duplicate-key map and stack), caller-workspace
+merge sort, checked summation, UTF-16 LE/BE, UTF-8/scalar transcoding and strict
+signed/unsigned integer text conversion. All original STL methods remain.
+
+The current evidence covers exhaustive Unicode scalars, a complete Gregorian
+cycle, hardware guard pages, adversarial hash collisions, nth-allocation failures,
+concurrent independent lifetimes, malformed-input fuzzing, four optimization modes,
+sanitizers, clean builds and installed consumers. See PRODUCTION-ITERATIONS.md,
+VERIFICATION.md and PRODUCTION-READINESS.json. These are verified core-subset
+checkpoints; the full project is not promoted to GA. Native frontend integration,
+generic templates, full Phobos parity and platform qualification remain blockers.

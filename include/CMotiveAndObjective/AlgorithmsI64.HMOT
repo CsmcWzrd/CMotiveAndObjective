@@ -141,5 +141,44 @@ swap : I64 = data[node]; data[node]=data[child]; data[child]=swap; node=child;
 }
 } Return 0;
 }
+
+I32
+MergeSort
+data : I64*
+n : I64
+workspace : I64*
+capacity : I64
+()
+{
+If (n < 0 || capacity < 0 || (n > 0 && data == Null)) { Return -1; } If (n < 2) { Return 0; }
+If (workspace == Null || data == workspace || capacity < n) { Return -1; }
+width : I64 = 1;
+While (width < n) {
+base : I64 = 0;
+While (base < n) {
+mid : I64 = n; If (width < n-base) { mid=base+width; }
+end : I64 = n; If (width < n-mid) { end=mid+width; }
+i : I64 = base; j : I64 = mid; k : I64 = base;
+While (k < end) { If (i < mid && (j >= end || data[i] <= data[j])) { workspace[k]=data[i]; i++; } Else { workspace[k]=data[j]; j++; } k++; }
+base=end;
+}
+i : I64 = 0; While (i < n) { data[i]=workspace[i]; i++; }
+If (width > n/2) { Break; } width*=2;
+} Return 0;
+}
+
+I32
+SumChecked
+data : I64*
+n : I64
+initial : I64
+out : I64*
+()
+{
+If (n < 0 || out == Null || (n > 0 && data == Null)) { Return -1; }
+sum : I64 = initial; i : I64 = 0;
+While (i < n) { value : I64 = data[i]; If ((value > 0 && sum > 9223372036854775807-value) || (value < 0 && sum < (-9223372036854775807-1)-value)) { Return -2; } sum+=value; i++; }
+*out=sum; Return 0;
+}
 }
 };

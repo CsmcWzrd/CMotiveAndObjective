@@ -38,10 +38,11 @@ $(BUILD)/abi_smoke: tests/abi_smoke.c include/CMotiveAndObjective.h $(LIB)
 	$(CC) $(CFLAGS) -Iinclude "$<" "$(LIB)" -Wl,-rpath,'$(RPATH)' -o "$@" $(LDFLAGS)
 $(BUILD)/rb_invariants: tests/rb_invariants.c $(BUILD)/CMotiveAndObjective.c
 	$(CC) $(CFLAGS) -I"$(BUILD)" "$<" -o "$@" $(LDFLAGS)
-test: $(BUILD)/abi_smoke $(BUILD)/rb_invariants cmotive-test check-api
+test: $(BUILD)/abi_smoke $(BUILD)/rb_invariants cmotive-test check-api guard-pages-test unicode-test
 	"$(BUILD)/abi_smoke"
 	"$(BUILD)/rb_invariants"
 	$(PYTHON) tests/test_core.py "$(LIB)" "$(BUILD)/test-result.json"
+	$(PYTHON) tests/test_release_gates.py "$(LIB)" "$(BUILD)/test-result.json"
 ifeq ($(UNAME_S),Linux)
 	$(PYTHON) tests/check_dependencies.py "$(LIB)" --report "$(BUILD)/dependency-report.json"
 	$(PYTHON) tests/test_runtime_profile.py "$(CMOTIVE)" "$(CMOTIVE_ROOT)"
@@ -52,9 +53,11 @@ cmotive-test: | $(BUILD)
 	"$(CMOTIVE)" -I "$(CURDIR)/include" tests/smoke.CMOT -o "$(BUILD)/cmotive-smoke"
 	"$(BUILD)/cmotive-smoke"
 sanitize:
-	$(MAKE) -f build-support/GNUmakefile.mk BUILD=build-sanitize CFLAGS='-O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer' LDFLAGS='-fsanitize=address,undefined' build-sanitize/abi_smoke build-sanitize/rb_invariants
+	$(MAKE) -f build-support/GNUmakefile.mk BUILD=build-sanitize CFLAGS='-O1 -g -std=c11 -fsanitize=address,undefined -fno-omit-frame-pointer' LDFLAGS='-fsanitize=address,undefined' build-sanitize/abi_smoke build-sanitize/rb_invariants build-sanitize/guard_pages build-sanitize/unicode_exhaustive
 	ASAN_OPTIONS='$(ASAN_OPTIONS)' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/abi_smoke
 	ASAN_OPTIONS='$(ASAN_OPTIONS)' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/rb_invariants
+	ASAN_OPTIONS='$(ASAN_OPTIONS)' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/guard_pages
+	ASAN_OPTIONS='$(ASAN_OPTIONS)' UBSAN_OPTIONS=halt_on_error=1 ./build-sanitize/unicode_exhaustive
 sanitize-full: sanitize
 	$(PYTHON) tools/run_sanitized.py "$(CURDIR)/build-sanitize/libCMotiveAndObjective-1.0.0.so"
 install: all
@@ -66,3 +69,19 @@ install: all
 	cp LICENSE_1_0.txt toolchain/CMotive-LICENSE-MIT.txt docs/*.md "$(DESTDIR)$(PREFIX)/share/doc/CMotiveAndObjective/"
 clean:
 	rm -rf build build-sanitize
+
+.PHONY: guard-pages-test
+ifeq ($(UNAME_S),Linux)
+$(BUILD)/guard_pages: tests/guard_pages.c $(BUILD)/CMotiveAndObjective.c
+	$(CC) $(CFLAGS) -I"$(BUILD)" "$<" -o "$@" $(LDFLAGS)
+guard-pages-test: $(BUILD)/guard_pages
+	"$(BUILD)/guard_pages"
+else
+guard-pages-test:
+endif
+
+.PHONY: unicode-test
+$(BUILD)/unicode_exhaustive: tests/unicode_exhaustive.c $(BUILD)/CMotiveAndObjective.c
+	$(CC) $(CFLAGS) -I"$(BUILD)" "$<" -o "$@" $(LDFLAGS)
+unicode-test: $(BUILD)/unicode_exhaustive
+	"$(BUILD)/unicode_exhaustive"

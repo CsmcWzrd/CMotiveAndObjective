@@ -1,8 +1,8 @@
 {
   "status": "PASS",
   "profile": "CMO-CORE-OS-1",
-  "source_fingerprint": "22e3db79279da9bf883732505e33b7b67424378bce75c140179e78509099b299",
-  "library_sha256": "84d10c70866063b9ddf8ae450497bb55f476c9b514a058eac028ba887549cbdb",
+  "source_fingerprint": "d189d9ce31058748a80a771790ec9c0116c38dbcf48ba6d799fde85a83f9613f",
+  "library_sha256": "4addd06360b0e19411496fa5f90234b8cef7d3041ba7483a51b5dad631f80702",
   "needed": [
     "libc.so.6"
   ],
@@ -10,14 +10,17 @@
     "free": "GLOBAL",
     "_ITM_deregisterTMCloneTable": "WEAK",
     "__stack_chk_fail": "GLOBAL",
+    "memset": "GLOBAL",
     "calloc": "GLOBAL",
     "__gmon_start__": "WEAK",
     "memmove": "GLOBAL",
     "_ITM_registerTMCloneTable": "WEAK",
     "__cxa_finalize": "WEAK"
   },
+  "abi_exports": 253,
+  "elf_target": "linux-x86_64",
   "full_relro": true,
   "executable_stack": false,
   "runtime_search_path": false,
-  "policy_sha256": "b50f872d24a40e8a2e1d3571a4ad9c9a1e3237cb8acc5c8d56803ff196bb255c"
+  "policy_sha256": "f7f394196a43b5eb606e610c9d298b3dce35e3536e97ef16b4c2dbe0ee35d9cc"
 }

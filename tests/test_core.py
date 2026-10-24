@@ -5,6 +5,9 @@ import hashlib, urllib.parse, uuid, re, collections
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'tools'))
+from emit_core import source_fingerprint
+from release_checks import tests_fingerprint
 API=json.loads((ROOT/'api.json').read_text())
 T={'I32':C.c_int32,'U32':C.c_uint32,'I64':C.c_int64,'U64':C.c_uint64,
    'Uchar':C.c_ubyte,'Void':None}
@@ -467,9 +470,12 @@ def test_concurrent_stateless_calls():
 try:
     for test in [test_ascii,test_bits,test_integer,test_algorithms,test_encodings,test_utf8,test_bytes,test_containers,test_dates,test_sha256,test_uri,test_uuid,test_map_queue,test_linked_lists,test_red_black_tree,test_concurrent_stateless_calls]:
         test(); print(test.__name__+': PASS',flush=True)
+    from production_cases import run
+    run(globals())
     eq(set(calls)-seen,set())
     report={'status':'PASS','assertions':checks,'api_methods_exercised':len(seen),'api_methods_total':len(API),'seed':391724,
-            'library_sha256':hashlib.sha256(Path(sys.argv[1]).read_bytes()).hexdigest()}
+            'library_sha256':hashlib.sha256(Path(sys.argv[1]).read_bytes()).hexdigest(),
+            'source_fingerprint':source_fingerprint(),'tests_fingerprint':tests_fingerprint(),'methods_exercised':sorted(seen)}
     print(json.dumps(report,sort_keys=True))
     if len(sys.argv)>2: Path(sys.argv[2]).write_text(json.dumps(report,indent=2)+'\n')
 finally:

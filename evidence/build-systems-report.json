@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "source_fingerprint": "d189d9ce31058748a80a771790ec9c0116c38dbcf48ba6d799fde85a83f9613f",
+  "cmake_ctest": 10,
+  "installed_package_test": 1,
+  "autotools_distcheck": "PASS",
+  "installed_header_consumers": [
+    "cmake",
+    "autotools"
+  ],
+  "source_consumer_includes_new_classes": true
+}

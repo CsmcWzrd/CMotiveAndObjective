@@ -1,0 +1,28 @@
+// CMotiveAndObjective; BSL-1.0. Deterministic integer hashing; not cryptographic.
+Package CMotiveAndObjective;
+Class
+HashOps
+{
+Public
+{
+I64
+Index
+key : I64
+capacity : I64
+()
+{
+x : U64 = (U64)key; x=(x ^ (x >> 30))*0xbf58476d1ce4e5b9; x=(x ^ (x >> 27))*0x94d049bb133111eb; x=x ^ (x >> 31); Return (I64)(x % (U64)capacity);
+}
+I64
+Find
+keys : I64*
+states : Uchar*
+capacity : I64
+key : I64
+()
+{
+If (capacity <= 0) { Return -1; } ops : HashOps = Zero; slot : I64 = ops.Index(key,capacity); probes : I64 = 0;
+While (probes < capacity) { If (states[slot] == 0) { Return -1; } If (states[slot] == 1 && keys[slot] == key) { Return slot; } slot++; If (slot == capacity) { slot=0; } probes++; } Return -1;
+}
+}
+};

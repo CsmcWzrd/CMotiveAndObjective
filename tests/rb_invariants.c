@@ -13,8 +13,10 @@
 #include <stdio.h>
 static long live_allocations;
 static int fail_allocations;
-static void *tracked_malloc(size_t n){if(fail_allocations)return NULL;void*p=malloc(n);if(p)live_allocations++;return p;}
-static void *tracked_calloc(size_t n,size_t s){if(fail_allocations)return NULL;void*p=calloc(n,s);if(p)live_allocations++;return p;}
+static long allocation_attempts,fail_on_attempt;
+static int fail_now(void){allocation_attempts++;return fail_allocations||(fail_on_attempt&&allocation_attempts==fail_on_attempt);}
+static void *tracked_malloc(size_t n){if(fail_now())return NULL;void*p=malloc(n);if(p)live_allocations++;return p;}
+static void *tracked_calloc(size_t n,size_t s){if(fail_now())return NULL;void*p=calloc(n,s);if(p)live_allocations++;return p;}
 static void tracked_free(void*p){if(p)live_allocations--;free(p);}
 #define malloc tracked_malloc
 #define calloc tracked_calloc
@@ -83,5 +85,20 @@ int main(void) {
  for(int i=0;i<1000;i++)CHECK(CMotiveAndObjective__RedBlackTreeI64__Insert(tree,i)==0);
  CMotiveAndObjective__RedBlackTreeI64__delete(tree);
  CHECK(live_allocations==0);
+
+ for(int nth=1;nth<=100;nth++){
+  CHECK(live_allocations==0);allocation_attempts=0;fail_on_attempt=nth;
+  SListI64*a=CMotiveAndObjective__SListI64__new();DListI64*b=CMotiveAndObjective__DListI64__new();RedBlackTreeI64*c=CMotiveAndObjective__RedBlackTreeI64__new();
+  int64_t am[32],bm[32];int an=0,bn=0,cn=0;
+  for(int i=0;i<32;i++){
+   if(a){int rc=i&1?CMotiveAndObjective__SListI64__PushFront(a,i):CMotiveAndObjective__SListI64__PushBack(a,i);CHECK(rc==0||rc==-2);if(!rc){if(i&1){memmove(am+1,am,(size_t)an*sizeof(*am));am[0]=i;}else am[an]=i;an++;}CHECK(a->count==an);for(int j=0;j<an;j++){int64_t v=-1;CHECK(CMotiveAndObjective__SListI64__At(a,j,&v)==0);CHECK(v==am[j]);}}
+   if(b){int rc=i&1?CMotiveAndObjective__DListI64__PushBack(b,i):CMotiveAndObjective__DListI64__PushFront(b,i);CHECK(rc==0||rc==-2);if(!rc){if(!(i&1)){memmove(bm+1,bm,(size_t)bn*sizeof(*bm));bm[0]=i;}else bm[bn]=i;bn++;}CHECK(b->count==bn);for(int j=0;j<bn;j++){int64_t v=-1;CHECK(CMotiveAndObjective__DListI64__At(b,j,&v)==0);CHECK(v==bm[j]);}}
+   if(c){int rc=CMotiveAndObjective__RedBlackTreeI64__Insert(c,i);CHECK(rc==0||rc==-2);if(!rc)cn++;verify(c,cn);}
+  }
+  fail_on_attempt=0;long before=allocation_attempts;
+  CMotiveAndObjective__SListI64__delete(a);CMotiveAndObjective__DListI64__delete(b);CMotiveAndObjective__RedBlackTreeI64__delete(c);
+  CHECK(allocation_attempts==before);CHECK(live_allocations==0);
+ }
+ puts("Nth-allocation failure sweep: PASS; 100 cut points, model checks and zero tracked live allocations");
  puts("Red-black invariants, allocation-failure atomicity and tracked ownership cleanup: PASS");return 0;
 }

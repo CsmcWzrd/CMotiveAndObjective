@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "source_fingerprint": "d189d9ce31058748a80a771790ec9c0116c38dbcf48ba6d799fde85a83f9613f",
+  "configurations": [
+    {
+      "optimization": "O0",
+      "library_sha256": "6a5b95c60c1bc84908bd97eff9fee176cae0557f19fe55e4f2b88f9f093309cb",
+      "assertions": 1417340,
+      "status": "PASS"
+    },
+    {
+      "optimization": "O2",
+      "library_sha256": "4addd06360b0e19411496fa5f90234b8cef7d3041ba7483a51b5dad631f80702",
+      "assertions": 1417340,
+      "status": "PASS"
+    },
+    {
+      "optimization": "O3",
+      "library_sha256": "8d65a1f4e50442c3837d5b130f95d61d7b37a57f942b89b414ed2861839a539d",
+      "assertions": 1417340,
+      "status": "PASS"
+    },
+    {
+      "optimization": "Os",
+      "library_sha256": "f5f61ec639f18f19ecafca67b3237bed0bb0e221adeee5d54c507876be9ecd7f",
+      "assertions": 1417340,
+      "status": "PASS"
+    }
+  ],
+  "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+}

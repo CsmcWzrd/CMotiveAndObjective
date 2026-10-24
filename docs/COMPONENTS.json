@@ -1,0 +1,28 @@
+{
+  "schema": "CMotive-component-inventory-1",
+  "runtime_dependencies": [
+    "OS C runtime; libc.so.6 on verified Linux"
+  ],
+  "excluded_external_wrappers": [
+    "curl",
+    "ODBC",
+    "SQLite",
+    "zlib"
+  ],
+  "licenses": {
+    "maintained_library_and_tests": "BSL-1.0",
+    "pinned_compiler_and_original_allocator_definitions": "MIT"
+  },
+  "pinned_inputs": {
+    "upstream/Phobos-reference.zip": "218efa1d7fa6cb1900d5f5dfea3921ee026c121e115bd0c41278ad87b5b92e56",
+    "toolchain/CMotive-v0.3.0-source.zip": "555e81bf59f4b99d80765d01cb7dbb35797ddd35507076297dfa1364843a8c0f"
+  },
+  "test_only_tools": [
+    "Python standard library",
+    "Unicorn CPU emulator",
+    "pyelftools",
+    "Zig assembly build driver",
+    "GCC sanitizers"
+  ],
+  "native_assembly_runtime_dependencies": []
+}

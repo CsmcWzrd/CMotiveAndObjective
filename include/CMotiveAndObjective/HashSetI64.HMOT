@@ -1,0 +1,87 @@
+// CMotiveAndObjective; BSL-1.0. Caller-owned open-addressed hash table.
+#include "Internal/HashOps.HMOT"
+Package CMotiveAndObjective;
+Class
+HashSetI64
+{
+Private
+{
+keys : I64* = Null; Block
+states : Uchar* = Null; Block
+capacity : I64 = 0; Block
+count : I64 = 0; Block
+}
+Public
+{
+I32
+Bind
+keys : I64*
+states : Uchar*
+capacity : I64
+()
+{
+If (capacity < 0 || (capacity > 0 && (keys == Null || states == Null))) { Return -1; }
+This.keys=keys; This.states=states; This.capacity=capacity; This.count=0; i : I64 = 0; While (i < capacity) { states[i]=0; i++; } Return 0;
+}
+I64
+Length
+()
+{
+Return This.count;
+}
+I64
+Capacity
+()
+{
+Return This.capacity;
+}
+I32
+Insert
+key : I64
+()
+{
+If (This.capacity == 0) { Return -1; } ops : HashOps = Zero; slot : I64 = ops.Index(key,This.capacity); first : I64 = -1; probes : I64 = 0;
+While (probes < This.capacity) {
+If (This.states[slot] == 1) { If (This.keys[slot] == key) { Return 1; } }
+Else { If (first < 0) { first=slot; } If (This.states[slot] == 0) { Break; } }
+slot++; If (slot == This.capacity) { slot=0; } probes++;
+}
+If (first < 0) { Return -1; } This.keys[first]=key; This.states[first]=1; This.count++; Return 0;
+}
+I32
+Contains
+key : I64
+()
+{
+ops : HashOps = Zero; Return ops.Find(This.keys,This.states,This.capacity,key) >= 0;
+}
+I32
+Remove
+key : I64
+()
+{
+ops : HashOps = Zero; slot : I64 = ops.Find(This.keys,This.states,This.capacity,key); If (slot < 0) { Return -1; } This.states[slot]=2; This.count--; Return 0;
+}
+I64
+NextSlot
+previous : I64
+()
+{
+If (previous < -1 || previous >= This.capacity) { Return -1; } slot : I64 = previous+1; While (slot < This.capacity) { If (This.states[slot] == 1) { Return slot; } slot++; } Return -1;
+}
+I32
+KeyAt
+slot : I64
+out : I64*
+()
+{
+If (out == Null || slot < 0 || slot >= This.capacity || This.states[slot] != 1) { Return -1; } *out=This.keys[slot]; Return 0;
+}
+Void
+Clear
+()
+{
+i : I64 = 0; While (i < This.capacity) { This.states[i]=0; i++; } This.count=0;
+}
+}
+};

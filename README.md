@@ -1,20 +1,36 @@
-# CMotiveAndObjective 1.0.0 — iteration 3
+# CMotiveAndObjective 1.0.0 — iteration 23
 
-A separately maintained CMotive standard-library port based on the exact supplied
-Phobos snapshot. **This is a tested and hardened core, not a completed or production-ready
-Phobos port.** Read docs/PORTING-STATUS.md. No template placeholders or renamed D
-files are presented as working CMotive implementations.
+A separately maintained, self-contained CMotive library based on the supplied
+Phobos snapshot, with additional typed STL containers. The current core has
+**27 public classes and 199 tested methods**, with 32 .HMOT headers including five
+internal helpers. Maintained source uses .CMOT/.HMOT. No generic template stubs
+or renamed D code are presented as working implementations.
 
-| Platform | Output |
-|---|---|
-| Linux | libCMotiveAndObjective-1.0.0.so |
-| Windows | CMotiveAndObjective-1.0.0.dll and import library |
-| macOS | libCMotiveAndObjective-1.0.0.dylib |
+**Status: tested Linux core candidate; full production/GA promotion is blocked.**
+See docs/PRODUCTION-READINESS.json and docs/PORTING-STATUS.md. Version 1.0.0 is the
+requested filename/version, not a claim of complete Phobos parity or certification.
+Twenty continuation checkpoints, iterations 4–23, are recorded in
+[docs/PRODUCTION-ITERATIONS.md](docs/PRODUCTION-ITERATIONS.md).
 
-## Linux build and test
+All original STL functionality is retained. The library includes eleven typed
+containers, numeric/date utilities, codecs, SHA-256, checksums, URI/UUID utilities,
+UTF-8/UTF-16/scalar transcoding and checked integer text conversion. Algorithms
+are CMotive implementations. External library wrappers (curl, ODBC, SQLite, zlib)
+are excluded; OS facilities and self-contained replacements are permitted. The
+verified Linux shared library needs only the system C runtime. See
+[docs/DEPENDENCIES.md](docs/DEPENDENCIES.md).
 
-Requires C11 compiler, GNU make and Python 3 for tests. The exact compiler source
-archive is included so the project does not depend on old chat download links.
+The pinned current frontend emits C. A fail-closed minimal profile removes its
+unused native wrappers and retains its original system allocation definitions;
+generated class bodies remain unchanged. This is still the current compatibility
+backend, not a native PCC backend. A separate assembly layer supplies nine
+CMO-REG-1 custom-register primitives across six CPU/endian modes, without a C ABI
+wrapper. Direct compiler integration remains unfinished. See asm/README.md.
+
+## Build and test on Linux
+
+Requires Python 3, GNU Make, a C11 compiler and binutils/readelf. The exact compiler
+source is bundled as a provenance input, retaining its MIT license.
 
 ```sh
 unzip toolchain/CMotive-v0.3.0-source.zip -d toolchain
@@ -22,35 +38,37 @@ make -C toolchain/cmotive-0.3.0-selfhost -f Makefile.linux -j2
 make -f Makefile.linux -j2
 make -f Makefile.linux test
 make -f Makefile.linux sanitize-full
+make -f Makefile.linux install PREFIX=/desired/path
 ```
 
-The sanitizer target runs ASan/UBSan. Leak checking defaults off because this
-execution environment blocks LeakSanitizer process inspection. On a host which
-supports it, use `make sanitize ASAN_OPTIONS=detect_leaks=1`.
+For an existing compiler, pass CMOTIVE_ROOT=/absolute/path/to/compiler and
+optionally CMOTIVE=/absolute/path/to/cmotive on each make command. Tests include
+all methods, native guard pages, exhaustive Unicode, allocation failures, the
+exact ABI/dependency allowlist and report freshness. Sanitizer runs disable leak
+detection because this execution environment blocks LeakSanitizer inspection;
+LSan and ThreadSanitizer passes are not claimed. On a supporting host, the native
+sanitizer targets accept ASAN_OPTIONS=detect_leaks=1.
 
-For an existing compiler, set `CMOTIVE_ROOT=/absolute/path/to/cmotive-0.3.0-selfhost`
-and optionally `CMOTIVE=/absolute/path/to/cmotive` on each make command. Its root
-must contain lib/Sys/runtime.c. Outputs go to build/.
-`make install PREFIX=/desired/path` installs the library/headers; DESTDIR supports
-staging. The maintained implementation is CMotive; the compiler emits C internally.
-
-## CMake / Visual Studio 2022
+## CMake and Visual Studio 2022
 
 ```sh
 cmake -S . -B build-cmake -DCMOTIVE_ROOT=/absolute/path/to/compiler
-cmake --build build-cmake --config Release
-ctest --test-dir build-cmake -C Release --output-on-failure
+cmake --build build-cmake -j2
+ctest --test-dir build-cmake --output-on-failure
+cmake --install build-cmake --prefix /desired/path
 ```
 
-On Windows first build the bundled compiler using its own Windows instructions.
-Add `-G "Visual Studio 17 2022" -A x64` to generate native VS2022 build projects.
-A checked-in VS2022 build-wrapper solution is under build-support/vs2022. Set
-CMotiveRoot in its project properties or CMOTIVE_ROOT in the environment. It invokes
-CMake to generate the actual compilation projects. Makefile.windows uses nmake.
+The installed CMake target is CMotiveAndObjective::CMotiveAndObjective. A VS2022
+wrapper solution is under build-support/vs2022; set CMOTIVE_ROOT and use the x64
+configuration. Makefile.windows invokes the VS2022 CMake generator. On macOS use
+Makefile.mac or CMake. Outputs are libCMotiveAndObjective-1.0.0.so on Linux,
+CMotiveAndObjective-1.0.0.dll on Windows, and libCMotiveAndObjective-1.0.0.dylib on
+macOS. Only the Linux x86_64 core binary is supplied and qualified here. DLL/dylib
+builds and full ARM core binaries are unverified; none is fabricated.
 
-## Automake / Autoconf
+## Autoconf and Automake
 
-Use a clean source copy; configure writes Makefile. Requires autoconf and automake.
+Use a clean source copy (configure writes Makefile).
 
 ```sh
 autoreconf -fi
@@ -58,85 +76,30 @@ mkdir autotools-build
 cd autotools-build
 export CMOTIVE_ROOT=/absolute/path/to/compiler
 ../configure --prefix=/desired/path
-make
+make -j2
 make check
 make install
 make distcheck
 ```
 
-For macOS, build the compiler with Makefile.mac, then use Makefile.mac here or
-CMake. GNU Make, CMake/CTest and Autoconf/Automake build routes are tested on Linux.
-Windows/macOS remain unverified here.
-The included prebuilt library is Linux x86_64 only.
+The final qualification runs GNU Make, CMake/CTest and Autotools, plus installed
+CMotive header and CMake-package consumers. Strict-warning builds are checked at
+O0/O2/O3/Os. See docs/VERIFICATION.md for actual evidence and limitations.
 
-## API and documentation
+## API, ownership and releases
 
-- docs/API.md: signatures, contracts, errors, ownership and buffer rules.
-- docs/PHOBOS-MODULES.md: disposition of every supplied D source file.
-- docs/PORTING-STATUS.md: implemented scope, exclusions and unfinished work.
-- docs/VERIFICATION.md: checks actually run and their limits.
-- api.json: machine-readable public method list.
-- docs/STL-COVERAGE.md: typed container families, ownership and iterators.
-- tools/sync_api.py --check: declaration/manifest/header/export consistency.
-- tests/check_metadata.py: original ABI compatibility and source pins.
-- tests/: independent Python oracles, C ABI/boundary stress, CMotive consumer,
-  focused compiler capability probes.
+Read docs/API.md and docs/API-EXTENSIONS.md before using raw buffers or owning
+containers; source signatures are in docs/API-SIGNATURES.md. CMotive consumers
+include the required .HMOT implementations (tests/smoke.CMOT includes all new
+classes). Legacy compatibility clients use opaque handles from the genuine .h
+header. Those C test fixtures are separate from the custom-register assembly ABI.
 
-CMotive consumers include required .HMOT implementations, as in tests/smoke.CMOT.
-Shared-library consumers use opaque handles from include/CMotiveAndObjective.h;
-tests/abi_smoke.c is a complete example. Full library algorithms are in .HMOT source;
-the C file is only a test client. No handwritten C/C++ implementation backs the
-149 methods. The minimal compiler profile retains only its system allocation glue.
+Owning lists/trees must not be shallow-copied. Borrowed buffers must remain valid
+and correctly sized; mutable shared instances require caller synchronization.
+See docs/STL-COVERAGE.md for supported types, iterator validity and complexity.
 
-## License
-
-Boost Software License 1.0 for the new port, build files and tests. Original Phobos
-notices and the bundled compiler's own license remain applicable. The Phobos
-reference is not relicensed as MIT. Algorithms are adapted to CMotive class/buffer
-APIs; module mapping does not claim complete or line-for-line translation.
-
-## Iteration 2 changes
-
-21 classes and 149 public methods. Added SHA-256, URI percent encoding, UUID
-format/parse/inspect, SortedMapI64, QueueI64, SListI64, DListI64 and RedBlackTreeI64.
-All five supplied Phobos container families have typed implementations; arbitrary
-container templates are still blocked. Maintained library sources use .CMOT and
-headers use .HMOT; genuine C ABI fixtures keep .c/.h extensions.
-
-CMake exports an installed package: use `find_package(CMotiveAndObjective 1.0 CONFIG
-REQUIRED)` and link `CMotiveAndObjective::CMotiveAndObjective`. Internal CMotive
-headers retain their directory layout on all installation routes. GNU make rules
-are in build-support/GNUmakefile.mk, so Makefile.linux/mac remain usable after
-Autoconf writes a configured Makefile.
-
-`make -f Makefile.linux sanitize-full` runs the complete behavioral suite through
-ASan/UBSan on Linux/GCC, as well as native stress/invariant/allocation-failure
-checks. On other systems, use the native `sanitize` target. LeakSanitizer is a
-separate unsupported check here; tracked container allocation balance is tested.
-
-## Assembly runtime (selected scope)
-
-See [asm/README.md](asm/README.md). Nine runtime primitives use a custom CMotive
-register convention, with no C ABI wrapper. Six CPU/endian targets are supplied,
-including explicit LE/BE data operations on x86, which only executes little-endian.
-The assembly layer is standalone; the current compiler still emits C and has not
-been extended to call this custom convention. No full-runtime replacement is claimed.
-
-The full-core prebuilt .so is an existing compiler C-backend regression artifact,
-not a C-free/native-assembly build. Use the standalone assembly-runtime package
-for CMO-REG-1 .o/.a files without C interfaces. See docs/VERIFICATION.md for limits.
-
-## Iteration 3 dependency and release hardening
-
-The core retains all 149 methods and all typed STL/container classes. External
-library wrappers are excluded; see [docs/DEPENDENCIES.md](docs/DEPENDENCIES.md).
-A pinned minimal compiler profile removes unused runtime wrappers without
-changing generated class bodies. The Linux shared library requires only the
-system C runtime. It no longer links math/thread/socket support libraries.
-
-GNU Make, CMake and Autotools use the same profile. On Linux, `make test` and
-CTest audit dependency imports and linker hardening and exercise rejection
-fixtures. The release packager repeats the audit on the exact binary. Python 3
-is required at build time. The current C-emission backend and system allocator
-remain; the separate custom-register assembly layer is preserved. This is not
-a complete native compiler or complete Phobos port.
+Release packaging binds the exact binary, source profile, test sources, exercised
+method names, dependency/export allowlist and ELF protections. --require-production
+refuses promotion while documented blockers remain. Normal packaging produces a
+verified core candidate and does not override that gate. Source and compiler pins,
+all 174 upstream file hashes and every partial/deferred/excluded module are tracked.

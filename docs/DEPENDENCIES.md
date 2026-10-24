@@ -1,4 +1,4 @@
-# Dependency policy — iteration 3
+# Dependency policy — iteration 23
 
 The maintained library permits self-contained algorithms and OS-provided
 facilities. Third-party library wrappers are excluded. Existing STL/container
@@ -6,7 +6,8 @@ implementations remain part of the library and its regression suite.
 
 ## Included and retained
 
-All 149 public methods and 21 classes from iteration 2 are retained, including
+All 149 original public methods and 21 classes are retained. The current core
+has 199 public methods in 27 classes, including
 ArrayVectorI64, BinaryHeapI64, SListI64, DListI64, RedBlackTreeI64, SortedMapI64,
 QueueI64 and AlgorithmsI64. Their algorithms remain CMotive implementations;
 no C++ STL library or compiler built-in container wrapper implements them.
@@ -87,3 +88,8 @@ source or dependency-policy changes; it is a freshness check, not a signature.
 These gates are production hardening for the implemented subset. General
 Phobos/template support, native frontend integration and qualification on all
 platforms remain outstanding; see PORTING-STATUS.md and VERIFICATION.md.
+
+The expanded hash/set/multimap/stack, Unicode and integer-conversion algorithms
+are self-contained CMotive implementations as well. Current Linux ELF audits
+also require the correct architecture, SONAME and exact 253-symbol public ABI.
+Behavioral reports bind the exact test sources and exercised method names.

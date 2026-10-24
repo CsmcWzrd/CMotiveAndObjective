@@ -1,4 +1,4 @@
-# Typed STL/container coverage — iteration 3
+# Typed STL/container coverage — iteration 23
 
 The supplied Phobos container families now have working I64 implementations.
 This is typed coverage, not complete generic Phobos or C++ STL compatibility.
@@ -14,6 +14,12 @@ template files are shipped: the bundled compiler skips arbitrary Template classe
 | std.container.rbtree | RedBlackTreeI64 | Owned unique-key ordered set; balanced insert/delete, search, lower/upper bounds, forward/reverse cursors |
 | Additional typed ordered map | SortedMapI64 | Borrowed parallel arrays; sorted unique I64 keys and I64 values, update/search/delete/indexed iteration |
 | Additional typed queue | QueueI64 | Borrowed ring buffer; constant-time push back/pop front/peek |
+| Additional typed hash map | HashMapI64 | Borrowed key/value/state arrays, bounded probing, tombstone deletion and slot traversal |
+| Additional typed hash set | HashSetI64 | Borrowed key/state arrays, duplicate suppression and slot traversal |
+| Additional typed multimap | MultiMapI64 | Borrowed parallel arrays, stable duplicate-key insertion, scan and erase |
+| Additional typed stack | StackI64 | Borrowed LIFO buffer with push/pop/peek |
+
+Detailed new contracts are in API-EXTENSIONS.md.
 
 ## Ownership, errors and iterator validity
 
@@ -55,7 +61,7 @@ have their usual fixed-capacity costs. No custom comparators or allocators exist
 ## Still missing
 
 Arbitrary element/key/value types, template range adapters, allocator policies,
-multisets/multimaps, hash containers, and Phobos's full container/range interfaces
+arbitrary-type multisets/multimaps and hash containers, and Phobos's full container/range interfaces
 are not implemented. The Phobos snapshot does not supply B/B+Tree containers;
 this iteration does not claim to add them or all containers from earlier CMotive
 projects. General template support requires compiler work.
@@ -68,3 +74,7 @@ symbols are hidden from the shared-library ABI.
 All iteration-2 STL methods are retained by the iteration-3 API baseline.
 Removing unused compiler built-in wrappers does not remove these independently
 implemented CMotive containers. See DEPENDENCIES.md.
+
+Iteration 23 retains all original and added APIs (199 methods total). Eleven typed
+container classes and AlgorithmsI64 are maintained; BTree/BPlusTree, hash multimaps,
+custom comparators/allocators and arbitrary-type generics remain absent.

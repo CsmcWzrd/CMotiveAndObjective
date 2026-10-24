@@ -88,9 +88,11 @@
     "module": "std.algorithm.iteration",
     "sha256": "b4c4cf61bf9145c5774733a6805f33956e3e1f6ee3262dea69b1b088e418d57f",
     "bytes": 241663,
-    "status": "deferred",
-    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
-    "implemented_classes": []
+    "status": "partial",
+    "reason": "Adapted typed subset only; full upstream generic and package APIs remain deferred.",
+    "implemented_classes": [
+      "AlgorithmsI64"
+    ]
   },
   {
     "path": "std/algorithm/mutation.d",
@@ -273,9 +275,21 @@
     "module": "std.container",
     "sha256": "f1d9ad7406eaf9477a60fc9b8cbac311ccd7b7c5a6d81f1097212e35ddeca2a9",
     "bytes": 31927,
-    "status": "deferred",
-    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
-    "implemented_classes": []
+    "status": "partial",
+    "reason": "Adapted typed subset only; full upstream generic and package APIs remain deferred.",
+    "implemented_classes": [
+      "ArrayVectorI64",
+      "BinaryHeapI64",
+      "SListI64",
+      "DListI64",
+      "RedBlackTreeI64",
+      "SortedMapI64",
+      "QueueI64",
+      "HashMapI64",
+      "HashSetI64",
+      "MultiMapI64",
+      "StackI64"
+    ]
   },
   {
     "path": "std/container/rbtree.d",
@@ -313,9 +327,11 @@
     "module": "std.conv",
     "sha256": "b0b1cc21bad0a8a1a8c2db122f0a5294cdf7724aa8dce24d2af1ff5568534ca4",
     "bytes": 172639,
-    "status": "deferred",
-    "reason": "Not implemented; requires further porting and tests. Not a claim of impossibility.",
-    "implemented_classes": []
+    "status": "partial",
+    "reason": "Adapted typed subset only; full upstream generic and package APIs remain deferred.",
+    "implemented_classes": [
+      "IntegerText"
+    ]
   },
   {
     "path": "std/csv.d",
@@ -1498,7 +1514,8 @@
     "status": "partial",
     "reason": "Typed subset implemented; remaining upstream APIs are deferred.",
     "implemented_classes": [
-      "Utf8"
+      "Utf8",
+      "Utf16"
     ]
   },
   {

@@ -1,0 +1,39 @@
+{
+  "status": "NOT_GA",
+  "production_ready": false,
+  "quality_level": "verified implemented-core candidate",
+  "iteration": 23,
+  "continuation_checkpoints": 20,
+  "source_fingerprint": "d189d9ce31058748a80a771790ec9c0116c38dbcf48ba6d799fde85a83f9613f",
+  "tests_fingerprint": "383bac65d1c75d401859b197a1865f3e6fdc713a9cc089270ecf138d4dd6981a",
+  "api_methods": 199,
+  "public_classes": 27,
+  "headers": 32,
+  "exports": 253,
+  "behavioral_assertions": 1417340,
+  "unicode_scalars": 1112064,
+  "native_unicode_checks": 23365381,
+  "hardware_guard_checks": 3630,
+  "blockers": [
+    {
+      "id": "NATIVE_FRONTEND",
+      "detail": "Pinned frontend emits C; CMO-REG-1 is not integrated into class calls or the allocator."
+    },
+    {
+      "id": "GENERIC_TEMPLATES",
+      "detail": "Arbitrary template instantiation is not supported by the pinned frontend; typed containers are adapted APIs."
+    },
+    {
+      "id": "PHOBOS_PARITY",
+      "detail": "The supplied 174-module snapshot is only partially ported. Remaining implementable modules and permitted OS services are documented."
+    },
+    {
+      "id": "PLATFORM_QUALIFICATION",
+      "detail": "Full core execution is verified on Linux x86_64 only; Windows/macOS and full ARM/x86 core qualification remain outstanding."
+    },
+    {
+      "id": "LIFETIME_AND_RACE_QUALIFICATION",
+      "detail": "Tracked ownership and concurrency tests pass, but LSan inspection is unavailable and a ThreadSanitizer pass is not claimed."
+    }
+  ]
+}

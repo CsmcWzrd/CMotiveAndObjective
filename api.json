@@ -223,6 +223,52 @@
     ]
   },
   {
+    "cls": "AlgorithmsI64",
+    "name": "MergeSort",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "workspace",
+        "I64*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "AlgorithmsI64",
+    "name": "SumChecked",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "I64*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "initial",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
     "cls": "ArrayVectorI64",
     "name": "Bind",
     "returns": "I32",
@@ -1200,6 +1246,236 @@
     ]
   },
   {
+    "cls": "HashMapI64",
+    "name": "Bind",
+    "returns": "I32",
+    "params": [
+      [
+        "keys",
+        "I64*"
+      ],
+      [
+        "values",
+        "I64*"
+      ],
+      [
+        "states",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "Length",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "Capacity",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "Put",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "Get",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "Contains",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "Remove",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "NextSlot",
+    "returns": "I64",
+    "params": [
+      [
+        "previous",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "KeyAt",
+    "returns": "I32",
+    "params": [
+      [
+        "slot",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "ValueAt",
+    "returns": "I32",
+    "params": [
+      [
+        "slot",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "HashMapI64",
+    "name": "Clear",
+    "returns": "Void",
+    "params": []
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "Bind",
+    "returns": "I32",
+    "params": [
+      [
+        "keys",
+        "I64*"
+      ],
+      [
+        "states",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "Length",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "Capacity",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "Insert",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "Contains",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "Remove",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "NextSlot",
+    "returns": "I64",
+    "params": [
+      [
+        "previous",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "KeyAt",
+    "returns": "I32",
+    "params": [
+      [
+        "slot",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "HashSetI64",
+    "name": "Clear",
+    "returns": "Void",
+    "params": []
+  },
+  {
     "cls": "Hex",
     "name": "Encode",
     "returns": "I64",
@@ -1308,6 +1584,228 @@
         "U64*"
       ]
     ]
+  },
+  {
+    "cls": "IntegerText",
+    "name": "FormatU64",
+    "returns": "I64",
+    "params": [
+      [
+        "value",
+        "U64"
+      ],
+      [
+        "base",
+        "I32"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "IntegerText",
+    "name": "ParseU64",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "base",
+        "I32"
+      ],
+      [
+        "out",
+        "U64*"
+      ]
+    ]
+  },
+  {
+    "cls": "IntegerText",
+    "name": "FormatI64",
+    "returns": "I64",
+    "params": [
+      [
+        "value",
+        "I64"
+      ],
+      [
+        "base",
+        "I32"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "IntegerText",
+    "name": "ParseI64",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "base",
+        "I32"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "Bind",
+    "returns": "I32",
+    "params": [
+      [
+        "keys",
+        "I64*"
+      ],
+      [
+        "values",
+        "I64*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "Length",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "Capacity",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "Insert",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ],
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "Count",
+    "returns": "I64",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "FindNext",
+    "returns": "I64",
+    "params": [
+      [
+        "key",
+        "I64"
+      ],
+      [
+        "previous",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "KeyAt",
+    "returns": "I32",
+    "params": [
+      [
+        "index",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "ValueAt",
+    "returns": "I32",
+    "params": [
+      [
+        "index",
+        "I64"
+      ],
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "RemoveOne",
+    "returns": "I32",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "RemoveAll",
+    "returns": "I64",
+    "params": [
+      [
+        "key",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "MultiMapI64",
+    "name": "Clear",
+    "returns": "Void",
+    "params": []
   },
   {
     "cls": "QueueI64",
@@ -1759,6 +2257,72 @@
     "params": []
   },
   {
+    "cls": "StackI64",
+    "name": "Bind",
+    "returns": "I32",
+    "params": [
+      [
+        "storage",
+        "I64*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "StackI64",
+    "name": "Length",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "StackI64",
+    "name": "Capacity",
+    "returns": "I64",
+    "params": []
+  },
+  {
+    "cls": "StackI64",
+    "name": "Push",
+    "returns": "I32",
+    "params": [
+      [
+        "value",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "StackI64",
+    "name": "Peek",
+    "returns": "I32",
+    "params": [
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "StackI64",
+    "name": "Pop",
+    "returns": "I32",
+    "params": [
+      [
+        "out",
+        "I64*"
+      ]
+    ]
+  },
+  {
+    "cls": "StackI64",
+    "name": "Clear",
+    "returns": "Void",
+    "params": []
+  },
+  {
     "cls": "Uri",
     "name": "EncodedLength",
     "returns": "I64",
@@ -1820,6 +2384,71 @@
     ]
   },
   {
+    "cls": "Utf16",
+    "name": "DecodeFirst",
+    "returns": "I32",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ],
+      [
+        "consumed",
+        "I32*"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf16",
+    "name": "Count",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf16",
+    "name": "Encode",
+    "returns": "I32",
+    "params": [
+      [
+        "cp",
+        "U32"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ],
+      [
+        "bigEndian",
+        "I32"
+      ]
+    ]
+  },
+  {
     "cls": "Utf8",
     "name": "DecodeFirst",
     "returns": "I32",
@@ -1861,6 +2490,67 @@
       [
         "cp",
         "U32"
+      ],
+      [
+        "out",
+        "Uchar*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf8",
+    "name": "DecodeTo32",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "Uchar*"
+      ],
+      [
+        "n",
+        "I64"
+      ],
+      [
+        "out",
+        "U32*"
+      ],
+      [
+        "capacity",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf8",
+    "name": "EncodedLength32",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "U32*"
+      ],
+      [
+        "n",
+        "I64"
+      ]
+    ]
+  },
+  {
+    "cls": "Utf8",
+    "name": "EncodeFrom32",
+    "returns": "I64",
+    "params": [
+      [
+        "data",
+        "U32*"
+      ],
+      [
+        "n",
+        "I64"
       ],
       [
         "out",

@@ -52,5 +52,38 @@ Elif (w == 3) { out[0]=(Uchar)(224 | (cp >> 12)); out[1]=(Uchar)(128 | ((cp >> 6
 Else { out[0]=(Uchar)(240 | (cp >> 18)); out[1]=(Uchar)(128 | ((cp >> 12) & 63)); out[2]=(Uchar)(128 | ((cp >> 6) & 63)); out[3]=(Uchar)(128 | (cp & 63)); }
 Return w;
 }
+
+I64
+DecodeTo32
+data : Uchar*
+n : I64
+out : U32*
+capacity : I64
+()
+{
+If (capacity < 0) { Return -1; } codec : Utf8 = Zero; count : I64 = codec.Count(data,n); If (count < 0) { Return count; } If (capacity < count || (count > 0 && out == Null)) { Return -1; }
+i : I64 = 0; j : I64 = 0; While (i < n) { consumed : I32 = 0; cp : I32 = codec.DecodeFirst(data+i,n-i,&consumed); out[j]=(U32)cp; i+=consumed; j++; } Return count;
+}
+I64
+EncodedLength32
+data : U32*
+n : I64
+()
+{
+If (n < 0 || (n > 0 && data == Null)) { Return -1; } i : I64 = 0; size : I64 = 0;
+While (i < n) { cp : U32 = data[i]; If (cp > 1114111 || (cp >= 55296 && cp <= 57343)) { Return -2; }
+width : I32 = 1; If (cp >= 65536) { width=4; } Elif (cp >= 2048) { width=3; } Elif (cp >= 128) { width=2; } If (size > 9223372036854775807-width) { Return -1; } size+=width; i++; } Return size;
+}
+I64
+EncodeFrom32
+data : U32*
+n : I64
+out : Uchar*
+capacity : I64
+()
+{
+If (capacity < 0) { Return -1; } codec : Utf8 = Zero; size : I64 = codec.EncodedLength32(data,n); If (size < 0) { Return size; } If (capacity < size || (size > 0 && out == Null)) { Return -1; }
+i : I64 = 0; j : I64 = 0; While (i < n) { width : I32 = codec.Encode(data[i],out+j,capacity-j); j+=width; i++; } Return size;
+}
 }
 };

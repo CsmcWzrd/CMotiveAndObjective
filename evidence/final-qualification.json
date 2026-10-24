@@ -1,0 +1,16 @@
+{
+  "status": "PASS_FOR_IMPLEMENTED_CORE",
+  "production_ready": false,
+  "source_fingerprint": "d189d9ce31058748a80a771790ec9c0116c38dbcf48ba6d799fde85a83f9613f",
+  "tests_fingerprint": "383bac65d1c75d401859b197a1865f3e6fdc713a9cc089270ecf138d4dd6981a",
+  "normal_binary_sha256": "4addd06360b0e19411496fa5f90234b8cef7d3041ba7483a51b5dad631f80702",
+  "sanitized_binary_sha256": "f96bfaa2e9f461203bd991d7e29b998efff5aa113eccb3f1fed01d975cf41e90",
+  "normal_and_sanitized_assertions_each": 1417340,
+  "headers": {
+    "standalone_headers": 32,
+    "abi_exports": 253,
+    "global_cleanup_push_calls": 0,
+    "status": "PASS"
+  },
+  "production_gate_rejection": "PASS"
+}

@@ -1,6 +1,6 @@
 # Implemented core API
 
-The 149 maintained methods are CMotive class implementations, not native wrappers.
+The 199 maintained methods are CMotive class implementations, not native wrappers.
 The compiler emits C; a pinned minimal profile retains its allocation definitions
 and removes unused native wrappers. The binary still uses the system C runtime. These adapted typed APIs are
 not drop-in Phobos APIs. No D compiler/runtime or C++ library is required.
@@ -88,3 +88,7 @@ stack. The generated-code guard checks that no library method calls Cleanup_Push
 Independent containers and stateless methods can be used concurrently with
 separate buffers; shared mutable containers require external synchronization.
 This does not repair compiler cleanup behavior in an application's own code.
+
+Additional typed containers, merge sorting, checked accumulation, UTF-16, Unicode
+scalar transcoding and integer text conversion are documented in
+[API-EXTENSIONS.md](API-EXTENSIONS.md). All 199 signatures are in API-SIGNATURES.md.
